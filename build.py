@@ -101,11 +101,6 @@ def remove_white(node):
 
 remove_white(dom)
 releases = dom.createElement('releases')
-env = {
-    **os.environ,
-    'TZ': 'UTC',
-    'GIT_DIR': 'vscode/.git'
-}
 for entry in RECIPE['@comments']['releases']:
     release = dom.createElement('release')
     release.setAttribute('version', entry['version'])
