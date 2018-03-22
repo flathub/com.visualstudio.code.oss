@@ -11,6 +11,7 @@
     "--device=dri",
     "--filesystem=host",
     "--persist=.vscode-oss",
+    "--persist=.pki",
     "--talk-name=org.freedesktop.Notifications"
   ],
   "modules": [
