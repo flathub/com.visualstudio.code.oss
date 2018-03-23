@@ -32,10 +32,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://git.gnome.org/browse/libsecret.git",
-          "tag": "0.18.5",
-          "commit": "0c468b56b074d8b8cf29e58f3c488f12161a3969"
+          "type": "archive",
+          "url": "https://download.gnome.org/sources/libsecret/0.18/libsecret-0.18.5.tar.xz",
+          "sha512": "4ee297b556d3b555b6ca9f5eb5cc87425b782491d0550a75873aac0f7019b123f437f0731c85bb058fc65b50a589d54d0697657a50bef4ac2952e9e40a916b5c"
         }
       ]
     },
@@ -51,10 +50,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://anongit.freedesktop.org/git/xorg/lib/libxkbfile.git",
-          "tag": "libxkbfile-1.0.9",
-          "commit": "de4f2307448583988a55a587cb6a3f43e4868378"
+          "type": "archive",
+          "url": "https://www.x.org/releases/individual/lib/libxkbfile-1.0.9.tar.bz2",
+          "sha512": "5fa268f10d7c4bd7b1e0c9f12adaa53d86b149f193d228fc620b3b81d360b37e4ede0192f5a0dc715bf830a57bd1388af01399fb33609413fc64623ee91cb8d1"
         }
       ]
     },
@@ -68,10 +66,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://github.com/ImageMagick/ImageMagick.git",
-          "tag": "7.0.7-23",
-          "commit": "3278fc22854db6236bcac95c963f0460b247a778"
+          "type": "archive",
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-27.tar.xz",
+          "sha512": "fc5056c3015c98930c45435fc8667e1d28230eb1585b6fa0f908d37c696c88ce3f2c2c9aaa3c9e343edc51ca80c523c5338cf96bcf2425773c20993ba81f5b3b"
         }
       ],
       "config-opts": [
@@ -115,10 +112,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://github.com/nodejs/node.git",
-          "tag": "v8.9.1",
-          "commit": "85113512547c75b987988474c90036541277f7a7"
+          "type": "archive",
+          "url": "https://nodejs.org/dist/v8.9.1/node-v8.9.1.tar.xz",
+          "sha512": "e1d93def34c1b91de90b807031e2f313661658cd045d44d290950190b10512770df05cb92e9657bab7ad6654d3359364193567cf693ddb2b3574d2a48e4ee256"
         }
       ],
       "post-install": [
