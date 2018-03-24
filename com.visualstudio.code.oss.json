@@ -59,6 +59,16 @@
       ]
     },
     {
+      "name": "git",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.xz",
+          "sha512": "73520cf3500b2d13b77eb1e5ec0d60263aad07732d25631732f0d986abd023f97b8a6db4abff64d342cb053018289b5f7a3e32f10b86bd9092a37ee0585adc8a"
+        }
+      ]
+    },
+    {
       "name": "ImageMagick",
       "build-options": {
         "prefix": "/app/local"
@@ -194,6 +204,10 @@
             "    Path('vscode-ripgrep/bin/rg').chmod(Path('vscode-ripgrep/bin/rg').stat().st_mode | stat.S_IXUSR)",
             "",
             "    os.chdir('vscode')",
+            "    Path('product.json').write_text(json.dumps({",
+            "        **json.loads(Path('product.json').read_text()),",
+            "        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery']",
+            "    }))",
             "    Path('build/builtInExtensions.json').write_text('[]')",
             "    subprocess.run(['yarn', 'link', 'vscode-ripgrep'], check=True)",
             "    package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())",
@@ -272,6 +286,11 @@
         {
           "type": "file",
           "path": "com.visualstudio.code.oss.json"
+        },
+        {
+          "type": "file",
+          "url": "https://raw.githubusercontent.com/Microsoft/vscode/b00945fc8c79f6db74b280ef53eba060ed9a1388/product.json",
+          "sha512": "068f88905f28b1f824ba925a610d99f9456623b377db73d59f31176597952236f6d5415ec70a7b56092e907cf007e5a6a1af21584e40c6170828605e22b572bd"
         },
         {
           "type": "file",
