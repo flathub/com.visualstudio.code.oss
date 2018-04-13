@@ -3,6 +3,10 @@
     "NOTICE": "This file is auto-generated, do not modify",
     "releases": [
       {
+        "version": "1.22.2",
+        "date": "2018-04-12T16:21:42"
+      },
+      {
         "version": "1.22.1",
         "date": "2018-04-06T00:06:35"
       },
@@ -369,8 +373,8 @@
         {
           "type": "git",
           "url": "https://github.com/Microsoft/vscode.git",
-          "tag": "1.22.1",
-          "commit": "950b8b0d37a9b7061b6f0d291837ccc4015f5ecd",
+          "tag": "1.22.2",
+          "commit": "3aeede733d9a3098f7b4bdc1f66b63b0f48c1ef9",
           "dest": "vscode",
           "disable-shallow-clone": false
         },
