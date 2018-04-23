@@ -1,3 +1,8 @@
+[<img src="https://flathub.org/repo/appstream/x86_64/icons/64x64/com.visualstudio.code.oss.png" width="64" height="64">](https://github.com/Microsoft/vscode)
+[<img src="https://flathub.org/repo/appstream/x86_64/icons/64x64/com.visualstudio.code.png" width="64" height="64">](https://code.visualstudio.com/)
+[<img src="https://flathub.org/assets/themes/flathub/flathub-logo.svg" width="64" height="64">](https://flathub.org/apps/details/com.visualstudio.code.oss)
+[<img src="https://flathub.org/builds/img/icon.svg" width="64" height="64">](https://flathub.org/builds)
+
 This is a recipe to build [Visual Studio Code](https://github.com/Microsoft/vscode) on Flathub
 
 Builtin extensions `ms-vscode.node-debug` and `ms-vscode.node-debug2` are not included due to bugs, may be fixed later. Please download them manually in the marketplace
