@@ -280,19 +280,6 @@
       ]
     },
     {
-      "name": "git",
-      "config-opts": [
-        "--without-tcltk"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.xz",
-          "sha512": "73520cf3500b2d13b77eb1e5ec0d60263aad07732d25631732f0d986abd023f97b8a6db4abff64d342cb053018289b5f7a3e32f10b86bd9092a37ee0585adc8a"
-        }
-      ]
-    },
-    {
       "name": "ImageMagick",
       "build-options": {
         "prefix": "/app/local"
@@ -376,7 +363,7 @@
           "tag": "1.22.2",
           "commit": "3aeede733d9a3098f7b4bdc1f66b63b0f48c1ef9",
           "dest": "vscode",
-          "disable-shallow-clone": false
+          "disable-shallow-clone": true
         },
         {
           "type": "script",
@@ -12576,8 +12563,8 @@
         },
         {
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.5.1/yarn-1.5.1.js",
-          "sha512": "d486f1033feb3e8d585f36eb41322cb0184a83344c9fbe1a0cb9b50ca459f53facbea921a6b104cea4c08721781fa81b58cffa7a1accdba4aadaa7b7ef00a8f2",
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.6.0/yarn-1.6.0.js",
+          "sha512": "91796a51bfca1f524fb1b4d62161f168b87733d1dbe74b233667d193a693f1d24234e033623d21570baaf33b6c652b4a09b601e29a2b0f771571a84413a3a2d6",
           "dest": "bin",
           "dest-filename": "yarn.js"
         },
@@ -12818,7 +12805,7 @@
   ],
   "base": "io.atom.electron.BaseApp",
   "base-version": "stable",
-  "runtime": "org.freedesktop.Platform",
+  "runtime": "org.freedesktop.Sdk",
   "runtime-version": "1.6",
   "sdk": "org.freedesktop.Sdk"
 }
