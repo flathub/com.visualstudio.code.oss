@@ -294,8 +294,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-30.tar.xz",
-          "sha256": "f8f5cd7b4a3abb6b1a93b54ae8eb55a1a87cdba47f8efd187178a2d0eb9ba712"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-31.tar.xz",
+          "sha256": "002f305567b21906a689ce1f98769069907b2700c5bb2b0ddad2264f0343d780"
         }
       ],
       "config-opts": [
@@ -484,10 +484,12 @@
             "    dom.getElementsByTagName('component')[0].appendChild(releases)",
             "    description_paragraph = dom.createElement('p')",
             "    description_paragraph.appendChild(dom.createTextNode(re.sub(r'\\s+', r' ', '''",
-            "        The difference between the OSS version and the non-OSS version is described at",
-            "        https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999. This version",
-            "        is compiled directly from the source code provided in the upstream GitHub repository with minor",
-            "        modifications, as the official binary is licensed proprietarily. Essential features are all present.",
+            "        The above paragraph, from upstream Microsoft, is the same for this OSS version and the non-OSS",
+            "        version https://flathub.org/apps/details/com.visualstudio.code. The difference between them is",
+            "        described at https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999.",
+            "        This version is compiled directly from the source code provided in the upstream GitHub repository",
+            "        with minor modifications, as the official binary is licensed proprietarily. Essential features",
+            "        are all present.",
             "    '''.strip())))",
             "    dom.getElementsByTagName('description')[0].appendChild(description_paragraph)",
             "    lines = dom.toxml(encoding='UTF-8').decode()",
