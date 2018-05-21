@@ -298,8 +298,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-31.tar.xz",
-          "sha256": "002f305567b21906a689ce1f98769069907b2700c5bb2b0ddad2264f0343d780"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-33.tar.xz",
+          "sha256": "dae3b784dbe81eb3796a42ff063446cb83df876d21bed111b584cc6e075a5872"
         }
       ],
       "config-opts": [
@@ -12831,9 +12831,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "astroid-1.6.3-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/f8/59/12a1d965bb99b595bfd72cc9a44863a0c00a2c05c38178f6139285bb00b5/astroid-1.6.3-py2.py3-none-any.whl",
-          "sha256": "38186e481b65877fd8b1f9acc33e922109e983eb7b6e487bd4c71002134ad331"
+          "dest-filename": "astroid-1.6.4-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/7f/4f/162e1c859f59031ee7d3ff48ca6a3eaa699e4b8bfcb4f2988b5677d74605/astroid-1.6.4-py2.py3-none-any.whl",
+          "sha256": "032f6e09161e96f417ea7fad46d3fac7a9019c775f202182c22df0e4f714cb1c"
         },
         {
           "type": "file",
@@ -12921,9 +12921,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "pipenv-11.10.4-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/ac/49/b95f5a1d5e1a0bbdb42ac96c19927a4af7b067aecefc1b6eeefbe4e3706c/pipenv-11.10.4-py3-none-any.whl",
-          "sha256": "b624be67e9e24063975bdf30f5386ce7d3c5ba938cb8cddc9bbbdecc488141f5"
+          "dest-filename": "pipenv-2018.5.18-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/8d/fe/4faa519acfb984015dde4e2973d89e47baf6a9cd81e9d58e2f2d3c47fb6f/pipenv-2018.5.18-py3-none-any.whl",
+          "sha256": "e96d5bfa6822a17b2200d455aa5f9002c14361c50df1b1e51921479d7c09e741"
         },
         {
           "type": "file",
@@ -12945,15 +12945,15 @@
         },
         {
           "type": "file",
-          "dest-filename": "pylint-1.8.4-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/8b/62/b2c07085dd7bb4b7e8bb813873421692c1157191e87234550a1c39dff232/pylint-1.8.4-py2.py3-none-any.whl",
-          "sha256": "0b7e6b5d9f1d4e0b554b5d948f14ed7969e8cdf9a0120853e6e5af60813b18ab"
+          "dest-filename": "pylint-1.9.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/3f/88/e0c9a506255ae3915ac1f183a13853d5b4a3e435972d0df6ea190d5d1e96/pylint-1.9.1-py2.py3-none-any.whl",
+          "sha256": "aa519865f8890a5905fa34924fed0f3bfc7d84fc9f9142c16dac52ffecd25a39"
         },
         {
           "type": "file",
-          "dest-filename": "setuptools-39.1.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/8c/10/79282747f9169f21c053c562a0baa21815a8c7879be97abd930dbcf862e8/setuptools-39.1.0-py2.py3-none-any.whl",
-          "sha256": "0cb8b8625bfdcc2d43ea4b9cdba0b39b2b7befc04f3088897031082aa16ce186"
+          "dest-filename": "setuptools-39.2.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/7f/e1/820d941153923aac1d49d7fc37e17b6e73bfbd2904959fffbad77900cf92/setuptools-39.2.0-py2.py3-none-any.whl",
+          "sha256": "8fca9275c89964f13da985c3656cb00ba029d7f3916b37990927ffdf264e7926"
         },
         {
           "type": "file",
@@ -12975,9 +12975,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "virtualenv-15.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/ed/ea/e20b5cbebf45d3096e8138ab74eda139595d827677f38e9dd543e6015bdf/virtualenv-15.2.0-py2.py3-none-any.whl",
-          "sha256": "e8e05d4714a1c51a2f5921e62f547fcb0f713ebbe959e0a7f585cc8bef71d11f"
+          "dest-filename": "virtualenv-16.0.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/b6/30/96a02b2287098b23b875bc8c2f58071c35d2efe84f747b64d523721dc2b5/virtualenv-16.0.0-py2.py3-none-any.whl",
+          "sha256": "2ce32cd126117ce2c539f0134eb89de91a8413a29baac49cbab3eb50e2026669"
         },
         {
           "type": "file",
