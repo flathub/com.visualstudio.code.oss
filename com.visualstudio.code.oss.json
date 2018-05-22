@@ -298,8 +298,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-33.tar.xz",
-          "sha256": "dae3b784dbe81eb3796a42ff063446cb83df876d21bed111b584cc6e075a5872"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-35.tar.xz",
+          "sha256": "5441583b724f84d5ecd87b9056aa751fb520e5ef26da4b45a8975f1938d4c39d"
         }
       ],
       "config-opts": [
@@ -12820,7 +12820,7 @@
       "name": "python_packages",
       "buildsystem": "simple",
       "build-commands": [
-        "PYTHONUSERBASE=/app pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython"
+        "PYTHONUSERBASE=/app pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope"
       ],
       "sources": [
         {
@@ -12897,9 +12897,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "parso-0.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/63/69/0c383765d192006330bfaae27a2c5d0933fb4760c5aacd933b8b19391693/parso-0.2.0-py2.py3-none-any.whl",
-          "sha256": "a75a304d7090d2c67bd298091c14ef9d3d560e3c53de1c239617889f61d1d307"
+          "dest-filename": "parso-0.2.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/cd/3e/5908f9577dbd1e5df53e64349bfd11e46b726c1e4d8cd676bbe8aa4de316/parso-0.2.1-py2.py3-none-any.whl",
+          "sha256": "cdef26e8adc10d589f3ec4eb444bd0a29f3f1eb6d72a4292ab8afcb9d68976a6"
         },
         {
           "type": "file",
@@ -12948,6 +12948,12 @@
           "dest-filename": "pylint-1.9.1-py2.py3-none-any.whl",
           "url": "https://files.pythonhosted.org/packages/3f/88/e0c9a506255ae3915ac1f183a13853d5b4a3e435972d0df6ea190d5d1e96/pylint-1.9.1-py2.py3-none-any.whl",
           "sha256": "aa519865f8890a5905fa34924fed0f3bfc7d84fc9f9142c16dac52ffecd25a39"
+        },
+        {
+          "type": "file",
+          "dest-filename": "rope-0.10.7.tar.gz",
+          "url": "https://files.pythonhosted.org/packages/7e/fc/702c0293b57edd4d70146e36f9413c40339a701a43c8fa6918fb9d834913/rope-0.10.7.tar.gz",
+          "sha256": "a09edfd2034fd50099a67822f9bd851fbd0f4e98d3b87519f6267b60e50d80d1"
         },
         {
           "type": "file",
