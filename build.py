@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
 import os
+import io
 import sys
 import json
 import subprocess
@@ -63,8 +63,8 @@ def load_lockfile():
 
 
 def get_yarn_recipe():
-    url = json.loads(httpget('https://api.github.com/repos/yarnpkg/yarn/releases/latest'))['assets'][1]['browser_download_url']
-    print(url)
+    url = json.loads(httpget('https://api.github.com/repos/yarnpkg/yarn/releases/latest').decode())['assets'][1]['browser_download_url']
+
     return {
         'type': 'file',
         **get_url_sha512(url),
@@ -73,10 +73,85 @@ def get_yarn_recipe():
     }
 
 
+def get_imagemagick_archive():
+    version_pattern = re.compile(r'ImageMagick-(\d+)\.(\d+)\.(\d+)-(\d+)\.(.+)')
+
+    def version_key(version):
+        version = version_pattern.fullmatch(version[0]).groups()
+        return (version[4] == 'tar.xz', *(int(number) for number in version[0:4]))
+
+    contents = [content for content in minidom.parseString(
+        httpget('https://www.imagemagick.org/download/releases/digest.rdf')
+    ).documentElement.childNodes if content.nodeName == 'digest:Content']
+    releases = [(
+        content.attributes['rdf:about'].value,
+        next(node.firstChild.data for node in content.childNodes if node.nodeName == 'digest:sha256')
+    ) for content in contents]
+    latest = max(releases, key=version_key)
+    return {
+        'type': 'archive',
+        'url': 'https://www.imagemagick.org/download/releases/' + latest[0],
+        'sha256': latest[1]
+    }
+
+
+def get_git_with_tag(url, tag):
+    stream = io.TextIOWrapper(urllib.request.urlopen(url + '/info/refs?service=git-upload-pack'))
+    refs = {}
+    while True:
+        line = stream.readline()
+        line = line[4:]
+        if line == '':
+            break
+        if line.startswith('#'):
+            continue
+        line = line.split('\0')[0]
+        line = line.split(' ')
+        refs[line[1].strip()] = line[0]
+    return {
+        'type': 'git',
+        'url': url,
+        'tag': tag,
+        'commit': refs.get('refs/tags/' + tag + '^{}', refs.get('refs/tags/' + tag))
+    }
+
+
+def get_python_packages():
+    packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope']
+    sources = []
+    with tempfile.TemporaryDirectory() as tmpdir:
+        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True)
+        for filename in sorted(os.listdir(tmpdir)):
+            if filename.endswith('.whl'):
+                package = re.fullmatch(r'(.*)-.*?-.*?-.*?-.*?\.whl', filename).groups()[0]
+            elif filename.endswith('.tar.gz'):
+                package = re.fullmatch(r'(.*)-.*?\.tar\.gz', filename).groups()[0]
+            elif filename.endswith('.zip'):
+                package = re.fullmatch(r'(.*)-.*?\.zip', filename).groups()[0]
+            else:
+                continue
+            dom = minidom.parseString(httpget('https://pypi.org/simple/' + package + '/'))
+            url = next(node.getAttribute('href') for node in dom.getElementsByTagName('a') if node.firstChild.data == filename)
+            sources.append({
+                'type': 'file',
+                'dest-filename': filename,
+                'url': urllib.parse.urldefrag(url)[0],
+                **dict([urllib.parse.urldefrag(url)[1].split('=')])
+            })
+        return {
+            'name': 'python_packages',
+            'buildsystem': 'simple',
+            'build-commands': [
+                    'PYTHONUSERBASE=/app pip3 install --user --no-index --find-links . ' + ' '.join(packages),
+            ],
+            'sources': sources
+        }
+
+
 def parse_repo():
     loader = load_lockfile()
     next(loader)
-    releases = json.loads(httpget('https://vscode-update.azurewebsites.net/api/releases/stable', headers={'X-API-Version': '2'}))
+    releases = json.loads(httpget('https://vscode-update.azurewebsites.net/api/releases/stable', headers={'X-API-Version': '2'}).decode())
     with tempfile.TemporaryDirectory() as tmp, pushd(tmp):
         call('git', 'clone', '--branch', releases[0]['version'], 'https://github.com/Microsoft/vscode.git', '.')
         releases = [{
@@ -130,8 +205,8 @@ def parse_repo():
                 '--device=dri',
                 '--filesystem=host',
                 '--persist=' + product_json['dataFolderName'],
-                '--persist=.pki',
-                '--talk-name=org.freedesktop.Notifications'
+                '--talk-name=org.freedesktop.Notifications',
+                '--env=PYTHONPATH=/app/lib/python3.5/site-packages'
             ],
             'modules': [
                 {
@@ -150,12 +225,7 @@ def parse_repo():
                         '*.la'
                     ],
                     'sources': [
-                        {
-                            'type': 'git',
-                            'url': 'https://git.gnome.org/browse/libsecret.git',
-                            'tag': '0.18.5',
-                            'commit': '0c468b56b074d8b8cf29e58f3c488f12161a3969'
-                        }
+                        get_git_with_tag('https://git.gnome.org/browse/libsecret.git', '0.18.5')
                     ]
                 },
                 {
@@ -169,24 +239,7 @@ def parse_repo():
                         '--disable-static'
                     ],
                     'sources': [
-                        {
-                            'type': 'git',
-                            'url': 'https://anongit.freedesktop.org/git/xorg/lib/libxkbfile.git',
-                            'tag': 'libxkbfile-1.0.9',
-                            'commit': 'de4f2307448583988a55a587cb6a3f43e4868378'
-                        }
-                    ]
-                },
-                {
-                    'name': 'git',
-                    'config-opts': [
-                        '--without-tcltk'
-                    ],
-                    'sources': [
-                        {
-                            'type': 'archive',
-                            **get_url_sha512('https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.xz')
-                        }
+                        get_git_with_tag('https://anongit.freedesktop.org/git/xorg/lib/libxkbfile.git', 'libxkbfile-1.0.9')
                     ]
                 },
                 {
@@ -198,10 +251,7 @@ def parse_repo():
                         '/local'
                     ],
                     'sources': [
-                        {
-                            'type': 'archive',
-                            **get_url_sha512('https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-28.tar.xz')
-                        }
+                        get_imagemagick_archive()
                     ],
                     'config-opts': [
                         '--enable-static=no',
@@ -271,7 +321,7 @@ def parse_repo():
                             'tag': releases[0]['version'],
                             'commit': releases[0]['id'],
                             'dest': 'vscode',
-                            'disable-shallow-clone': False
+                            'disable-shallow-clone': True
                         },
                         {
                             'type': 'script',
@@ -305,7 +355,8 @@ def parse_repo():
                         },
                         *packages.values()
                     ]
-                }
+                },
+                get_python_packages()
             ]
         }
 
@@ -355,7 +406,7 @@ def get_electron_recipe(packages, iojs_version):
 
 def get_ripgrep_recipe(packages):
     version = next(package[1] for package in packages if package[0] == 'vscode-ripgrep')
-    url = 'https://github.com/roblourens/vscode-ripgrep/raw/' + version + '/dist/postinstall.js'
+    url = 'https://cdn.jsdelivr.net/npm/vscode-ripgrep@' + version + '/lib/postinstall.js'
     line = next(line for line in httpget(url).decode().split('\n') if line.startswith('const version'))
     line += ';console.log(version)'
     version = inline(call('node', '-e', line, output=True))
@@ -375,11 +426,12 @@ def get_ripgrep_recipe(packages):
 
 
 def get_base_recipe():
-    base = json.loads(httpget('https://github.com/flathub/io.atom.electron.BaseApp/raw/master/io.atom.electron.BaseApp.json'))
+    base = json.loads(httpget('https://github.com/flathub/io.atom.electron.BaseApp/raw/master/io.atom.electron.BaseApp.json').decode())
     return {
         'base': base['id'],
         'base-version': base['branch'],
-        'runtime': base['runtime'],
+        # 'runtime': base['runtime'],
+        'runtime': base['sdk'],
         'runtime-version': base['runtime-version'],
         'sdk': base['sdk']
     }
@@ -491,6 +543,16 @@ def build():
         release.setAttribute('date', entry['date'])
         releases.appendChild(release)
     dom.getElementsByTagName('component')[0].appendChild(releases)
+    description_paragraph = dom.createElement('p')
+    description_paragraph.appendChild(dom.createTextNode(re.sub(r'\s+', r' ', '''
+        The above paragraph, from upstream Microsoft, is the same for this OSS version and the non-OSS
+        version https://flathub.org/apps/details/com.visualstudio.code. The difference between them is
+        described at https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999.
+        This version is compiled directly from the source code provided in the upstream GitHub repository
+        with minor modifications, as the official binary is licensed proprietarily. Essential features
+        are all present.
+    '''.strip())))
+    dom.getElementsByTagName('description')[0].appendChild(description_paragraph)
     lines = dom.toxml(encoding='UTF-8').decode()
     Path('/app/share/appdata').mkdir(parents=True)
     Path('/app/share/appdata/' + os.environ['FLATPAK_ID'] + '.appdata.xml').write_text(
@@ -503,7 +565,7 @@ def build():
 
 def main():
     recipe = generate_recipe()
-    Path(recipe['app-id'] + '.json').write_text(json.dumps(recipe, indent=2))
+    Path(recipe['app-id'] + '.json').write_text(json.dumps(recipe, indent=2) + '\n')
 
 
 if __name__ == '__main__':
