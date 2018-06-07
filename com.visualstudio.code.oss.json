@@ -3,6 +3,10 @@
     "NOTICE": "This file is auto-generated, do not modify",
     "releases": [
       {
+        "version": "1.24.0",
+        "date": "2018-06-06T17:17:59"
+      },
+      {
         "version": "1.23.1",
         "date": "2018-05-10T15:43:30"
       },
@@ -298,8 +302,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-35.tar.xz",
-          "sha256": "5441583b724f84d5ecd87b9056aa751fb520e5ef26da4b45a8975f1938d4c39d"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-38.tar.xz",
+          "sha256": "db6a88477dc7290a450570d215ae68caf83e0d80c868addefb608109978db17b"
         }
       ],
       "config-opts": [
@@ -368,8 +372,8 @@
         {
           "type": "git",
           "url": "https://github.com/Microsoft/vscode.git",
-          "tag": "1.23.1",
-          "commit": "d0182c3417d225529c6d5ad24b7572815d0de9ac",
+          "tag": "1.24.0",
+          "commit": "6a6e02cef0f2122ee1469765b704faf5d0e0d859",
           "dest": "vscode",
           "disable-shallow-clone": true
         },
@@ -632,10 +636,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/agent-base/-/agent-base-1.0.2.tgz",
-          "sha1": "6890d3fb217004b62b70f8928e0fae5f8952a706",
+          "url": "https://registry.yarnpkg.com/agent-base/-/agent-base-4.2.0.tgz",
+          "sha1": "9838b5c3392b962bad031e6a4c5e1024abec45ce",
           "dest": "yarn-mirror",
-          "dest-filename": "agent-base-1.0.2.tgz"
+          "dest-filename": "agent-base-4.2.0.tgz"
         },
         {
           "type": "file",
@@ -779,10 +783,24 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz",
+          "sha1": "6802e6264efd18c790a1b0d517f0f2627bf2c94a",
+          "dest": "yarn-mirror",
+          "dest-filename": "aproba-1.2.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/archy/-/archy-1.0.0.tgz",
           "sha1": "f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40",
           "dest": "yarn-mirror",
           "dest-filename": "archy-1.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/are-we-there-yet/-/are-we-there-yet-1.1.5.tgz",
+          "sha1": "4b35c2944f062a8bfcda66410760350fe9ddfc21",
+          "dest": "yarn-mirror",
+          "dest-filename": "are-we-there-yet-1.1.5.tgz"
         },
         {
           "type": "file",
@@ -1143,6 +1161,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/bl/-/bl-1.2.2.tgz",
+          "sha1": "a160911717103c07410cef63ef51b397c025af9c",
+          "dest": "yarn-mirror",
+          "dest-filename": "bl-1.2.2.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/bl/-/bl-1.1.2.tgz",
           "sha1": "fdca871a99713aa00d19e3bbba41c44787a65398",
           "dest": "yarn-mirror",
@@ -1227,10 +1252,31 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/buffer-alloc-unsafe/-/buffer-alloc-unsafe-0.1.1.tgz",
+          "sha1": "ffe1f67551dd055737de253337bfe853dfab1a6a",
+          "dest": "yarn-mirror",
+          "dest-filename": "buffer-alloc-unsafe-0.1.1.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/buffer-alloc/-/buffer-alloc-1.1.0.tgz",
+          "sha1": "05514d33bf1656d3540c684f65b1202e90eca303",
+          "dest": "yarn-mirror",
+          "dest-filename": "buffer-alloc-1.1.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/buffer-crc32/-/buffer-crc32-0.2.13.tgz",
           "sha1": "0d333e3f00eac50aa1454abd30ef8c2a5d9a7242",
           "dest": "yarn-mirror",
           "dest-filename": "buffer-crc32-0.2.13.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/buffer-fill/-/buffer-fill-0.1.1.tgz",
+          "sha1": "76d825c4d6e50e06b7a31eb520c04d08cc235071",
+          "dest": "yarn-mirror",
+          "dest-filename": "buffer-fill-0.1.1.tgz"
         },
         {
           "type": "file",
@@ -1371,6 +1417,13 @@
           "sha1": "4b9f53a81b27e4d5dac31c0ffd0cfa03cc6830db",
           "dest": "yarn-mirror",
           "dest-filename": "cheerio-1.0.0-rc.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/chownr/-/chownr-1.0.1.tgz",
+          "sha1": "e2a75042a9551908bebd25b8523d5f9769d79181",
+          "dest": "yarn-mirror",
+          "dest-filename": "chownr-1.0.1.tgz"
         },
         {
           "type": "file",
@@ -1668,6 +1721,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz",
+          "sha1": "3d7cf4464db6446ea644bf4b39507f9851008e8e",
+          "dest": "yarn-mirror",
+          "dest-filename": "console-control-strings-1.1.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.2.tgz",
           "sha1": "0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4",
           "dest": "yarn-mirror",
@@ -1899,6 +1959,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz",
+          "sha1": "5bb5a0672628b64149566ba16819e61518c67261",
+          "dest": "yarn-mirror",
+          "dest-filename": "debug-3.1.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz",
           "sha1": "f6534d15148269b20352e7bee26f501f9a191290",
           "dest": "yarn-mirror",
@@ -1906,10 +1973,24 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/decompress-response/-/decompress-response-3.3.0.tgz",
+          "sha1": "80a4dd323748384bfa248083622aedec982adff3",
+          "dest": "yarn-mirror",
+          "dest-filename": "decompress-response-3.3.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/decompress-zip/-/decompress-zip-0.3.0.tgz",
           "sha1": "ae3bcb7e34c65879adfe77e19c30f86602b4bdb0",
           "dest": "yarn-mirror",
           "dest-filename": "decompress-zip-0.3.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz",
+          "sha1": "c4fa7c95404a17a9c3e8ca7e1537312b736330ac",
+          "dest": "yarn-mirror",
+          "dest-filename": "deep-extend-0.6.0.tgz"
         },
         {
           "type": "file",
@@ -1976,6 +2057,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz",
+          "sha1": "84c6e159b81904fdca59a0ef44cd870d31250f9a",
+          "dest": "yarn-mirror",
+          "dest-filename": "delegates-1.0.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/denodeify/-/denodeify-1.2.1.tgz",
           "sha1": "3a36287f5034e699e7577901052c2e6c94251631",
           "dest": "yarn-mirror",
@@ -2015,6 +2103,13 @@
           "sha1": "720ff51e4d97b76884f6bf57292348b13dfde939",
           "dest": "yarn-mirror",
           "dest-filename": "detect-indent-2.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz",
+          "sha1": "fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b",
+          "dest": "yarn-mirror",
+          "dest-filename": "detect-libc-1.0.3.tgz"
         },
         {
           "type": "file",
@@ -2116,10 +2211,24 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/eachr/-/eachr-3.2.0.tgz",
+          "sha1": "2c35e43ea086516f7997cf80b7aa64d55a4a4484",
+          "dest": "yarn-mirror",
+          "dest-filename": "eachr-3.2.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz",
           "sha1": "0fc73a9ed5f0d53c38193398523ef7e543777505",
           "dest": "yarn-mirror",
           "dest-filename": "ecc-jsbn-0.1.1.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/editions/-/editions-1.3.4.tgz",
+          "sha1": "3662cb592347c3168eb8e498a0ff73271d67f50b",
+          "dest": "yarn-mirror",
+          "dest-filename": "editions-1.3.4.tgz"
         },
         {
           "type": "file",
@@ -2218,6 +2327,20 @@
           "sha1": "9136e0503dcc06a301690f0bb14ff4e364e949f0",
           "dest": "yarn-mirror",
           "dest-filename": "es6-map-0.1.5.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.4.tgz",
+          "sha1": "dc4221c2b16518760bd8c39a52d8f356fc00ed29",
+          "dest": "yarn-mirror",
+          "dest-filename": "es6-promise-4.2.4.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-5.0.0.tgz",
+          "sha1": "5109d62f3e56ea967c4b63505aef08291c8a5203",
+          "dest": "yarn-mirror",
+          "dest-filename": "es6-promisify-5.0.0.tgz"
         },
         {
           "type": "file",
@@ -2410,6 +2533,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/expand-template/-/expand-template-1.1.1.tgz",
+          "sha1": "981f188c0c3a87d2e28f559bc541426ff94f21dd",
+          "dest": "yarn-mirror",
+          "dest-filename": "expand-template-1.1.1.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/expand-tilde/-/expand-tilde-1.2.2.tgz",
           "sha1": "0b81eba897e5a3d31d1c3d102f8f01441e559449",
           "dest": "yarn-mirror",
@@ -2445,13 +2575,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/extend/-/extend-3.0.0.tgz",
-          "sha1": "5a474353b9f3353ddd8176dfd37b91c83a46f1d4",
-          "dest": "yarn-mirror",
-          "dest-filename": "extend-3.0.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz",
           "sha1": "a755ea7bc1adfcc5a31ce7e762dbaadc5e636444",
           "dest": "yarn-mirror",
@@ -2473,10 +2596,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/extract-opts/-/extract-opts-2.2.0.tgz",
-          "sha1": "1fa28eba7352c6db480f885ceb71a46810be6d7d",
+          "url": "https://registry.yarnpkg.com/extract-opts/-/extract-opts-3.3.1.tgz",
+          "sha1": "5abbedc98c0d5202e3278727f9192d7e086c6be1",
           "dest": "yarn-mirror",
-          "dest-filename": "extract-opts-2.2.0.tgz"
+          "dest-filename": "extract-opts-3.3.1.tgz"
         },
         {
           "type": "file",
@@ -2760,6 +2883,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/fs-constants/-/fs-constants-1.0.0.tgz",
+          "sha1": "6be0de9be998ce16af8afc24497b9ee9b7ccd9ad",
+          "dest": "yarn-mirror",
+          "dest-filename": "fs-constants-1.0.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/fs-exists-sync/-/fs-exists-sync-0.1.0.tgz",
           "sha1": "982d6893af918e72d08dec9e8673ff2b5a8d6add",
           "dest": "yarn-mirror",
@@ -2792,6 +2922,13 @@
           "sha1": "a56899d3ea3c9bab874bb9773b7c5ede92f4895d",
           "dest": "yarn-mirror",
           "dest-filename": "function-bind-1.1.1.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/gauge/-/gauge-2.7.4.tgz",
+          "sha1": "2c03405c7538c39d7eb37b317022e325fb018bf7",
+          "dest": "yarn-mirror",
+          "dest-filename": "gauge-2.7.4.tgz"
         },
         {
           "type": "file",
@@ -2851,10 +2988,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/getmac/-/getmac-1.0.7.tgz",
-          "sha1": "94460f9778698d2e159a03da6c165689f22cdd67",
+          "url": "https://registry.yarnpkg.com/getmac/-/getmac-1.4.1.tgz",
+          "sha1": "cfefcb3ee7d7a73cba5292129cb100c19afbe17a",
           "dest": "yarn-mirror",
-          "dest-filename": "getmac-1.0.7.tgz"
+          "dest-filename": "getmac-1.4.1.tgz"
         },
         {
           "type": "file",
@@ -2862,6 +2999,13 @@
           "sha1": "5eff8e3e684d569ae4cb2b1282604e8ba62149fa",
           "dest": "yarn-mirror",
           "dest-filename": "getpass-0.1.7.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/github-from-package/-/github-from-package-0.0.0.tgz",
+          "sha1": "97fb5d96bfde8973313f20e8288ef9a167fa64ce",
+          "dest": "yarn-mirror",
+          "dest-filename": "github-from-package-0.0.0.tgz"
         },
         {
           "type": "file",
@@ -3341,6 +3485,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz",
+          "sha1": "e0e6fe6a28cf51138855e086d1691e771de2a8b9",
+          "dest": "yarn-mirror",
+          "dest-filename": "has-unicode-2.0.1.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/has/-/has-1.0.1.tgz",
           "sha1": "8461733f538b0837c9361e39a9ab9e9704dc2f28",
           "dest": "yarn-mirror",
@@ -3425,10 +3576,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-0.2.7.tgz",
-          "sha1": "e17fda65f0902d952ce7921e62c7ff8862655a5e",
+          "url": "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-2.1.0.tgz",
+          "sha1": "e4821beef5b2142a2026bd73926fe537631c5405",
           "dest": "yarn-mirror",
-          "dest-filename": "http-proxy-agent-0.2.7.tgz"
+          "dest-filename": "http-proxy-agent-2.1.0.tgz"
         },
         {
           "type": "file",
@@ -3453,10 +3604,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-0.3.6.tgz",
-          "sha1": "713fa38e5d353f50eb14a342febe29033ed1619b",
+          "url": "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.1.tgz",
+          "sha1": "51552970fa04d723e04c56d04178c3f92592bbc0",
           "dest": "yarn-mirror",
-          "dest-filename": "https-proxy-agent-0.3.6.tgz"
+          "dest-filename": "https-proxy-agent-2.2.1.tgz"
         },
         {
           "type": "file",
@@ -3471,6 +3622,13 @@
           "sha1": "f7468f60135f5e5dad3399c0a81be9a1603a082b",
           "dest": "yarn-mirror",
           "dest-filename": "iconv-lite-0.4.19.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz",
+          "sha1": "297871f63be507adcfbfca715d0cd0eed84e9a63",
+          "dest": "yarn-mirror",
+          "dest-filename": "iconv-lite-0.4.23.tgz"
         },
         {
           "type": "file",
@@ -4048,10 +4206,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/keytar/-/keytar-4.0.5.tgz",
-          "sha1": "cc1255ef06eeea1a12440b773f7d4a375b048729",
+          "url": "https://registry.yarnpkg.com/keytar/-/keytar-4.2.1.tgz",
+          "sha1": "8a06a6577fdf6373e0aa6b112277e63dec77fd12",
           "dest": "yarn-mirror",
-          "dest-filename": "keytar-4.0.5.tgz"
+          "dest-filename": "keytar-4.2.1.tgz"
         },
         {
           "type": "file",
@@ -4664,6 +4822,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.0.tgz",
+          "sha1": "df3d3652a73fded6b9b0b24146e6fd052353458e",
+          "dest": "yarn-mirror",
+          "dest-filename": "mimic-response-1.0.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/minimatch/-/minimatch-0.3.0.tgz",
           "sha1": "275d8edaac4f1bb3326472089e7949c8394699dd",
           "dest": "yarn-mirror",
@@ -4804,10 +4969,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/nan/-/nan-2.5.1.tgz",
-          "sha1": "d5b01691253326a97a2bbee9e61c55d8d60351e2",
+          "url": "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz",
+          "sha1": "ed715f3fe9de02b57a5e6252d90a96675e1f085a",
           "dest": "yarn-mirror",
-          "dest-filename": "nan-2.5.1.tgz"
+          "dest-filename": "nan-2.8.0.tgz"
         },
         {
           "type": "file",
@@ -4836,13 +5001,6 @@
           "sha1": "e4ff34e6c95fdfb5aecc08de6596f43605a7db45",
           "dest": "yarn-mirror",
           "dest-filename": "nan-2.6.2.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz",
-          "sha1": "ed715f3fe9de02b57a5e6252d90a96675e1f085a",
-          "dest": "yarn-mirror",
-          "dest-filename": "nan-2.8.0.tgz"
         },
         {
           "type": "file",
@@ -4888,6 +5046,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/node-abi/-/node-abi-2.4.1.tgz",
+          "sha1": "7628c4d4ec4e9cd3764ceb3652f36b2e7f8d4923",
+          "dest": "yarn-mirror",
+          "dest-filename": "node-abi-2.4.1.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/node-pty/-/node-pty-0.7.4.tgz",
           "sha1": "07146b2b40b76e432e57ce6750bda40f0da5c99f",
           "dest": "yarn-mirror",
@@ -4913,6 +5078,13 @@
           "sha1": "5722b184f2df7327161064a791d2e842c9167b34",
           "dest": "yarn-mirror",
           "dest-filename": "nodegit-promise-4.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/noop-logger/-/noop-logger-0.1.1.tgz",
+          "sha1": "94a2b1633c4f1317553007d8966fd0e841b6a4c2",
+          "dest": "yarn-mirror",
+          "dest-filename": "noop-logger-0.1.1.tgz"
         },
         {
           "type": "file",
@@ -4976,6 +5148,13 @@
           "sha1": "35a9232dfa35d7067b4cb2ddf2357b1871536c5f",
           "dest": "yarn-mirror",
           "dest-filename": "npm-run-path-2.0.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/npmlog/-/npmlog-4.1.2.tgz",
+          "sha1": "08a7f2a8bf734604779a9efa4ad5cc717abb954b",
+          "dest": "yarn-mirror",
+          "dest-filename": "npmlog-4.1.2.tgz"
         },
         {
           "type": "file",
@@ -5644,6 +5823,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-2.5.3.tgz",
+          "sha1": "9f65f242782d370296353710e9bc843490c19f69",
+          "dest": "yarn-mirror",
+          "dest-filename": "prebuild-install-2.5.3.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz",
           "sha1": "21932a549f5e52ffd9a827f570e04be62a97da54",
           "dest": "yarn-mirror",
@@ -5700,6 +5886,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.0.tgz",
+          "sha1": "a37d732f4271b4ab1ad070d35508e8290788ffaa",
+          "dest": "yarn-mirror",
+          "dest-filename": "process-nextick-args-2.0.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/progress-stream/-/progress-stream-1.2.0.tgz",
           "sha1": "2cd3cfea33ba3a89c9c121ec3347abe9ab125f77",
           "dest": "yarn-mirror",
@@ -5742,10 +5935,24 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/pump/-/pump-1.0.3.tgz",
+          "sha1": "5dfe8311c33bbf6fc18261f9f34702c47c08a954",
+          "dest": "yarn-mirror",
+          "dest-filename": "pump-1.0.3.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/pump/-/pump-1.0.2.tgz",
           "sha1": "3b3ee6512f94f0e575538c17995f9f16990a5d51",
           "dest": "yarn-mirror",
           "dest-filename": "pump-1.0.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/pump/-/pump-2.0.1.tgz",
+          "sha1": "12399add6e4cf7526d973cbc8b5ce2e2908b3909",
+          "dest": "yarn-mirror",
+          "dest-filename": "pump-2.0.1.tgz"
         },
         {
           "type": "file",
@@ -5847,6 +6054,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz",
+          "sha1": "cd924bf5200a075b83c188cd6b9e211b7fc0d3ed",
+          "dest": "yarn-mirror",
+          "dest-filename": "rc-1.2.8.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/rcedit/-/rcedit-0.3.0.tgz",
           "sha1": "cb5eee185e546f9eda597c248c9906186fa96bce",
           "dest": "yarn-mirror",
@@ -5893,6 +6107,13 @@
           "sha1": "368f2512d79f9d46fdfc71349ae7878bbc1eb95c",
           "dest": "yarn-mirror",
           "dest-filename": "readable-stream-2.3.3.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz",
+          "sha1": "b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf",
+          "dest": "yarn-mirror",
+          "dest-filename": "readable-stream-2.3.6.tgz"
         },
         {
           "type": "file",
@@ -6162,6 +6383,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz",
+          "sha1": "44fa161b0187b9549dd84bb91802f9bd8385cd6a",
+          "dest": "yarn-mirror",
+          "dest-filename": "safer-buffer-2.1.2.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/samsam/-/samsam-1.1.2.tgz",
           "sha1": "bec11fdc83a9fda063401210e40176c3024d1567",
           "dest": "yarn-mirror",
@@ -6299,6 +6527,20 @@
           "sha1": "b5fdc08f1287ea1178628e415e25132b73646c6d",
           "dest": "yarn-mirror",
           "dest-filename": "signal-exit-3.0.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/simple-concat/-/simple-concat-1.0.0.tgz",
+          "sha1": "7344cbb8b6e26fb27d66b2fc86f9f6d5997521c6",
+          "dest": "yarn-mirror",
+          "dest-filename": "simple-concat-1.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/simple-get/-/simple-get-2.8.1.tgz",
+          "sha1": "0e22e91d4575d87620620bc91308d57a77f44b5d",
+          "dest": "yarn-mirror",
+          "dest-filename": "simple-get-2.8.1.tgz"
         },
         {
           "type": "file",
@@ -6547,6 +6789,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.1.tgz",
+          "sha1": "9cf1611ba62685d7030ae9e4ba34149c3af03fc8",
+          "dest": "yarn-mirror",
+          "dest-filename": "string_decoder-1.1.1.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.5.tgz",
           "sha1": "4e484cd4de5a0bbbee18e46307710a8a81621878",
           "dest": "yarn-mirror",
@@ -6624,10 +6873,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/sudo-prompt/-/sudo-prompt-8.0.0.tgz",
-          "sha1": "a7b4a1ca6cbcca0e705b90a89dfc81d11034cba9",
+          "url": "https://registry.yarnpkg.com/sudo-prompt/-/sudo-prompt-8.2.0.tgz",
+          "sha1": "bcd4aaacdb367b77b4bffcce1c658c2b1dd327f3",
           "dest": "yarn-mirror",
-          "dest-filename": "sudo-prompt-8.0.0.tgz"
+          "dest-filename": "sudo-prompt-8.2.0.tgz"
         },
         {
           "type": "file",
@@ -6684,6 +6933,20 @@
           "sha1": "2bbc542f0fda9861a755d3947fefd8b3f513855f",
           "dest": "yarn-mirror",
           "dest-filename": "table-3.8.3.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/tar-fs/-/tar-fs-1.16.2.tgz",
+          "sha1": "17e5239747e399f7e77344f5f53365f04af53577",
+          "dest": "yarn-mirror",
+          "dest-filename": "tar-fs-1.16.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/tar-stream/-/tar-stream-1.6.1.tgz",
+          "sha1": "f84ef1696269d6223ca48f6e1eeede3f7e81f395",
+          "dest": "yarn-mirror",
+          "dest-filename": "tar-stream-1.6.1.tgz"
         },
         {
           "type": "file",
@@ -6806,6 +7069,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/to-buffer/-/to-buffer-1.1.1.tgz",
+          "sha1": "493bd48f62d7c43fcded313a03dcadb2e1213a80",
+          "dest": "yarn-mirror",
+          "dest-filename": "to-buffer-1.1.1.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/to-iso-string/-/to-iso-string-0.0.2.tgz",
           "sha1": "4dc19e664dfccbe25bd8db508b00c6da158255d1",
           "dest": "yarn-mirror",
@@ -6925,10 +7195,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/typechecker/-/typechecker-2.0.8.tgz",
-          "sha1": "e83da84bb64c584ccb345838576c40b0337db82e",
+          "url": "https://registry.yarnpkg.com/typechecker/-/typechecker-4.5.0.tgz",
+          "sha1": "c382920097812364bbaf4595b0ab6588244117a6",
           "dest": "yarn-mirror",
-          "dest-filename": "typechecker-2.0.8.tgz"
+          "dest-filename": "typechecker-4.5.0.tgz"
         },
         {
           "type": "file",
@@ -6953,10 +7223,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz",
-          "sha1": "6160e4f8f195d5ba81d4876f9c0cc1fbc0820624",
+          "url": "https://registry.yarnpkg.com/typescript/-/typescript-2.8.3.tgz",
+          "sha1": "5d817f9b6f31bb871835f4edf0089f21abe6c170",
           "dest": "yarn-mirror",
-          "dest-filename": "typescript-2.8.1.tgz"
+          "dest-filename": "typescript-2.8.3.tgz"
         },
         {
           "type": "file",
@@ -7128,10 +7398,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/v8-inspect-profiler/-/v8-inspect-profiler-0.0.7.tgz",
-          "sha1": "f3b3438680f71961b9647514fe7b9f8748abc462",
+          "url": "https://registry.yarnpkg.com/v8-inspect-profiler/-/v8-inspect-profiler-0.0.8.tgz",
+          "sha1": "4d6bedb7c3d1bfc69e5bfdc2ded3d6784a5a76a6",
           "dest": "yarn-mirror",
-          "dest-filename": "v8-inspect-profiler-0.0.7.tgz"
+          "dest-filename": "v8-inspect-profiler-0.0.8.tgz"
         },
         {
           "type": "file",
@@ -7310,10 +7580,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-xterm/-/vscode-xterm-3.4.0-beta3.tgz",
-          "sha1": "349db387bd3669ad4d6044a6ea6d699e6d649fb5",
+          "url": "https://registry.yarnpkg.com/vscode-xterm/-/vscode-xterm-3.5.0-beta8.tgz",
+          "sha1": "beaf158e00ce8341caa18703b3d1ed18be78b676",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-xterm-3.4.0-beta3.tgz"
+          "dest-filename": "vscode-xterm-3.5.0-beta8.tgz"
         },
         {
           "type": "file",
@@ -7338,10 +7608,24 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/which-pm-runs/-/which-pm-runs-1.0.0.tgz",
+          "sha1": "670b3afbc552e0b55df6b7780ca74615f23ad1cb",
+          "dest": "yarn-mirror",
+          "dest-filename": "which-pm-runs-1.0.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/which/-/which-1.3.0.tgz",
           "sha1": "ff04bdfc010ee547d780bec38e1ac1c2777d253a",
           "dest": "yarn-mirror",
           "dest-filename": "which-1.3.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/wide-align/-/wide-align-1.1.3.tgz",
+          "sha1": "ae074e6bdc0c14a431e804e624549c633b000457",
+          "dest": "yarn-mirror",
+          "dest-filename": "wide-align-1.1.3.tgz"
         },
         {
           "type": "file",
@@ -7538,13 +7822,6 @@
           "sha1": "9528f442dab1b2284e58b4379bb194e22e0c4005",
           "dest": "yarn-mirror",
           "dest-filename": "yauzl-2.4.1.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/yauzl/-/yauzl-2.8.0.tgz",
-          "sha1": "79450aff22b2a9c5a41ef54e02db907ccfbf9ee2",
-          "dest": "yarn-mirror",
-          "dest-filename": "yauzl-2.8.0.tgz"
         },
         {
           "type": "file",
@@ -7765,13 +8042,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz",
-          "sha1": "6802e6264efd18c790a1b0d517f0f2627bf2c94a",
-          "dest": "yarn-mirror",
-          "dest-filename": "aproba-1.2.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/are-we-there-yet/-/are-we-there-yet-1.1.4.tgz",
           "sha1": "bb5dca382bb94f05e15194373d16fd3ba1ca110d",
           "dest": "yarn-mirror",
@@ -7797,20 +8067,6 @@
           "sha1": "798e689778151c8076b4b360e5edd28cda2bb468",
           "dest": "yarn-mirror",
           "dest-filename": "chokidar-1.7.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz",
-          "sha1": "3d7cf4464db6446ea644bf4b39507f9851008e8e",
-          "dest": "yarn-mirror",
-          "dest-filename": "console-control-strings-1.1.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz",
-          "sha1": "84c6e159b81904fdca59a0ef44cd870d31250f9a",
-          "dest": "yarn-mirror",
-          "dest-filename": "delegates-1.0.0.tgz"
         },
         {
           "type": "file",
@@ -7863,24 +8119,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/gauge/-/gauge-2.7.4.tgz",
-          "sha1": "2c03405c7538c39d7eb37b317022e325fb018bf7",
-          "dest": "yarn-mirror",
-          "dest-filename": "gauge-2.7.4.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/gulp-watch/-/gulp-watch-4.3.11.tgz",
           "sha1": "162fc563de9fc770e91f9a7ce3955513a9a118c0",
           "dest": "yarn-mirror",
           "dest-filename": "gulp-watch-4.3.11.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz",
-          "sha1": "e0e6fe6a28cf51138855e086d1691e771de2a8b9",
-          "dest": "yarn-mirror",
-          "dest-filename": "has-unicode-2.0.1.tgz"
         },
         {
           "type": "file",
@@ -7930,13 +8172,6 @@
           "sha1": "d0d4685afd5415193c8c7505602d0d17cd64474d",
           "dest": "yarn-mirror",
           "dest-filename": "nopt-4.0.1.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/npmlog/-/npmlog-4.1.2.tgz",
-          "sha1": "08a7f2a8bf734604779a9efa4ad5cc717abb954b",
-          "dest": "yarn-mirror",
-          "dest-filename": "npmlog-4.1.2.tgz"
         },
         {
           "type": "file",
@@ -8500,10 +8735,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/typescript/-/typescript-2.8.3.tgz",
-          "sha1": "5d817f9b6f31bb871835f4edf0089f21abe6c170",
+          "url": "https://registry.yarnpkg.com/typescript/-/typescript-2.9.1.tgz",
+          "sha1": "fdb19d2c67a15d11995fd15640e373e09ab09961",
           "dest": "yarn-mirror",
-          "dest-filename": "typescript-2.8.3.tgz"
+          "dest-filename": "typescript-2.9.1.tgz"
         },
         {
           "type": "file",
@@ -8535,38 +8770,45 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-3.6.0.tgz",
-          "sha1": "848d56995d5168950d84feb5d9c237ae5c6a02d4",
+          "url": "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-3.6.2.tgz",
+          "sha1": "3b5eef691159a15556ecc500e9a8a0dd143470c8",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-jsonrpc-3.6.0.tgz"
+          "dest-filename": "vscode-jsonrpc-3.6.2.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageclient/-/vscode-languageclient-4.0.0.tgz",
-          "sha1": "635f5bfbcfa1385dae489b394857f1db8b459a7d",
+          "url": "https://registry.yarnpkg.com/vscode-languageclient/-/vscode-languageclient-4.1.4.tgz",
+          "sha1": "fff1a6bca4714835dca7fce35bc4ce81442fdf2c",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageclient-4.0.0.tgz"
+          "dest-filename": "vscode-languageclient-4.1.4.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol-foldingprovider/-/vscode-languageserver-protocol-foldingprovider-2.0.0-next.2.tgz",
-          "sha1": "fbb9cfdf5b8c4ac451826ba6312f1f88379f35b0",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol-foldingprovider/-/vscode-languageserver-protocol-foldingprovider-2.0.1.tgz",
+          "sha1": "051d0d9e58d1b79dc4681acd48f21797f5515bfd",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-protocol-foldingprovider-2.0.0-next.2.tgz"
+          "dest-filename": "vscode-languageserver-protocol-foldingprovider-2.0.1.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.6.0.tgz",
-          "sha1": "579642cdcccf74b0cd771c33daa3239acb40d040",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.7.2.tgz",
+          "sha1": "df58621c032139010888b6a9ddc969423f9ba9d6",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-protocol-3.6.0.tgz"
+          "dest-filename": "vscode-languageserver-protocol-3.7.2.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.6.1.tgz",
-          "sha1": "4bc06a48dff653495f12f94b8b1e228988a1748d",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.7.2.tgz",
+          "sha1": "aad8846f8e3e27962648554de5a8417e358f34eb",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-types-3.6.1.tgz"
+          "dest-filename": "vscode-languageserver-types-3.7.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-3.2.2.tgz",
+          "sha1": "3817eca5b985c2393de325197cf4e15eb2aa5350",
+          "dest": "yarn-mirror",
+          "dest-filename": "vscode-nls-3.2.2.tgz"
         },
         {
           "type": "file",
@@ -8577,24 +8819,17 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-css-languageservice/-/vscode-css-languageservice-3.0.9-next.14.tgz",
-          "sha1": "156822b2d8c56487ffd47105cc884fa3983664ca",
+          "url": "https://registry.yarnpkg.com/vscode-css-languageservice/-/vscode-css-languageservice-3.0.9-next.18.tgz",
+          "sha1": "f8f25123b5a8cdc9f72fafcd2c0088f726322437",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-css-languageservice-3.0.9-next.14.tgz"
+          "dest-filename": "vscode-css-languageservice-3.0.9-next.18.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver/-/vscode-languageserver-4.0.0.tgz",
-          "sha1": "8b792f0d6d10acfe363d02371ed4ce53d08af88a",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver/-/vscode-languageserver-4.1.3.tgz",
+          "sha1": "937d37c955b6b9c2409388413cd6f54d1eb9fe7d",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-4.0.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-3.2.2.tgz",
-          "sha1": "3817eca5b985c2393de325197cf4e15eb2aa5350",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-nls-3.2.2.tgz"
+          "dest-filename": "vscode-languageserver-4.1.3.tgz"
         },
         {
           "type": "file",
@@ -8738,10 +8973,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-emmet-helper/-/vscode-emmet-helper-1.2.7.tgz",
-          "sha1": "603505fd59393fbbaf799086203cdfb8bad953d0",
+          "url": "https://registry.yarnpkg.com/vscode-emmet-helper/-/vscode-emmet-helper-1.2.9.tgz",
+          "sha1": "a194ec6a4350e14a511bc5e16c1f0d0786d8bb58",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-emmet-helper-1.2.7.tgz"
+          "dest-filename": "vscode-emmet-helper-1.2.9.tgz"
         },
         {
           "type": "file",
@@ -8941,17 +9176,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-css-languageservice/-/vscode-css-languageservice-3.0.9-next.10.tgz",
-          "sha1": "be73d571221176b43d2c398a4a27f7d38206952d",
+          "url": "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-2.1.3-next.5.tgz",
+          "sha1": "cfbf4ffed96845ad13999d572ce0b5c2aeee84af",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-css-languageservice-3.0.9-next.10.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-2.1.3-next.3.tgz",
-          "sha1": "20c4a0ae673815b598a7e132b5ef03a6920fa7af",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-html-languageservice-2.1.3-next.3.tgz"
+          "dest-filename": "vscode-html-languageservice-2.1.3-next.5.tgz"
         },
         {
           "type": "file",
@@ -8962,13 +9190,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.6.0.tgz",
-          "sha1": "0bba63b0fa82a714394a4478f55a596ee4ed7d0a",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-types-3.6.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/agent-base/-/agent-base-4.1.2.tgz",
           "sha1": "80fa6cde440f4dcf9af2617cf246099b5d99f0c8",
           "dest": "yarn-mirror",
@@ -8976,24 +9197,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz",
-          "sha1": "5bb5a0672628b64149566ba16819e61518c67261",
-          "dest": "yarn-mirror",
-          "dest-filename": "debug-3.1.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.1.1.tgz",
           "sha1": "8811e90915d9a0dba36274f0b242dbda78f9c92a",
           "dest": "yarn-mirror",
           "dest-filename": "es6-promise-4.1.1.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-5.0.0.tgz",
-          "sha1": "5109d62f3e56ea967c4b63505aef08291c8a5203",
-          "dest": "yarn-mirror",
-          "dest-filename": "es6-promisify-5.0.0.tgz"
         },
         {
           "type": "file",
@@ -9032,10 +9239,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-json-languageservice/-/vscode-json-languageservice-3.1.2-next.2.tgz",
-          "sha1": "da5346e5c22edbce739f29c110eb41732d41dc2d",
+          "url": "https://registry.yarnpkg.com/vscode-json-languageservice/-/vscode-json-languageservice-3.1.2-next.3.tgz",
+          "sha1": "cc0902148f898b413987fb1b4c4a9e7fc1a79c78",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-json-languageservice-3.1.2-next.2.tgz"
+          "dest-filename": "vscode-json-languageservice-3.1.2-next.3.tgz"
         },
         {
           "type": "file",
@@ -9879,13 +10086,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/chownr/-/chownr-1.0.1.tgz",
-          "sha1": "e2a75042a9551908bebd25b8523d5f9769d79181",
-          "dest": "yarn-mirror",
-          "dest-filename": "chownr-1.0.1.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-0.1.2.tgz",
           "sha1": "90f36885d5345a50621332f0717b595883d5d982",
           "dest": "yarn-mirror",
@@ -10103,13 +10303,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/decompress-response/-/decompress-response-3.3.0.tgz",
-          "sha1": "80a4dd323748384bfa248083622aedec982adff3",
-          "dest": "yarn-mirror",
-          "dest-filename": "decompress-response-3.3.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/define-property/-/define-property-0.2.5.tgz",
           "sha1": "c35b1ef918ec3c990f9a5bc57be04aacec5c8116",
           "dest": "yarn-mirror",
@@ -10149,13 +10342,6 @@
           "sha1": "f76d064352cdf43a1cb6ce619c4ee3a9475de208",
           "dest": "yarn-mirror",
           "dest-filename": "detect-indent-4.0.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz",
-          "sha1": "fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b",
-          "dest": "yarn-mirror",
-          "dest-filename": "detect-libc-1.0.3.tgz"
         },
         {
           "type": "file",
@@ -10212,13 +10398,6 @@
           "sha1": "4bb46c1796eabebeec4ca9a2e66b808cb7a3d8b4",
           "dest": "yarn-mirror",
           "dest-filename": "duplexify-3.5.4.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/editions/-/editions-1.3.4.tgz",
-          "sha1": "3662cb592347c3168eb8e498a0ff73271d67f50b",
-          "dest": "yarn-mirror",
-          "dest-filename": "editions-1.3.4.tgz"
         },
         {
           "type": "file",
@@ -11062,13 +11241,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.0.tgz",
-          "sha1": "df3d3652a73fded6b9b0b24146e6fd052353458e",
-          "dest": "yarn-mirror",
-          "dest-filename": "mimic-response-1.0.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/min-document/-/min-document-2.19.0.tgz",
           "sha1": "7bd282e3f5842ed295bb748cdd9f1ffa2c824685",
           "dest": "yarn-mirror",
@@ -11370,13 +11542,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.0.tgz",
-          "sha1": "a37d732f4271b4ab1ad070d35508e8290788ffaa",
-          "dest": "yarn-mirror",
-          "dest-filename": "process-nextick-args-2.0.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz",
           "sha1": "7332300e840161bda3e69a1d1d91a7d4bc16f182",
           "dest": "yarn-mirror",
@@ -11409,13 +11574,6 @@
           "sha1": "39f699f3a46560dd5ebacbca693caf7c65c18cc6",
           "dest": "yarn-mirror",
           "dest-filename": "public-encrypt-4.0.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/pump/-/pump-2.0.1.tgz",
-          "sha1": "12399add6e4cf7526d973cbc8b5ce2e2908b3909",
-          "dest": "yarn-mirror",
-          "dest-filename": "pump-2.0.1.tgz"
         },
         {
           "type": "file",
@@ -12294,20 +12452,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/agent-base/-/agent-base-4.2.0.tgz",
-          "sha1": "9838b5c3392b962bad031e6a4c5e1024abec45ce",
-          "dest": "yarn-mirror",
-          "dest-filename": "agent-base-4.2.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.4.tgz",
-          "sha1": "dc4221c2b16518760bd8c39a52d8f356fc00ed29",
-          "dest": "yarn-mirror",
-          "dest-filename": "es6-promise-4.2.4.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-1.0.1.tgz",
           "sha1": "7f8f296414e6e7c4a33b9e4914fc8c47e4421675",
           "dest": "yarn-mirror",
@@ -12319,6 +12463,125 @@
           "sha1": "f3658535af7f1f502acd6da7daf405ffeb1f7ee4",
           "dest": "yarn-mirror",
           "dest-filename": "@types-semver-5.4.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.0.0.tgz",
+          "sha1": "4cb8832d23612589b0406e9e2956c17f06fdf531",
+          "dest": "yarn-mirror",
+          "dest-filename": "buffer-from-1.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz",
+          "sha1": "da309cc263df15994c688ca902179ca3c7cd7c7e",
+          "dest": "yarn-mirror",
+          "dest-filename": "clone-1.0.4.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/cloneable-readable/-/cloneable-readable-1.1.2.tgz",
+          "sha1": "d591dee4a8f8bc15da43ce97dceeba13d43e2a65",
+          "dest": "yarn-mirror",
+          "dest-filename": "cloneable-readable-1.1.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/duplexify/-/duplexify-3.6.0.tgz",
+          "sha1": "592903f5d80b38d037220541264d69a198fb3410",
+          "dest": "yarn-mirror",
+          "dest-filename": "duplexify-3.6.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/fill-range/-/fill-range-2.2.4.tgz",
+          "sha1": "eb1e773abb056dcd8df2bfdf6af59b8b3a936565",
+          "dest": "yarn-mirror",
+          "dest-filename": "fill-range-2.2.4.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/gulp-remote-src-vscode/-/gulp-remote-src-vscode-0.5.0.tgz",
+          "sha1": "71785553bc491880088ad971f90910c4b2d80a99",
+          "dest": "yarn-mirror",
+          "dest-filename": "gulp-remote-src-vscode-0.5.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/math-random/-/math-random-1.0.1.tgz",
+          "sha1": "8b3aac588b8a66e4975e3cdea67f7bb329601fac",
+          "dest": "yarn-mirror",
+          "dest-filename": "math-random-1.0.1.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz",
+          "sha1": "cb3ae806e8740444584ef154ce8ee98d403f3e36",
+          "dest": "yarn-mirror",
+          "dest-filename": "qs-6.5.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/querystringify/-/querystringify-2.0.0.tgz",
+          "sha1": "fa3ed6e68eb15159457c89b37bc6472833195755",
+          "dest": "yarn-mirror",
+          "dest-filename": "querystringify-2.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/randomatic/-/randomatic-3.0.0.tgz",
+          "sha1": "d35490030eb4f7578de292ce6dfb04a91a128923",
+          "dest": "yarn-mirror",
+          "dest-filename": "randomatic-3.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz",
+          "sha1": "991ec69d296e0313747d59bdfd2b745c35f8828d",
+          "dest": "yarn-mirror",
+          "dest-filename": "safe-buffer-5.1.2.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.5.tgz",
+          "sha1": "0d4af9e00493e855402e8ec36ebed2d266fceb90",
+          "dest": "yarn-mirror",
+          "dest-filename": "source-map-support-0.5.5.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/sshpk/-/sshpk-1.14.1.tgz",
+          "sha1": "130f5975eddad963f1d56f92b9ac6c51fa9f83eb",
+          "dest": "yarn-mirror",
+          "dest-filename": "sshpk-1.14.1.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.0.tgz",
+          "sha1": "6bfdaad60098c7fe06f623e42b22de62de0d3d75",
+          "dest": "yarn-mirror",
+          "dest-filename": "url-parse-1.4.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/vscode-extension-telemetry/-/vscode-extension-telemetry-0.0.15.tgz",
+          "sha1": "685c32f3b67e8fb85ba689c1d7f88ff90ff87856",
+          "dest": "yarn-mirror",
+          "dest-filename": "vscode-extension-telemetry-0.0.15.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/vscode-ripgrep/-/vscode-ripgrep-1.0.0.tgz",
+          "sha1": "99d81e96cc2437a1bc20f28facbcca72516e9c73",
+          "dest": "yarn-mirror",
+          "dest-filename": "vscode-ripgrep-1.0.0.tgz"
+        },
+        {
+          "type": "file",
+          "url": "https://registry.yarnpkg.com/vscode/-/vscode-1.1.17.tgz",
+          "sha1": "cc2a61731e925301f03f003c009cbf454022cd83",
+          "dest": "yarn-mirror",
+          "dest-filename": "vscode-1.1.17.tgz"
         },
         {
           "type": "file",
@@ -12532,13 +12795,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz",
-          "sha1": "b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf",
-          "dest": "yarn-mirror",
-          "dest-filename": "readable-stream-2.3.6.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.0.tgz",
           "sha1": "7e54fe5b5ccd5d6624ea6255c3473be090b802e1",
           "dest": "yarn-mirror",
@@ -12571,13 +12827,6 @@
           "sha1": "62f5e9466981c1b796dc5929937e11c9c6921bd0",
           "dest": "yarn-mirror",
           "dest-filename": "spawn-command-0.0.2-1.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.1.tgz",
-          "sha1": "9cf1611ba62685d7030ae9e4ba34149c3af03fc8",
-          "dest": "yarn-mirror",
-          "dest-filename": "string_decoder-1.1.1.tgz"
         },
         {
           "type": "file",
@@ -12831,9 +13080,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "astroid-1.6.4-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/7f/4f/162e1c859f59031ee7d3ff48ca6a3eaa699e4b8bfcb4f2988b5677d74605/astroid-1.6.4-py2.py3-none-any.whl",
-          "sha256": "032f6e09161e96f417ea7fad46d3fac7a9019c775f202182c22df0e4f714cb1c"
+          "dest-filename": "astroid-1.6.5-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/0e/9b/18b08991c8c6aaa827faf394f4468b8fee41db1f73aa5157f9f5fb2e69c3/astroid-1.6.5-py2.py3-none-any.whl",
+          "sha256": "0ef2bf9f07c3150929b25e8e61b5198c27b0dca195e156f0e4d5bdd89185ca1a"
         },
         {
           "type": "file",
@@ -12903,9 +13152,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "pexpect-4.5.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/b9/3c/e51a76fe78a877afd9acd95a51e3b7610c0983b19ef5a5dfa11735a619b8/pexpect-4.5.0-py2.py3-none-any.whl",
-          "sha256": "9783f4644a3ef8528a6f20374eeb434431a650c797ca6d8df0d81e30fffdfa24"
+          "dest-filename": "pexpect-4.6.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/89/e6/b5a1de8b0cc4e07ca1b305a4fcc3f9806025c1b651ea302646341222f88b/pexpect-4.6.0-py2.py3-none-any.whl",
+          "sha256": "3fbd41d4caf27fa4a377bfd16fef87271099463e6fa73e92a52f92dfee5d425b"
         },
         {
           "type": "file",
@@ -12945,9 +13194,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "pylint-1.9.1-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/3f/88/e0c9a506255ae3915ac1f183a13853d5b4a3e435972d0df6ea190d5d1e96/pylint-1.9.1-py2.py3-none-any.whl",
-          "sha256": "aa519865f8890a5905fa34924fed0f3bfc7d84fc9f9142c16dac52ffecd25a39"
+          "dest-filename": "pylint-1.9.2-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/f2/95/0ca03c818ba3cd14f2dd4e95df5b7fa232424b7fc6ea1748d27f293bc007/pylint-1.9.2-py2.py3-none-any.whl",
+          "sha256": "a48070545c12430cfc4e865bf62f5ad367784765681b3db442d8230f0960aa3c"
         },
         {
           "type": "file",
