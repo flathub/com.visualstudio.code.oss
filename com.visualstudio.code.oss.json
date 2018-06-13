@@ -302,8 +302,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-38.tar.xz",
-          "sha256": "db6a88477dc7290a450570d215ae68caf83e0d80c868addefb608109978db17b"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-0.tar.xz",
+          "sha256": "5698ab3211879246a75fc9ea0d3303d510dbec194feba577ca3288102b4b9685"
         }
       ],
       "config-opts": [
@@ -429,7 +429,13 @@
             "    shutil.rmtree('extensions/search-rg') # Bad hack",
             "    Path('product.json').write_text(json.dumps({",
             "        **json.loads(Path('product.json').read_text()),",
-            "        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery']",
+            "        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery'],",
+            "        # From https://docs.microsoft.com/en-us/visualstudio/liveshare/reference/linux#vs-code-oss-issues",
+            "        'extensionAllowedProposedApi': [",
+            "            'ms-vsliveshare.vsliveshare',",
+            "            'ms-vscode.node-debug',",
+            "            'ms-vscode.node-debug2'",
+            "        ]",
             "    }))",
             "    Path('build/builtInExtensions.json').write_text('[]')",
             "    subprocess.run(['yarn', 'link', 'vscode-ripgrep'], check=True)",
