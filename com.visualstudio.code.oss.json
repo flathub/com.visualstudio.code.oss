@@ -559,10 +559,8 @@
           "sha512": "068f88905f28b1f824ba925a610d99f9456623b377db73d59f31176597952236f6d5415ec70a7b56092e907cf007e5a6a1af21584e40c6170828605e22b572bd"
         },
         {
-          "type": "script",
-          "commands": [
-            "{\"id\": \"b6ded8fb-a0a0-4c1c-acbd-ab2a3bc995a6\", \"publisherId\": {\"publisherId\": \"5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee\", \"publisherName\": \"ms-vscode\", \"displayName\": \"Microsoft\", \"flags\": \"verified\"}, \"publisherDisplayName\": \"Microsoft\"}"
-          ],
+          "type": "file",
+          "url": "data:%7B%22id%22%3A%20%22b6ded8fb-a0a0-4c1c-acbd-ab2a3bc995a6%22%2C%20%22publisherId%22%3A%20%7B%22publisherId%22%3A%20%225f5636e7-69ed-4afe-b5d6-8d231fb3d3ee%22%2C%20%22publisherName%22%3A%20%22ms-vscode%22%2C%20%22displayName%22%3A%20%22Microsoft%22%2C%20%22flags%22%3A%20%22verified%22%7D%2C%20%22publisherDisplayName%22%3A%20%22Microsoft%22%7D",
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.node-debug.json"
         },
@@ -574,10 +572,8 @@
           "dest-filename": "ms-vscode.node-debug.vsix"
         },
         {
-          "type": "script",
-          "commands": [
-            "{\"id\": \"36d19e17-7569-4841-a001-947eb18602b2\", \"publisherId\": {\"publisherId\": \"5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee\", \"publisherName\": \"ms-vscode\", \"displayName\": \"Microsoft\", \"flags\": \"verified\"}, \"publisherDisplayName\": \"Microsoft\"}"
-          ],
+          "type": "file",
+          "url": "data:%7B%22id%22%3A%20%2236d19e17-7569-4841-a001-947eb18602b2%22%2C%20%22publisherId%22%3A%20%7B%22publisherId%22%3A%20%225f5636e7-69ed-4afe-b5d6-8d231fb3d3ee%22%2C%20%22publisherName%22%3A%20%22ms-vscode%22%2C%20%22displayName%22%3A%20%22Microsoft%22%2C%20%22flags%22%3A%20%22verified%22%7D%2C%20%22publisherDisplayName%22%3A%20%22Microsoft%22%7D",
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.node-debug2.json"
         },
