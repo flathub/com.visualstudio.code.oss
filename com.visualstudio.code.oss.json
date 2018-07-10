@@ -310,8 +310,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-5.tar.xz",
-          "sha256": "9889f7a95d34c75a46f9b5d890b8b9f8bfe6fa5e201ed0f05839cfc3df5e423e"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-6.tar.xz",
+          "sha256": "aef1f9ecc96e7eb9639b410155dc79f0874435bdd2dd370e1f48b5e789755831"
         }
       ],
       "config-opts": [
@@ -421,6 +421,7 @@
             "",
             "    shutil.move('gulp-electron-cache', '/tmp')",
             "    shutil.move('vscode-ripgrep-cache', '/tmp')",
+            "    shutil.move('builtInExtensions', '/tmp')",
             "    shutil.move('.electron', str(Path.home()))",
             "    shutil.move('bin/yarn.js', '/app/local/bin')",
             "    Path('/app/local/bin/yarn.js').chmod(Path('/app/local/bin/yarn.js').stat().st_mode | stat.S_IXUSR)",
@@ -428,7 +429,6 @@
             "    subprocess.run(['yarn', 'config', 'set', 'yarn-offline-mirror', str(Path('yarn-mirror').resolve())], check=True)",
             "",
             "    os.chdir('vscode')",
-            "    shutil.rmtree('extensions/search-rg') # Bad hack",
             "    Path('product.json').write_text(json.dumps({",
             "        **json.loads(Path('product.json').read_text()),",
             "        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery'],",
@@ -439,7 +439,37 @@
             "            'ms-vscode.node-debug2'",
             "        ]",
             "    }))",
-            "    Path('build/builtInExtensions.json').write_text('[]')",
+            "",
+            "    patch = '''",
+            "{",
+            "    return require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.json').pipe(flatmap(function (stream, f) {",
+            "        var metadata = JSON.parse(f.contents.toString('utf8'));",
+            "        return require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.vsix').pipe(flatmap(function (stream) {",
+            "            var packageJsonFilter = filter('package.json', { restore: true });",
+            "            return stream",
+            "                .pipe(vzip.src())",
+            "                .pipe(filter('extension/**'))",
+            "                .pipe(rename(function (p) { return p.dirname = p.dirname.replace(/^extension\\/?/, ''); }))",
+            "                .pipe(packageJsonFilter)",
+            "                .pipe(buffer())",
+            "                .pipe(json({ __metadata: metadata }))",
+            "                .pipe(packageJsonFilter.restore);",
+            "        }));",
+            "    }));",
+            "}",
+            "",
+            "    '''",
+            "",
+            "    Path('build/lib/extensions.js').write_text(Path('build/lib/extensions.js').read_text() + ''.join(",
+            "        'function fromMarketplace(extensionName, version) ',",
+            "        patch,",
+            "        'exports.fromMarketplace = fromMarketplace;'",
+            "    ))",
+            "    Path('build/lib/extensions.ts').write_text(Path('build/lib/extensions.ts').read_text() + ''.join(",
+            "        'export function fromMarketplace(extensionName: string, version: string): Stream ',",
+            "        patch",
+            "    ))",
+            "",
             "    package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())",
             "    del package_vscode_extension['scripts']['postinstall']",
             "    Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension))",
@@ -527,6 +557,36 @@
           "type": "file",
           "url": "https://raw.githubusercontent.com/Microsoft/vscode/b00945fc8c79f6db74b280ef53eba060ed9a1388/product.json",
           "sha512": "068f88905f28b1f824ba925a610d99f9456623b377db73d59f31176597952236f6d5415ec70a7b56092e907cf007e5a6a1af21584e40c6170828605e22b572bd"
+        },
+        {
+          "type": "script",
+          "commands": [
+            "{\"id\": \"b6ded8fb-a0a0-4c1c-acbd-ab2a3bc995a6\", \"publisherId\": {\"publisherId\": \"5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee\", \"publisherName\": \"ms-vscode\", \"displayName\": \"Microsoft\", \"flags\": \"verified\"}, \"publisherDisplayName\": \"Microsoft\"}"
+          ],
+          "dest": "builtInExtensions",
+          "dest-filename": "ms-vscode.node-debug.json"
+        },
+        {
+          "type": "file",
+          "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/node-debug/1.25.4/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+          "sha512": "4dcc82c7277c05cdeac5c471722130928b8cc18a9c807db394a681b990a0c65ef883632141c6151b04c5c09666ed69d6ad9ee54676a429b0b786378dee46c915",
+          "dest": "builtInExtensions",
+          "dest-filename": "ms-vscode.node-debug.vsix"
+        },
+        {
+          "type": "script",
+          "commands": [
+            "{\"id\": \"36d19e17-7569-4841-a001-947eb18602b2\", \"publisherId\": {\"publisherId\": \"5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee\", \"publisherName\": \"ms-vscode\", \"displayName\": \"Microsoft\", \"flags\": \"verified\"}, \"publisherDisplayName\": \"Microsoft\"}"
+          ],
+          "dest": "builtInExtensions",
+          "dest-filename": "ms-vscode.node-debug2.json"
+        },
+        {
+          "type": "file",
+          "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/node-debug2/1.25.5/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+          "sha512": "7eeb92065b889e1129126e1f543dc883412d627e503445c8819dc463ae0ff294d6fd5f362d06a795a72c18be286474d468431a5b8960d61031e2c6c702ede7c1",
+          "dest": "builtInExtensions",
+          "dest-filename": "ms-vscode.node-debug2.vsix"
         },
         {
           "type": "file",
@@ -13247,9 +13307,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "parso-0.3.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/31/19/ae6ded1b16b596e594dffe1916b365c658ddf93396824ed069a60da22b79/parso-0.3.0-py2.py3-none-any.whl",
-          "sha256": "8105449d86d858e53ce3e0044ede9dd3a395b1c9716c696af8aa3787158ab806"
+          "dest-filename": "parso-0.3.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/09/51/9c48a46334be50c13d25a3afe55fa05c445699304c5ad32619de953a2305/parso-0.3.1-py2.py3-none-any.whl",
+          "sha256": "895c63e93b94ac1e1690f5fdd40b65f07c8171e3e53cbd7793b5b96c0e0a7f24"
         },
         {
           "type": "file",
@@ -13307,9 +13367,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "setuptools-39.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/7f/e1/820d941153923aac1d49d7fc37e17b6e73bfbd2904959fffbad77900cf92/setuptools-39.2.0-py2.py3-none-any.whl",
-          "sha256": "8fca9275c89964f13da985c3656cb00ba029d7f3916b37990927ffdf264e7926"
+          "dest-filename": "setuptools-40.0.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/ff/f4/385715ccc461885f3cedf57a41ae3c12b5fec3f35cce4c8706b1a112a133/setuptools-40.0.0-py2.py3-none-any.whl",
+          "sha256": "d68abee4eed409fbe8c302ac4d8429a1ffef912cd047a903b5701c024048dd49"
         },
         {
           "type": "file",
