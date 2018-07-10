@@ -222,7 +222,7 @@
             "",
             "    '''",
             "",
-            "    for version, data in METADATA['Extension'].items():",
+            "    for version, data in METADATA['Extensions'].items():",
             "        (Path('/tmp/builtInExtensions') / (version + '.json')).write_text(json.dumps(data))",
             "    Path('build/lib/extensions.js').write_text(Path('build/lib/extensions.js').read_text().replace('fromMarketplace', '__fromMarketplace') + ''.join([",
             "        'function fromMarketplace(extensionName, version) ',",
