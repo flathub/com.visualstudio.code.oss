@@ -12953,9 +12953,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "astroid-2.0.1-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/10/3b/6f1ba479b18e7505618701b31084abae3f1e9209f3dd27f9083848c0b02d/astroid-2.0.1-py3-none-any.whl",
-          "sha256": "0a0c484279a5f08c9bcedd6fa9b42e378866a7dcc695206b92d59dc9f2d9760d"
+          "dest-filename": "astroid-2.0.2-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/0a/05/b801cd61c9f4889506edac0d30f13ed8eec97ded596c6a6c35bd1ecb8362/astroid-2.0.2-py3-none-any.whl",
+          "sha256": "d066cdeec5faeb51a4be5010da612680653d844b57afd86a5c8315f2f801b4cc"
         },
         {
           "type": "file",
@@ -13067,9 +13067,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "pylint-2.0.1-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/e0/a5/98a6b753c9f8d6f6da53a1ae9814c9b1be3f37a2a32327f4fc81e687eb30/pylint-2.0.1-py3-none-any.whl",
-          "sha256": "454532779425098969b8f54ab0f056000b883909f69d05905ea114df886e3251"
+          "dest-filename": "pylint-2.1.0-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/b2/b5/8861166c94bebc808093c5387c119155ec5209da97abbc066ae109f12be4/pylint-2.1.0-py3-none-any.whl",
+          "sha256": "4cadcaa4f1fb19123d4baa758d9fbe6286c5b3aa513af6ea42a2d51d405db205"
         },
         {
           "type": "file",
@@ -13106,6 +13106,12 @@
           "dest-filename": "typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
           "url": "https://files.pythonhosted.org/packages/5b/4e/79e873aa89b8038ca6474c00afe96f9468973b604e7f737cb82697a680c0/typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
           "sha256": "2e214b72168ea0275efd6c884b114ab42e316de3ffa125b267e732ed2abda892"
+        },
+        {
+          "type": "file",
+          "dest-filename": "typing-3.6.4-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/05/2b/2b05bf1d5a9dd450447c9a5df3e118a465e5d3cb12b73b7220a5064a403f/typing-3.6.4-py3-none-any.whl",
+          "sha256": "3a887b021a77b292e151afb75323dea88a7bc1b3dfa92176cff8e44c8b68bddf"
         },
         {
           "type": "file",
