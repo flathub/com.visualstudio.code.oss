@@ -16,6 +16,16 @@
   ],
   "modules": [
     {
+      "name": "xterm",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://invisible-mirror.net/archives/xterm/xterm-331.tgz",
+          "sha512": "88229d682553d4780c7b9c081bba6396f319ecd17461dd344478ae6456e35aff9d7a7411d863d35a03886d9a6b082b5d3325fbb990cea22cb82970173f6f3347"
+        }
+      ]
+    },
+    {
       "name": "libsecret",
       "config-opts": [
         "--disable-manpages",
@@ -69,8 +79,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-8.tar.xz",
-          "sha256": "148b9f3f9c8ab98985555aa97f89dfc17bda9a5bc00674d62562057e84e3d03f"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-9.tar.xz",
+          "sha256": "82ff6777d2db56387c3489ef872ac41f294142fde135cda5ee2aa6aa4f2a288d"
         }
       ],
       "config-opts": [
@@ -12777,8 +12787,8 @@
         },
         {
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.9.2/yarn-1.9.2.js",
-          "sha512": "26fad39385139f9535118cf755d0e15fb89fe7b34f5ea89998c7be20df3a72fb892d554e066e3fe0407f946e1ec6bd048387f47a1ee4eaa7afae50c32fb3a6f6",
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.9.4/yarn-1.9.4.js",
+          "sha512": "ec76b7b5218f7e1fe8a1528440d90672f173b557a2f22a359d40afc192c10221f95aabd9970d1ab7b74696535f848c5cede1f508d7f7ae19bc6afbd4df54cb2f",
           "dest": "bin",
           "dest-filename": "yarn.js"
         },
@@ -12953,9 +12963,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "astroid-2.0.2-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/0a/05/b801cd61c9f4889506edac0d30f13ed8eec97ded596c6a6c35bd1ecb8362/astroid-2.0.2-py3-none-any.whl",
-          "sha256": "d066cdeec5faeb51a4be5010da612680653d844b57afd86a5c8315f2f801b4cc"
+          "dest-filename": "astroid-2.0.4-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/19/92/6f6d3591c429dbdb31c18d8476ba1af08d5973d7cc09f66346109e9de7fb/astroid-2.0.4-py3-none-any.whl",
+          "sha256": "292fa429e69d60e4161e7612cb7cc8fa3609e2e309f80c224d93a76d5e7b58be"
         },
         {
           "type": "file",
@@ -13067,15 +13077,15 @@
         },
         {
           "type": "file",
-          "dest-filename": "pylint-2.1.0-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/b2/b5/8861166c94bebc808093c5387c119155ec5209da97abbc066ae109f12be4/pylint-2.1.0-py3-none-any.whl",
-          "sha256": "4cadcaa4f1fb19123d4baa758d9fbe6286c5b3aa513af6ea42a2d51d405db205"
+          "dest-filename": "pylint-2.1.1-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/6e/c2/1e97c238877b6a86562d32297eb33a6670b6220e8ec0ca85f67b66dc893f/pylint-2.1.1-py3-none-any.whl",
+          "sha256": "1d6d3622c94b4887115fe5204982eee66fdd8a951cf98635ee5caee6ec98c3ec"
         },
         {
           "type": "file",
-          "dest-filename": "rope-0.10.7.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/7e/fc/702c0293b57edd4d70146e36f9413c40339a701a43c8fa6918fb9d834913/rope-0.10.7.tar.gz",
-          "sha256": "a09edfd2034fd50099a67822f9bd851fbd0f4e98d3b87519f6267b60e50d80d1"
+          "dest-filename": "rope-0.11.0.tar.gz",
+          "url": "https://files.pythonhosted.org/packages/52/8d/2ebe70e55742a46813952493f8fc86ff2800ccc105e2dfcb25298f7eeb72/rope-0.11.0.tar.gz",
+          "sha256": "a108c445e1cd897fe19272ab7877d172e7faf3d4148c80e7d20faba42ea8f7b2"
         },
         {
           "type": "file",
@@ -13106,12 +13116,6 @@
           "dest-filename": "typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
           "url": "https://files.pythonhosted.org/packages/5b/4e/79e873aa89b8038ca6474c00afe96f9468973b604e7f737cb82697a680c0/typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
           "sha256": "2e214b72168ea0275efd6c884b114ab42e316de3ffa125b267e732ed2abda892"
-        },
-        {
-          "type": "file",
-          "dest-filename": "typing-3.6.4-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/05/2b/2b05bf1d5a9dd450447c9a5df3e118a465e5d3cb12b73b7220a5064a403f/typing-3.6.4-py3-none-any.whl",
-          "sha256": "3a887b021a77b292e151afb75323dea88a7bc1b3dfa92176cff8e44c8b68bddf"
         },
         {
           "type": "file",
