@@ -16,6 +16,26 @@
   ],
   "modules": [
     {
+      "name": "libXmu",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.gz",
+          "sha512": "66e02238d77b2e9c84400faf5ac0cf5dd26aabeee36eeeef6d931024e48ee7907b0bfda7e2229e0f1d32f5afb77d4c4e013d8731fcd6ce43aeb493465eaf0804"
+        }
+      ]
+    },
+    {
+      "name": "libXaw",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.x.org/releases/individual/lib/libXaw-1.0.13.tar.gz",
+          "sha512": "aa4eef77066bc8b14f4db2c6d3de84c44c9987504bc7fc1de75e182d5b2f6a8514e83763f6ece42dfb0ccd6177553e8ea8709dd07bbb24ed0c50a33c4a58ccee"
+        }
+      ]
+    },
+    {
       "name": "xterm",
       "sources": [
         {
