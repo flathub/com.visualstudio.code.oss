@@ -33,9 +33,9 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://git.gnome.org/browse/libsecret.git",
-          "tag": "0.18.5",
-          "commit": "0c468b56b074d8b8cf29e58f3c488f12161a3969"
+          "url": "https://gitlab.gnome.org/GNOME/libsecret.git",
+          "tag": "0.18.6",
+          "commit": "b01e54991a7f067e24a4f309690ea2c9233d1a35"
         }
       ]
     },
@@ -52,7 +52,7 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://anongit.freedesktop.org/git/xorg/lib/libxkbfile.git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git",
           "tag": "libxkbfile-1.0.9",
           "commit": "de4f2307448583988a55a587cb6a3f43e4868378"
         }
@@ -13163,8 +13163,8 @@
     }
   ],
   "base": "io.atom.electron.BaseApp",
-  "base-version": "stable",
+  "base-version": "18.08",
   "runtime": "org.freedesktop.Sdk",
-  "runtime-version": "1.6",
+  "runtime-version": "18.08",
   "sdk": "org.freedesktop.Sdk"
 }
