@@ -12,7 +12,7 @@
     "--filesystem=host",
     "--persist=.vscode-oss",
     "--talk-name=org.freedesktop.Notifications",
-    "--env=PYTHONPATH=/app/lib/python3.7/site-packages"
+    "--env=PYTHONPATH=/app/lib/python3.5/site-packages"
   ],
   "modules": [
     {
@@ -13035,9 +13035,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "lazy-object-proxy-1.3.1.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/55/08/23c0753599bdec1aec273e322f277c4e875150325f565017f6280549f554/lazy-object-proxy-1.3.1.tar.gz",
-          "sha256": "eb91be369f945f10d3a49f5f9be8b3d0b93a4c2be8f8a5b83b0571b8123e0a7a"
+          "dest-filename": "lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/10/88/d7b8274edf912be71d73a1e5de7988f62b63d9e88e591da2e6f921ab69e6/lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
+          "sha256": "7bd527f36a605c914efca5d3d014170b2cb184723e423d26b1fb2fd9108e264d"
         },
         {
           "type": "file",
@@ -13131,6 +13131,12 @@
         },
         {
           "type": "file",
+          "dest-filename": "typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/5b/4e/79e873aa89b8038ca6474c00afe96f9468973b604e7f737cb82697a680c0/typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
+          "sha256": "2e214b72168ea0275efd6c884b114ab42e316de3ffa125b267e732ed2abda892"
+        },
+        {
+          "type": "file",
           "dest-filename": "virtualenv-16.0.0-py2.py3-none-any.whl",
           "url": "https://files.pythonhosted.org/packages/b6/30/96a02b2287098b23b875bc8c2f58071c35d2efe84f747b64d523721dc2b5/virtualenv-16.0.0-py2.py3-none-any.whl",
           "sha256": "2ce32cd126117ce2c539f0134eb89de91a8413a29baac49cbab3eb50e2026669"
@@ -13157,8 +13163,8 @@
     }
   ],
   "base": "io.atom.electron.BaseApp",
-  "base-version": "18.08",
+  "base-version": "stable",
   "runtime": "org.freedesktop.Sdk",
-  "runtime-version": "18.08",
+  "runtime-version": "1.6",
   "sdk": "org.freedesktop.Sdk"
 }
