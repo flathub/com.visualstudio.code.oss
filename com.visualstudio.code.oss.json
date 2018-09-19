@@ -244,7 +244,7 @@
             "    })",
             "",
             "    shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')",
-            "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=4096'], check=True)",
+            "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=4095'], check=True)",
             "",
             "    os.chdir('..')",
             "    shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])",
