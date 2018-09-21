@@ -13870,224 +13870,369 @@
       ]
     },
     {
-      "name": "python_packages",
-      "buildsystem": "simple",
-      "build-commands": [
-        "PYTHONUSERBASE=/app pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope"
-      ],
-      "sources": [
+    "name": "python3-autopep8",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} autopep8"
+    ],
+    "sources": [
         {
-          "type": "file",
-          "dest-filename": "Pygments-2.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/02/ee/b6e02dc6529e82b75bb06823ff7d005b141037cb1416b10c6f00fc419dca/Pygments-2.2.0-py2.py3-none-any.whl",
-          "sha256": "78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d"
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/28/ad/cae9654d7fd64eb3d2ab2c44c9bf8dc5bd4fb759625beab99532239aa6e8/pycodestyle-2.4.0.tar.gz",
+            "sha256": "cbfca99bd594a10f674d0cd97a3d802a1fdef635d4361e1a2658de47ed261e3a"
         },
         {
-          "type": "file",
-          "dest-filename": "astroid-2.0.4-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/19/92/6f6d3591c429dbdb31c18d8476ba1af08d5973d7cc09f66346109e9de7fb/astroid-2.0.4-py3-none-any.whl",
-          "sha256": "292fa429e69d60e4161e7612cb7cc8fa3609e2e309f80c224d93a76d5e7b58be"
-        },
-        {
-          "type": "file",
-          "dest-filename": "autopep8-1.4.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/cf/30/9efc988f92f41e2ba51211e3d317ee82260d563ae84dceb53f7021a1bdfe/autopep8-1.4.tar.gz",
-          "sha256": "655e3ee8b4545be6cfed18985f581ee9ecc74a232550ee46e9797b6fbf4f336d"
-        },
-        {
-          "type": "file",
-          "dest-filename": "backcall-0.1.0.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/84/71/c8ca4f5bb1e08401b916c68003acf0a0655df935d74d93bf3f3364b310e0/backcall-0.1.0.tar.gz",
-          "sha256": "38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4"
-        },
-        {
-          "type": "file",
-          "dest-filename": "certifi-2018.8.24-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/df/f7/04fee6ac349e915b82171f8e23cee63644d83663b34c539f7a09aed18f9e/certifi-2018.8.24-py2.py3-none-any.whl",
-          "sha256": "456048c7e371c089d0a77a5212fb37a2c2dce1e24146e3b7e0261736aaeaa22a"
-        },
-        {
-          "type": "file",
-          "dest-filename": "decorator-4.3.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/bc/bb/a24838832ba35baf52f32ab1a49b906b5f82fb7c76b2f6a7e35e140bac30/decorator-4.3.0-py2.py3-none-any.whl",
-          "sha256": "2c51dff8ef3c447388fe5e4453d24a2bf128d3a4c32af3fabef1f01c6851ab82"
-        },
-        {
-          "type": "file",
-          "dest-filename": "ipython-6.5.0-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/f7/62/2fef7db3a7b75e8099c3d9db2630ae5ba0b9eefefd91f7497862393d90e8/ipython-6.5.0-py3-none-any.whl",
-          "sha256": "007dcd929c14631f83daff35df0147ea51d1af420da303fd078343878bd5fb62"
-        },
-        {
-          "type": "file",
-          "dest-filename": "ipython_genutils-0.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/fa/bc/9bd3b5c2b4774d5f33b2d544f1460be9df7df2fe42f352135381c347c69a/ipython_genutils-0.2.0-py2.py3-none-any.whl",
-          "sha256": "72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8"
-        },
-        {
-          "type": "file",
-          "dest-filename": "isort-4.3.4-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/1f/2c/22eee714d7199ae0464beda6ad5fedec8fee6a2f7ffd1e8f1840928fe318/isort-4.3.4-py3-none-any.whl",
-          "sha256": "1153601da39a25b14ddc54955dbbacbb6b2d19135386699e2ad58517953b34af"
-        },
-        {
-          "type": "file",
-          "dest-filename": "jedi-0.12.1-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/3d/68/8bbf0ef969095a13ba0d4c77c1945bd86e9811960d052510551d29a2f23b/jedi-0.12.1-py2.py3-none-any.whl",
-          "sha256": "c254b135fb39ad76e78d4d8f92765ebc9bf92cbc76f49e97ade1d5f5121e1f6f"
-        },
-        {
-          "type": "file",
-          "dest-filename": "lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
-          "url": "https://files.pythonhosted.org/packages/10/88/d7b8274edf912be71d73a1e5de7988f62b63d9e88e591da2e6f921ab69e6/lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
-          "only-arches": [
-            "x86_64"
-          ],
-          "sha256": "7bd527f36a605c914efca5d3d014170b2cb184723e423d26b1fb2fd9108e264d"
-        },
-        {
-          "type": "file",
-          "dest-filename": "lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_i686.whl",
-          "url": "https://files.pythonhosted.org/packages/9e/20/dbf407fbbf1863e61f6571a23117fcebc0a5cd13d13351f4002b40f6b755/lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_i686.whl",
-          "only-arches": [
-            "i386"
-          ],
-          "sha256": "ddc34786490a6e4ec0a855d401034cbd1242ef186c20d79d2166d6a4bd449577"
-        },
-        {
-          "type": "file",
-          "dest-filename": "mccabe-0.6.1-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/87/89/479dc97e18549e21354893e4ee4ef36db1d237534982482c3681ee6e7b57/mccabe-0.6.1-py2.py3-none-any.whl",
-          "sha256": "ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"
-        },
-        {
-          "type": "file",
-          "dest-filename": "parso-0.3.1-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/09/51/9c48a46334be50c13d25a3afe55fa05c445699304c5ad32619de953a2305/parso-0.3.1-py2.py3-none-any.whl",
-          "sha256": "895c63e93b94ac1e1690f5fdd40b65f07c8171e3e53cbd7793b5b96c0e0a7f24"
-        },
-        {
-          "type": "file",
-          "dest-filename": "pexpect-4.6.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/89/e6/b5a1de8b0cc4e07ca1b305a4fcc3f9806025c1b651ea302646341222f88b/pexpect-4.6.0-py2.py3-none-any.whl",
-          "sha256": "3fbd41d4caf27fa4a377bfd16fef87271099463e6fa73e92a52f92dfee5d425b"
-        },
-        {
-          "type": "file",
-          "dest-filename": "pickleshare-0.7.4-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/9f/17/daa142fc9be6b76f26f24eeeb9a138940671490b91cb5587393f297c8317/pickleshare-0.7.4-py2.py3-none-any.whl",
-          "sha256": "c9a2541f25aeabc070f12f452e1f2a8eae2abd51e1cd19e8430402bdf4c1d8b5"
-        },
-        {
-          "type": "file",
-          "dest-filename": "pip-18.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/5f/25/e52d3f31441505a5f3af41213346e5b6c221c9e086a166f3703d2ddaf940/pip-18.0-py2.py3-none-any.whl",
-          "sha256": "070e4bf493c7c2c9f6a08dd797dd3c066d64074c38e9e8a0fb4e6541f266d96c"
-        },
-        {
-          "type": "file",
-          "dest-filename": "pipenv-2018.7.1-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/eb/64/9b2747d54f2008ac3dfe86c0b1c8ec126042726fd8a540d5208d26732701/pipenv-2018.7.1-py3-none-any.whl",
-          "sha256": "d4b1aea904ae1488b7060137059642246baae709232f4536ad723ce216e4b540"
-        },
-        {
-          "type": "file",
-          "dest-filename": "prompt_toolkit-1.0.15-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/04/d1/c6616dd03701e7e2073f06d5c3b41b012256e42b72561f16a7bd86dd7b43/prompt_toolkit-1.0.15-py3-none-any.whl",
-          "sha256": "1df952620eccb399c53ebb359cc7d9a8d3a9538cb34c5a1344bdbeb29fbcc381"
-        },
-        {
-          "type": "file",
-          "dest-filename": "ptyprocess-0.6.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/d1/29/605c2cc68a9992d18dada28206eeada56ea4bd07a239669da41674648b6f/ptyprocess-0.6.0-py2.py3-none-any.whl",
-          "sha256": "d7cc528d76e76342423ca640335bd3633420dc1366f258cb31d05e865ef5ca1f"
-        },
-        {
-          "type": "file",
-          "dest-filename": "pycodestyle-2.4.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/e5/c6/ce130213489969aa58610042dff1d908c25c731c9575af6935c2dfad03aa/pycodestyle-2.4.0-py2.py3-none-any.whl",
-          "sha256": "cbc619d09254895b0d12c2c691e237b2e91e9b2ecf5e84c26b35400f93dcfb83"
-        },
-        {
-          "type": "file",
-          "dest-filename": "pylint-2.1.1-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/6e/c2/1e97c238877b6a86562d32297eb33a6670b6220e8ec0ca85f67b66dc893f/pylint-2.1.1-py3-none-any.whl",
-          "sha256": "1d6d3622c94b4887115fe5204982eee66fdd8a951cf98635ee5caee6ec98c3ec"
-        },
-        {
-          "type": "file",
-          "dest-filename": "rope-0.11.0.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/52/8d/2ebe70e55742a46813952493f8fc86ff2800ccc105e2dfcb25298f7eeb72/rope-0.11.0.tar.gz",
-          "sha256": "a108c445e1cd897fe19272ab7877d172e7faf3d4148c80e7d20faba42ea8f7b2"
-        },
-        {
-          "type": "file",
-          "dest-filename": "setuptools-40.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/66/e8/570bb5ca88a8bcd2a1db9c6246bb66615750663ffaaeada95b04ffe74e12/setuptools-40.2.0-py2.py3-none-any.whl",
-          "sha256": "ea3796a48a207b46ea36a9d26de4d0cc87c953a683a7b314ea65d666930ea8e6"
-        },
-        {
-          "type": "file",
-          "dest-filename": "simplegeneric-0.8.1.zip",
-          "url": "https://files.pythonhosted.org/packages/3d/57/4d9c9e3ae9a255cd4e1106bb57e24056d3d0709fc01b2e3e345898e49d5b/simplegeneric-0.8.1.zip",
-          "sha256": "dc972e06094b9af5b855b3df4a646395e43d1c9d0d39ed345b7393560d0b9173"
-        },
-        {
-          "type": "file",
-          "dest-filename": "six-1.11.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/67/4b/141a581104b1f6397bfa78ac9d43d8ad29a7ca43ea90a2d863fe3056e86a/six-1.11.0-py2.py3-none-any.whl",
-          "sha256": "832dc0e10feb1aa2c68dcc57dbb658f1c7e65b9b61af69048abc87a2db00a0eb"
-        },
-        {
-          "type": "file",
-          "dest-filename": "traitlets-4.3.2-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/93/d6/abcb22de61d78e2fc3959c964628a5771e47e7cc60d53e9342e21ed6cc9a/traitlets-4.3.2-py2.py3-none-any.whl",
-          "sha256": "c6cb5e6f57c5a9bdaa40fa71ce7b4af30298fbab9ece9815b5d995ab6217c7d9"
-        },
-        {
-          "type": "file",
-          "dest-filename": "typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
-          "url": "https://files.pythonhosted.org/packages/5b/4e/79e873aa89b8038ca6474c00afe96f9468973b604e7f737cb82697a680c0/typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
-          "only-arches": [
-            "x86_64"
-          ],
-          "sha256": "2e214b72168ea0275efd6c884b114ab42e316de3ffa125b267e732ed2abda892"
-        },
-        {
-          "type": "file",
-          "dest-filename": "typed_ast-1.1.0-cp35-cp35m-manylinux1_i686.whl",
-          "url": "https://files.pythonhosted.org/packages/7c/9a/b6d833dc11706bea59a266c27b25459bb11335ed917e6355899c50063f8f/typed_ast-1.1.0-cp35-cp35m-manylinux1_i686.whl",
-          "only-arches": [
-            "i386"
-          ],
-          "sha256": "c9b060bd1e5a26ab6e8267fd46fc9e02b54eb15fffb16d112d4c7b1c12987559"
-        },
-        {
-          "type": "file",
-          "dest-filename": "virtualenv-16.0.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/b6/30/96a02b2287098b23b875bc8c2f58071c35d2efe84f747b64d523721dc2b5/virtualenv-16.0.0-py2.py3-none-any.whl",
-          "sha256": "2ce32cd126117ce2c539f0134eb89de91a8413a29baac49cbab3eb50e2026669"
-        },
-        {
-          "type": "file",
-          "dest-filename": "virtualenv_clone-0.3.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/6d/c2/dccb5ccf599e0c5d1eea6acbd058af7a71384f9740179db67a9182a24798/virtualenv_clone-0.3.0-py2.py3-none-any.whl",
-          "sha256": "4507071d81013fd03ea9930ec26bc8648b997927a11fa80e8ee81198b57e0ac7"
-        },
-        {
-          "type": "file",
-          "dest-filename": "wcwidth-0.1.7-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/7e/9f/526a6947247599b084ee5232e4f9190a38f398d7300d866af3ab571a5bfe/wcwidth-0.1.7-py2.py3-none-any.whl",
-          "sha256": "f4ebe71925af7b40a864553f761ed559b43544f8f71746c2d756c7fe788ade7c"
-        },
-        {
-          "type": "file",
-          "dest-filename": "wrapt-1.10.11.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/a0/47/66897906448185fcb77fc3c2b1bc20ed0ecca81a0f2f88eda3fc5a34fc3d/wrapt-1.10.11.tar.gz",
-          "sha256": "d4d560d479f2c21e1b5443bbd15fe7ec4b37fe7e53d335d3b9b0a7b1226fe3c6"
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/cf/30/9efc988f92f41e2ba51211e3d317ee82260d563ae84dceb53f7021a1bdfe/autopep8-1.4.tar.gz",
+            "sha256": "655e3ee8b4545be6cfed18985f581ee9ecc74a232550ee46e9797b6fbf4f336d"
         }
-      ]
-    }
+    ]
+},
+{
+    "name": "python3-setuptools-scm",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} setuptools-scm"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/09/b4/d148a70543b42ff3d81d57381f33104f32b91f970ad7873f463e75bf7453/setuptools_scm-3.1.0.tar.gz",
+            "sha256": "1191f2a136b5e86f7ca8ab00a97ef7aef997131f1f6d4971be69a1ef387d8b40"
+        }
+    ]
+},
+{
+    "name": "python3-pytest-runner",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pytest-runner"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/9e/b7/fe6e8f87f9a756fd06722216f1b6698ccba4d269eac6329d9f0c441d0f93/pytest-runner-4.2.tar.gz",
+            "sha256": "d23f117be39919f00dd91bffeb4f15e031ec797501b717a245e377aee0f577be"
+        }
+    ]
+},
+{
+    "name": "python3-pylint",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pylint"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/bf/9b/2bf84e841575b633d8d91ad923e198a415e3901f228715524689495b4317/typing-3.6.6.tar.gz",
+            "sha256": "4027c5f6127a6267a435201981ba156de91ad0d1d98e9ddc2aa173453453492d"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/55/08/23c0753599bdec1aec273e322f277c4e875150325f565017f6280549f554/lazy-object-proxy-1.3.1.tar.gz",
+            "sha256": "eb91be369f945f10d3a49f5f9be8b3d0b93a4c2be8f8a5b83b0571b8123e0a7a"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/a0/47/66897906448185fcb77fc3c2b1bc20ed0ecca81a0f2f88eda3fc5a34fc3d/wrapt-1.10.11.tar.gz",
+            "sha256": "d4d560d479f2c21e1b5443bbd15fe7ec4b37fe7e53d335d3b9b0a7b1226fe3c6"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/b1/de/a628d16fdba0d38cafb3d7e34d4830f2c9cb3881384ce5c08c44762e1846/isort-4.3.4.tar.gz",
+            "sha256": "b9c40e9750f3d77e6e4d441d8b0266cf555e7cdabdcff33c4fd06366ca761ef8"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/52/cf/2ebc7d282f026e21eed4987e42e10964a077c13cfc168b42f3573a7f178c/typed-ast-1.1.0.tar.gz",
+            "sha256": "57fe287f0cdd9ceaf69e7b71a2e94a24b5d268b35df251a88fef5cc241bf73aa"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/73/5f/560f729a496a27b658687d90ece2865c9b8ba60f28f7460f5ebf2acf8c4f/astroid-2.0.4.tar.gz",
+            "sha256": "c7013d119ec95eb626f7a2011f0b63d0c9a095df9ad06d8507b37084eada1a8d"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz",
+            "sha256": "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/06/18/fa675aa501e11d6d6ca0ae73a101b2f3571a565e0f7d38e062eec18a91ee/mccabe-0.6.1.tar.gz",
+            "sha256": "dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/04/1f/1d3929051b45c3e4015178c5fe5bbee735fb4e362e0fc4f0fbf3f68647ad/pylint-2.1.1.tar.gz",
+            "sha256": "31142f764d2a7cd41df5196f9933b12b7ee55e73ef12204b648ad7e556c119fb"
+        }
+    ]
+},
+{
+    "name": "python3-parver",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} parver"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/b8/e8/002c3802eb0be16c375896195fb8db3169f3b87a10e4a9c222b9746b65ec/parver-0.1.1.tar.gz",
+            "sha256": "ac4afff688d19d5e1876bb68d4bccc1a1b6a5cc8bd6a646939a14d366695ba15"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/eb/e9/378a72d8790faee46688cd35a233c091b26ee41255a9657155d15e675da0/Arpeggio-1.9.0.tar.gz",
+            "sha256": "a5258b84f76661d558492fa87e42db634df143685a0e51802d59cae7daad8732"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz",
+            "sha256": "10cbf6e27dbce8c30807caf056c8eb50917e0eaafe86347671b57254006c3e69"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz",
+            "sha256": "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
+        }
+    ]
+},
+{
+    "name": "python3-invoke",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} invoke"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/ef/80/cef14194e2dd62582cc0a4f5f2db78fb00de3ba5d1bc0e50897b398ea984/invoke-1.2.0.tar.gz",
+            "sha256": "dc492f8f17a0746e92081aec3f86ae0b4750bf41607ea2ad87e5a7b5705121b7"
+        }
+    ]
+},
+{
+    "name": "python3-requests[security]",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} requests[security]"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/fc/f1/8db7daa71f414ddabfa056c4ef792e1461ff655c2ae2928a2b675bfed6b4/asn1crypto-0.24.0.tar.gz",
+            "sha256": "9d5c20441baf0cb60a4ac34cc447c6c189024b6b4c6cd7877034f4965c464e49"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/3c/d2/dc5471622bd200db1cd9319e02e71bc655e9ea27b8e0ce65fc69de0dac15/urllib3-1.23.tar.gz",
+            "sha256": "a68ac5e15e76e7e5dd2b8f94007233e01effe3e50e8daddf69acfd81cb686baf"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/fc/bb/a5768c230f9ddb03acc9ef3f0d4a3cf93462473795d18e9535498c8f929d/chardet-3.0.4.tar.gz",
+            "sha256": "84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/e7/a7/4cd50e57cc6f436f1cc3a7e8fa700ff9b8b4d471620629074913e3735fb2/cffi-1.11.5.tar.gz",
+            "sha256": "e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/65/c4/80f97e9c9628f3cac9b98bfca0402ede54e0563b56482e3e6e45c43c4935/idna-2.7.tar.gz",
+            "sha256": "684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/22/21/233e38f74188db94e8451ef6385754a98f3cad9b59bedf3a8e8b14988be4/cryptography-2.3.1.tar.gz",
+            "sha256": "8d10113ca826a4c29d5b85b2c4e045ffa8bad74fb525ee0eceb1d38d4c70dfd6"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/54/1f/782a5734931ddf2e1494e4cd615a51ff98e1879cbe9eecbdfeaf09aa75e9/requests-2.19.1.tar.gz",
+            "sha256": "ec22d826a36ed72a7358ff3fe56cbd4ba69dd7a6718ffd450ff0e9df7a47ce6a"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz",
+            "sha256": "a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/e1/0f/f8d5e939184547b3bdc6128551b831a62832713aa98c2ccdf8c47ecc7f17/certifi-2018.8.24.tar.gz",
+            "sha256": "376690d6f16d32f9d1fe8932551d80b23e9d393a8578c5633a2ed39a64861638"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/9b/7c/ee600b2a9304d260d96044ab5c5e57aa489755b92bbeb4c0803f9504f480/pyOpenSSL-18.0.0.tar.gz",
+            "sha256": "6488f1423b00f73b7ad5167885312bb0ce410d3312eb212393795b53c8caa580"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz",
+            "sha256": "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
+        }
+    ]
+},
+{
+    "name": "python3-pipenv",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --upgrade --ignore-installed pip",
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --upgrade --ignore-installed setuptools",
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pipenv"
+    ],
+    "post-install": [
+    "rm -r /app/bin/pip",
+    "rm -r /app/bin/pip3",
+    "rm -r /app/bin/pip3.5",
+    "rm -r /app/lib/python3.5/site-packages/pip-18.0-py3.5.egg-info",
+    "rm -r /app/lib/python3.5/site-packages/pip/*"
+    ],
+    "sources": [
+    {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/69/81/52b68d0a4de760a2f1979b0931ba7889202f302072cc7a0d614211bc7579/pip-18.0.tar.gz",
+            "sha256": "a0e11645ee37c90b40c46d607070c4fd583e2cd46231b1c06e389c5e814eed76"
+    },
+    {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/53/25/ef88e8e45db141faa9598fbf7ad0062df8f50f881a36ed6a0073e1572126/ordereddict-1.1.tar.gz",
+            "sha256": "1c35b4ac206cef2d24816c89f89cf289dd3d38cf7c449bb3fab7bf6d43f01b1f"
+        },
+    {
+        	"type": "file",
+        	"url": "https://files.pythonhosted.org/packages/c3/a8/a497f2f220fd51a714d0a466a32b8ec7d71dafbb053cb490a427b5fa2a1c/setuptools-40.4.1.zip",
+        	"sha256": "0565104c1fdc39cc28bcd8131e9d5af9eac6040168933a969f152a247ef59d11"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/b3/98/8109e1b0488e3ad6b7bb1716842359827f337ddafa28275112bb76fc8477/pipenv-2018.7.1.tar.gz",
+            "sha256": "bb6bd074f853d9bab675942226a785a64d4fc42b5847538755e9573f5b77f63a"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/14/2f/84b6a8e380439cdfdb71e0ced2a805a66e343ac540d3304bde6bc28fbb46/virtualenv-clone-0.3.0.tar.gz",
+            "sha256": "b5cfe535d14dc68dfc1d1bb4ac1209ea28235b91156e2bba8e250d291c3fb4f8"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/e1/0f/f8d5e939184547b3bdc6128551b831a62832713aa98c2ccdf8c47ecc7f17/certifi-2018.8.24.tar.gz",
+            "sha256": "376690d6f16d32f9d1fe8932551d80b23e9d393a8578c5633a2ed39a64861638"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/69/81/52b68d0a4de760a2f1979b0931ba7889202f302072cc7a0d614211bc7579/pip-18.0.tar.gz",
+            "sha256": "a0e11645ee37c90b40c46d607070c4fd583e2cd46231b1c06e389c5e814eed76"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/33/bc/fa0b5347139cd9564f0d44ebd2b147ac97c36b2403943dbee8a25fd74012/virtualenv-16.0.0.tar.gz",
+            "sha256": "ca07b4c0b54e14a91af9f34d0919790b016923d157afda5efdde55c96718f752"
+        }
+    ]
+},
+{
+    "name": "python3-ipython",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} ipython"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/71/2a/2e4e77803a8bd6408a2903340ac498cb0a2181811af7c9ec92cb70b0308a/Pygments-2.2.0.tar.gz",
+            "sha256": "dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/46/31/60de7c9cbb97cac56b193a5b61a1fd4d21df84843a570b370ec34781316b/parso-0.3.1.tar.gz",
+            "sha256": "35704a43a3c113cce4de228ddb39aab374b8004f4f2407d070b6a2ca784ce8a2"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/a5/98/7f5ef2fe9e9e071813aaf9cb91d1a732e0a68b6c44a32b38cb8e14c3f069/traitlets-4.3.2.tar.gz",
+            "sha256": "9c4bd2d267b7153df9152698efb1050a5d84982d3384a37b2c1f7723ba3e7835"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/89/43/07d07654ee3e25235d8cea4164cdee0ec39d1fda8e9203156ebe403ffda4/pexpect-4.6.0.tar.gz",
+            "sha256": "2a8e88259839571d1251d278476f3eec5db26deb73a70be5ed5dc5435e418aba"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/e8/69/fbeffffc05236398ebfcfb512b6d2511c622871dca1746361006da310399/ipython_genutils-0.2.0.tar.gz",
+            "sha256": "eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/7d/2d/e4b8733cf79b7309d84c9081a4ab558c89d8c89da5961bf4ddb050ca1ce0/ptyprocess-0.6.0.tar.gz",
+            "sha256": "923f299cc5ad920c68f2bc0bc98b75b9f838b93b599941a6b63ddbc2476394c0"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/69/fe/dd137d84daa0fd13a709e448138e310d9ea93070620c9db5454e234af525/pickleshare-0.7.4.tar.gz",
+            "sha256": "84a9257227dfdd6fe1b4be1319096c20eb85ff1e82c7932f36efccfe1b09737b"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/49/2f/cdfb8adc8cfc9fc2e5673e724d9b9098619dc1a2772cc6b8af34c6b7bef9/jedi-0.12.1.tar.gz",
+            "sha256": "b409ed0f6913a701ed474a614a3bb46e6953639033e31f769ca7581da5bd1ec1"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/6f/24/15a229626c775aae5806312f6bf1e2a73785be3402c0acdec5dbddd8c11e/decorator-4.3.0.tar.gz",
+            "sha256": "c39efa13fbdeb4506c476c9b3babf6a718da943dab7811c206005a4a956c080c"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/84/71/c8ca4f5bb1e08401b916c68003acf0a0655df935d74d93bf3f3364b310e0/backcall-0.1.0.tar.gz",
+            "sha256": "38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/8a/ad/cf6b128866e78ad6d7f1dc5b7f99885fb813393d9860778b2984582e81b5/prompt_toolkit-1.0.15.tar.gz",
+            "sha256": "858588f1983ca497f1cf4ffde01d978a3ea02b01c8a26a8bbc5cd2e66d816917"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/55/11/e4a2bb08bb450fdbd42cc709dd40de4ed2c472cf0ccb9e64af22279c5495/wcwidth-0.1.7.tar.gz",
+            "sha256": "3df37372226d6e63e1b1e1eda15c594bca98a22d33a23832a90998faa96bc65e"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz",
+            "sha256": "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/3d/57/4d9c9e3ae9a255cd4e1106bb57e24056d3d0709fc01b2e3e345898e49d5b/simplegeneric-0.8.1.zip",
+            "sha256": "dc972e06094b9af5b855b3df4a646395e43d1c9d0d39ed345b7393560d0b9173"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/1a/76/0b51dc7dd3a801477d00e6db065f50cce9fe5bdbea3c911fce62c9f02c23/ipython-6.5.0.tar.gz",
+            "sha256": "b0f2ef9eada4a68ef63ee10b6dde4f35c840035c50fd24265f8052c98947d5a4"
+        }
+    ]
+},
+{
+    "name": "python3-rope",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} rope"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/52/8d/2ebe70e55742a46813952493f8fc86ff2800ccc105e2dfcb25298f7eeb72/rope-0.11.0.tar.gz",
+            "sha256": "a108c445e1cd897fe19272ab7877d172e7faf3d4148c80e7d20faba42ea8f7b2"
+        }
+    ]
+}
   ],
   "base": "io.atom.electron.BaseApp",
   "base-version": "stable",
