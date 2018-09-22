@@ -14,6 +14,13 @@ import re
 import hashlib
 import stat
 import inspect
+import operator
+from collections import OrderedDict
+
+METADATA = {
+    'Releases': OrderedDict(),
+    'Extensions': {}
+}
 
 
 @contextmanager
@@ -39,6 +46,9 @@ def inline(text):
 
 
 def httpget(*args, **kwargs):
+    if 'GITHUB_TOKEN' in os.environ and (urllib.parse.urlsplit(args[0]).netloc.endswith('github.com') or urllib.parse.urlsplit(args[0]).netloc.endswith('githubusercontent.com')):
+        args = [*args]
+        args[0] += '?access_token=' + os.environ['GITHUB_TOKEN']
     return urllib.request.urlopen(urllib.request.Request(*args, **kwargs)).read()
 
 
@@ -120,7 +130,7 @@ def get_python_packages():
     packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope']
     sources = []
     with tempfile.TemporaryDirectory() as tmpdir:
-        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True)
+        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 install -U pip; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True)
         for filename in sorted(os.listdir(tmpdir)):
             if filename.endswith('.whl'):
                 package = re.fullmatch(r'(.*)-.*?-.*?-.*?-.*?\.whl', filename).groups()[0]
@@ -148,6 +158,32 @@ def get_python_packages():
         }
 
 
+def get_gitlab_with_tag(path, netloc='gitlab.com', scheme='https'):
+    project = json.loads(httpget(urllib.parse.urlunsplit((
+        scheme,
+        netloc,
+        '/api/v4/projects/' + urllib.parse.quote_plus(path),
+        '',
+        ''
+    ))).decode())
+    tag = json.loads(httpget(urllib.parse.urlunsplit((
+        scheme,
+        netloc,
+        '/api/v4/projects/' + urllib.parse.quote_plus(path) + '/repository/tags',
+        urllib.parse.urlencode({
+            'page': 1,
+            'per_page': 1
+        }),
+        ''
+    ))).decode())[0]
+    return {
+        'type': 'git',
+        'url': project['http_url_to_repo'],
+        'tag': tag['name'],
+        'commit': tag['commit']['id']
+    }
+
+
 def parse_repo():
     loader = load_lockfile()
     next(loader)
@@ -160,6 +196,8 @@ def parse_repo():
                 'TZ': 'UTC'
             }, output=True))
         } for release in releases if release['version'].split('.')[0] != '0']
+        METADATA['Releases'] = OrderedDict([(release['version'], release['date']) for release in releases])
+
         product_json = json.loads(Path('product.json').read_text())
 
         re_node_version = re.compile(r'(.*)@.*?')
@@ -185,14 +223,53 @@ def parse_repo():
                         'dest': 'yarn-mirror',
                         'dest-filename': name.replace('/', '-') + '-' + version + '.tgz'
                     }
+
+        builtInExtensions = []
+        for item in json.loads(Path('build/builtInExtensions.json').read_text()):
+            gallery_url = 'https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery'
+            extension = json.loads(urllib.request.urlopen(urllib.request.Request(gallery_url, data=json.dumps({
+                'filters': [
+                    {
+                        'criteria': [
+                            {
+                                'filterType': 7,
+                                'value': item['name']
+                            }
+                        ],
+                        'pageNumber': 1,
+                        'pageSize': 1,
+                        'sortBy': 0,
+                        'sortOrder': 0
+                    }
+                ],
+                'assetTypes': [
+                    'Microsoft.VisualStudio.Services.VSIXPackage'
+                ],
+                'flags': 131
+            }).encode(), headers={
+                'X-Market-Client-Id': 'VSCode Build',
+                'User-Agent': 'VSCode Build',
+                'X-Market-User-Id': '291C1CD0-051A-4123-9B4B-30D60EF52EE2',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json;api-version=3.0-preview.1'
+            })).read())['results'][0]['extensions'][0]
+
+            METADATA['Extensions'][item['name']] = {
+                'id': extension['extensionId'],
+                'publisherId': extension['publisher'],
+                'publisherDisplayName': extension['publisher']['displayName']
+            }
+
+            builtInExtensions.append({
+                'type': 'file',
+                **get_url_sha512(next(file for file in next(
+                        version for version in extension['versions'] if version['version'] == item['version']
+                )['files'] if file['assetType'] == 'Microsoft.VisualStudio.Services.VSIXPackage')['source']),
+                'dest': 'builtInExtensions',
+                'dest-filename': item['name'] + '.vsix'
+            })
+
         return loader.send('.yarnrc')['target'], packages, {
-            '@comments': {
-                'NOTICE': 'This file is auto-generated, do not modify',
-                'releases': [{
-                    'version': release['version'],
-                    'date': release['date'][:-6]
-                } for release in releases]
-            },
             'app-id': product_json['darwinBundleIdentifier'],
             'branch': 'stable',
             'command': product_json['applicationName'],
@@ -225,7 +302,7 @@ def parse_repo():
                         '*.la'
                     ],
                     'sources': [
-                        get_git_with_tag('https://git.gnome.org/browse/libsecret.git', '0.18.5')
+                        get_gitlab_with_tag('GNOME/libsecret', 'gitlab.gnome.org')
                     ]
                 },
                 {
@@ -239,7 +316,7 @@ def parse_repo():
                         '--disable-static'
                     ],
                     'sources': [
-                        get_git_with_tag('https://anongit.freedesktop.org/git/xorg/lib/libxkbfile.git', 'libxkbfile-1.0.9')
+                        get_gitlab_with_tag('xorg/lib/libxkbfile', 'gitlab.freedesktop.org')
                     ]
                 },
                 {
@@ -295,7 +372,7 @@ def parse_repo():
                     'sources': [
                         {
                             'type': 'archive',
-                            **get_url_sha512('https://nodejs.org/dist/v8.9.1/node-v8.9.1.tar.xz')
+                            **get_url_sha512('https://nodejs.org/dist/v8.9.2/node-v8.9.2.tar.xz')
                         }
                     ],
                     'post-install': [
@@ -340,6 +417,8 @@ def parse_repo():
                                 'import re',
                                 'import hashlib',
                                 'import stat',
+                                'from collections import OrderedDict',
+                                'METADATA=' + repr(METADATA),
                                 *inspect.getsource(build).split('\n'),
                                 'build()'
                             ],
@@ -353,7 +432,8 @@ def parse_repo():
                             'type': 'file',
                             **get_url_sha512('https://raw.githubusercontent.com/Microsoft/vscode/b00945fc8c79f6db74b280ef53eba060ed9a1388/product.json')
                         },
-                        *packages.values()
+                        *builtInExtensions,
+                        *sorted(packages.values(), key=operator.itemgetter('url'))
                     ]
                 },
                 get_python_packages()
@@ -390,10 +470,7 @@ def get_electron_recipe(packages, iojs_version):
                 'sha256': next(line.split(' ')[0] for line in sha256sums[version].decode().split('\n') if filename in line),
                 'only-arches': [arch_linux],
                 'dest': dest,
-                'dest-filename': filename,
-                '@comment': {
-                    'version': version
-                }
+                'dest-filename': filename
             })
     electron_recipe.append({
         'type': 'file',
@@ -416,8 +493,7 @@ def get_ripgrep_recipe(packages):
         'only-arches': [
             arch_linux
         ],
-        'dest': 'misc',
-        'dest-filename': 'ripgrep.zip'
+        'dest': 'vscode-ripgrep-cache'
     } for arch_linux, arch_node in [
         ('x86_64', 'x64'),
         ('i386', 'ia32'),
@@ -426,7 +502,7 @@ def get_ripgrep_recipe(packages):
 
 
 def get_base_recipe():
-    base = json.loads(httpget('https://github.com/flathub/io.atom.electron.BaseApp/raw/master/io.atom.electron.BaseApp.json').decode())
+    base = json.loads(httpget('https://github.com/flathub/io.atom.electron.BaseApp/raw/1.6/io.atom.electron.BaseApp.json').decode())
     return {
         'base': base['id'],
         'base-version': base['branch'],
@@ -456,35 +532,68 @@ def build():
     for package in [source for source in next(
         module for module in recipe['modules'] if module['name'] == 'vscode'
     )['sources'] if source.get('dest') == '.electron']:
-        if package['@comment']['version'] not in sha256sums:
-            sha256sums[package['@comment']['version']] = {}
-        sha256sums[package['@comment']['version']][package['dest-filename']] = package['sha256']
+        version = package['dest-filename'].split('-')[1][1:]
+        if version not in sha256sums:
+            sha256sums[version] = {}
+        sha256sums[version][package['dest-filename']] = package['sha256']
     for version in sha256sums:
         Path('.electron/SHASUMS256.txt-' + version).write_text('\n'.join(
             sha256sums[version][filename] + ' *' + filename for filename in sha256sums[version])
         )
 
     shutil.move('gulp-electron-cache', '/tmp')
+    shutil.move('vscode-ripgrep-cache', '/tmp')
+    shutil.move('builtInExtensions', '/tmp')
     shutil.move('.electron', str(Path.home()))
     shutil.move('bin/yarn.js', '/app/local/bin')
     Path('/app/local/bin/yarn.js').chmod(Path('/app/local/bin/yarn.js').stat().st_mode | stat.S_IXUSR)
     Path('/app/local/bin/yarn').symlink_to('yarn.js')
     subprocess.run(['yarn', 'config', 'set', 'yarn-offline-mirror', str(Path('yarn-mirror').resolve())], check=True)
 
-    shutil.unpack_archive(str(next(Path('yarn-mirror').glob('vscode-ripgrep-*'))))
-    shutil.move('package', 'vscode-ripgrep')
-    subprocess.run(['yarn', 'link'], check=True, cwd='vscode-ripgrep')
-    Path('vscode-ripgrep/bin').mkdir()
-    shutil.unpack_archive('misc/ripgrep.zip', 'vscode-ripgrep/bin')
-    Path('vscode-ripgrep/bin/rg').chmod(Path('vscode-ripgrep/bin/rg').stat().st_mode | stat.S_IXUSR)
-
     os.chdir('vscode')
     Path('product.json').write_text(json.dumps({
         **json.loads(Path('product.json').read_text()),
-        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery']
+        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery'],
+        # From https://docs.microsoft.com/en-us/visualstudio/liveshare/reference/linux#vs-code-oss-issues
+        'extensionAllowedProposedApi': [
+            'ms-vsliveshare.vsliveshare',
+            'ms-vscode.node-debug',
+            'ms-vscode.node-debug2'
+        ]
     }))
-    Path('build/builtInExtensions.json').write_text('[]')
-    subprocess.run(['yarn', 'link', 'vscode-ripgrep'], check=True)
+
+    patch = r'''
+{
+    return require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.json').pipe(flatmap(function (stream, f) {
+        var metadata = JSON.parse(f.contents.toString('utf8'));
+        return require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.vsix').pipe(flatmap(function (stream) {
+            var packageJsonFilter = filter('package.json', { restore: true });
+            return stream
+                .pipe(vzip.src())
+                .pipe(filter('extension/**'))
+                .pipe(rename(function (p) { return p.dirname = p.dirname.replace(/^extension\/?/, ''); }))
+                .pipe(packageJsonFilter)
+                .pipe(buffer())
+                .pipe(json({ __metadata: metadata }))
+                .pipe(packageJsonFilter.restore);
+        }));
+    }));
+}
+
+    '''
+
+    for version, data in METADATA['Extensions'].items():
+        (Path('/tmp/builtInExtensions') / (version + '.json')).write_text(json.dumps(data))
+    Path('build/lib/extensions.js').write_text(Path('build/lib/extensions.js').read_text().replace('fromMarketplace', '__fromMarketplace', 3) + ''.join([
+        'function fromMarketplace(extensionName, version) ',
+        patch,
+        'exports.fromMarketplace = fromMarketplace;'
+    ]))
+    Path('build/lib/extensions.ts').write_text(Path('build/lib/extensions.ts').read_text().replace('fromMarketplace', '__fromMarketplace', 1) + ''.join([
+        'export function fromMarketplace(extensionName: string, version: string): Stream ',
+        patch
+    ]))
+
     package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())
     del package_vscode_extension['scripts']['postinstall']
     Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension))
@@ -494,10 +603,11 @@ def build():
         'npm_config_tarball': str(Path('../misc/iojs.tar.gz').resolve()),
     })
 
-    Path('node_modules/vscode-ripgrep').unlink()
-    Path('../vscode-ripgrep').rename('node_modules/vscode-ripgrep')
     shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')
-    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=4096'], check=True)
+    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + {
+        'x64': '4096',
+        'ia32': '2047'
+    }[arch]], check=True)
 
     os.chdir('..')
     shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])
@@ -537,10 +647,10 @@ def build():
 
     remove_white(dom)
     releases = dom.createElement('releases')
-    for entry in recipe['@comments']['releases']:
+    for version, date in METADATA['Releases'].items():
         release = dom.createElement('release')
-        release.setAttribute('version', entry['version'])
-        release.setAttribute('date', entry['date'])
+        release.setAttribute('version', version)
+        release.setAttribute('date', date)
         releases.appendChild(release)
     dom.getElementsByTagName('component')[0].appendChild(releases)
     description_paragraph = dom.createElement('p')

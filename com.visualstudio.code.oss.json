@@ -244,7 +244,10 @@
             "    })",
             "",
             "    shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')",
-            "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=4096'], check=True)",
+            "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + {",
+            "        'x64': '4096',",
+            "        'ia32': '2047'",
+            "    }[arch]], check=True)",
             "",
             "    os.chdir('..')",
             "    shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])",
@@ -14010,9 +14013,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "setuptools-40.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/66/e8/570bb5ca88a8bcd2a1db9c6246bb66615750663ffaaeada95b04ffe74e12/setuptools-40.2.0-py2.py3-none-any.whl",
-          "sha256": "ea3796a48a207b46ea36a9d26de4d0cc87c953a683a7b314ea65d666930ea8e6"
+          "dest-filename": "setuptools-40.4.2-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/6e/9c/cc2eb661d85f4aa541910af1a72b834a0f5c9209079fcbd1438fa6da17c6/setuptools-40.4.2-py2.py3-none-any.whl",
+          "sha256": "c3a8ff6bf3fd43d27242db824c871fc4752fea907c5ce59e00a9c5bb7da908d8"
         },
         {
           "type": "file",
