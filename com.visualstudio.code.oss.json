@@ -13885,7 +13885,7 @@
       "buildsystem": "simple",
       "build-commands": [
         "mkdir -p /app/lib/sdk",
-        "PYTHONUSERBASE=/app/lib/sdk pip3 install --user --no-index --find-links . autopep8 pipenv ipython rope"
+        "PYTHONUSERBASE=/app/lib/sdk pip3 install --user --no-index --find-links . autopep8 ipython rope"
       ],
       "sources": [
         {
