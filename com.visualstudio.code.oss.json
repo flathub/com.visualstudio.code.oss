@@ -22,6 +22,9 @@
       "no-autodownload": true
     }
   },
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.golang"
+  ],
   "modules": [
     {
       "name": "libsecret",
@@ -14017,12 +14020,6 @@
         },
         {
           "type": "file",
-          "dest-filename": "pytest-runner-4.2.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/9e/b7/fe6e8f87f9a756fd06722216f1b6698ccba4d269eac6329d9f0c441d0f93/pytest-runner-4.2.tar.gz",
-          "sha256": "d23f117be39919f00dd91bffeb4f15e031ec797501b717a245e377aee0f577be"
-        },
-        {
-          "type": "file",
           "dest-filename": "rope-0.11.0.tar.gz",
           "url": "https://files.pythonhosted.org/packages/52/8d/2ebe70e55742a46813952493f8fc86ff2800ccc105e2dfcb25298f7eeb72/rope-0.11.0.tar.gz",
           "sha256": "a108c445e1cd897fe19272ab7877d172e7faf3d4148c80e7d20faba42ea8f7b2"
@@ -14032,12 +14029,6 @@
           "dest-filename": "setuptools-40.4.3-py2.py3-none-any.whl",
           "url": "https://files.pythonhosted.org/packages/96/06/c8ee69628191285ddddffb277bd5abdf769166e7a14b867c2a172f0175b1/setuptools-40.4.3-py2.py3-none-any.whl",
           "sha256": "ce4137d58b444bac11a31d4e0c1805c69d89e8ed4e91fde1999674ecc2f6f9ff"
-        },
-        {
-          "type": "file",
-          "dest-filename": "setuptools_scm-3.1.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/b2/d5/970632917c53a1fb2751f7da8b288d26546f2b113e4321674051fc9f81e4/setuptools_scm-3.1.0-py2.py3-none-any.whl",
-          "sha256": "cc6953d224a22f10e933fa2f55c95979317c55259016adcf93310ba2997febfa"
         },
         {
           "type": "file",
@@ -14086,6 +14077,34 @@
           "dest-filename": "wrapt-1.10.11.tar.gz",
           "url": "https://files.pythonhosted.org/packages/a0/47/66897906448185fcb77fc3c2b1bc20ed0ecca81a0f2f88eda3fc5a34fc3d/wrapt-1.10.11.tar.gz",
           "sha256": "d4d560d479f2c21e1b5443bbd15fe7ec4b37fe7e53d335d3b9b0a7b1226fe3c6"
+        }
+      ]
+    },
+    {
+      "name": "delve",
+      "buildsystem": "simple",
+      "only-arches": [
+        "x86_64"
+      ],
+      "build-commands": [
+        "./build.sh"
+      ],
+      "sources": [
+        {
+          "type": "script",
+          "dest-filename": "build.sh",
+          "commands": [
+            ". /usr/lib/sdk/golang/enable.sh",
+            "GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv",
+            "mv bin/dlv /app/local/bin"
+          ]
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/derekparker/delve.git",
+          "tag": "v1.1.0",
+          "commit": "9992fa83c16fc8612b33ad93ad29fbb524d1630c",
+          "dest": "src/github.com/derekparker/delve"
         }
       ]
     }
