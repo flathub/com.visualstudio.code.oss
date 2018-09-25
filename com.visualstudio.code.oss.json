@@ -13885,7 +13885,8 @@
       "buildsystem": "simple",
       "build-commands": [
         "mkdir -p /app/local",
-        "echo -e \"[easy_install]\\nallow_hosts = ''\\nfind_links = file://$PWD/\" > ~/.pydistutils.cfgPYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope"
+        "echo -e \"[easy_install]\\nallow_hosts = ''\\nfind_links = file://$PWD/\" > ~/.pydistutils.cfg",
+        "PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope"
       ],
       "sources": [
         {
