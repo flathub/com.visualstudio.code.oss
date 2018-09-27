@@ -128,34 +128,72 @@ def get_git_with_tag(url, tag):
 
 def get_python_packages():
     packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope']
+    # setup_requires = ['setuptools_scm', 'pytest-runner']
+    setup_requires = []
     sources = []
     with tempfile.TemporaryDirectory() as tmpdir:
-        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 install -U pip; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True)
-        for filename in sorted(os.listdir(tmpdir)):
-            if filename.endswith('.whl'):
-                package = re.fullmatch(r'(.*)-.*?-.*?-.*?-.*?\.whl', filename).groups()[0]
-            elif filename.endswith('.tar.gz'):
-                package = re.fullmatch(r'(.*)-.*?\.tar\.gz', filename).groups()[0]
-            elif filename.endswith('.zip'):
-                package = re.fullmatch(r'(.*)-.*?\.zip', filename).groups()[0]
-            else:
-                continue
-            dom = minidom.parseString(httpget('https://pypi.org/simple/' + package + '/'))
-            url = next(node.getAttribute('href') for node in dom.getElementsByTagName('a') if node.firstChild.data == filename)
+        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 install -U pip; pip3 download --no-binary :all: -d' + tmpdir + ' ' + ' '.join(packages + setup_requires), shell=True)
+
+        versions = [re.fullmatch(r'(.*)-(.*?)(\.zip|\.tar\.gz)', filename).groups()[:2] for filename in sorted(os.listdir(tmpdir))]
+
+        for package, version in versions:
+            subprocess.run('eval "$(pyenv init -)"; pyenv shell 3.5.2; pip3 download --no-deps --platform any --abi none --implementation cp --python-version 35 -d ' + tmpdir + ' ' + package + '==' + version, shell=True)
+
+        filenames = os.listdir(tmpdir)
+        wheels = list(filter(lambda filename: filename.endswith('-none-any.whl'), filenames))
+
+        for package, version in versions:
+            filename = next((name for name in wheels if name.startswith(package + '-' + version + '-')), None)
+            if filename is None:
+                filename = next(name for name in filenames if name.startswith(package + '-' + version + '.'))
+
+            metadata = json.loads(httpget('https://pypi.org/pypi/' + package + '/json/').decode())
+            entry = next(filter(lambda entry: entry['filename'] == filename, metadata['releases'][version]))
             sources.append({
                 'type': 'file',
                 'dest-filename': filename,
-                'url': urllib.parse.urldefrag(url)[0],
-                **dict([urllib.parse.urldefrag(url)[1].split('=')])
+                'url': entry['url'],
+                'sha256': entry['digests']['sha256']
             })
         return {
             'name': 'python_packages',
             'buildsystem': 'simple',
             'build-commands': [
-                    'PYTHONUSERBASE=/app pip3 install --user --no-index --find-links . ' + ' '.join(packages),
+                'mkdir -p /app/local',
+                r'''echo -e "[easy_install]\nallow_hosts = ''\nfind_links = file://$PWD/" > ~/.pydistutils.cfg''',
+                'PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . ' + ' '.join(packages)
             ],
             'sources': sources
         }
+
+
+def get_delve_recipe():
+    tag_name = json.loads(httpget('https://api.github.com/repos/derekparker/delve/releases/latest').decode())['tag_name']
+    commit = json.loads(httpget('https://api.github.com/repos/derekparker/delve/git/refs/tags/' + tag_name).decode())['object']['sha']
+    return {
+        'name': 'delve',
+        'buildsystem': 'simple',
+        'only-arches': ['x86_64'],
+        'build-commands': ['./build.sh'],
+        'sources': [
+            {
+                'type': 'script',
+                'dest-filename': 'build.sh',
+                'commands': [
+                    '. /usr/lib/sdk/golang/enable.sh',
+                    'GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv',
+                    'mv bin/dlv /app/local/bin'
+                ]
+            },
+            {
+                'type': 'git',
+                'url': 'https://github.com/derekparker/delve.git',
+                'tag': tag_name,
+                'commit': commit,
+                'dest': 'src/github.com/derekparker/delve'
+            }
+        ]
+    }
 
 
 def get_gitlab_with_tag(path, netloc='gitlab.com', scheme='https'):
@@ -282,8 +320,19 @@ def parse_repo():
                 '--device=dri',
                 '--filesystem=host',
                 '--persist=' + product_json['dataFolderName'],
-                '--talk-name=org.freedesktop.Notifications',
-                '--env=PYTHONPATH=/app/lib/python3.5/site-packages'
+                '--talk-name=org.freedesktop.Notifications'
+            ],
+            'add-extensions': {
+                product_json['darwinBundleIdentifier'] + '.Tools': {
+                    'directory': 'local',
+                    'add-ld-path': 'lib',
+                    'bundle': True,
+                    'autodelete': True,
+                    'no-autodownload': True
+                }
+            },
+            'sdk-extensions': [
+                'org.freedesktop.Sdk.Extension.golang'
             ],
             'modules': [
                 {
@@ -436,7 +485,8 @@ def parse_repo():
                         *sorted(packages.values(), key=operator.itemgetter('url'))
                     ]
                 },
-                get_python_packages()
+                get_python_packages(),
+                get_delve_recipe()
             ]
         }
 
