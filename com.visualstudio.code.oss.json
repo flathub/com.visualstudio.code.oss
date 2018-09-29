@@ -13722,8 +13722,8 @@
         },
         {
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.10.1/yarn-1.10.1.js",
-          "sha512": "906c5e5f824efbcd72e2a081d8f3763790fb74d0d1d8c6cd477ec2816200cd76f5fba6ed7f9fb6e3e95a14e2533cec573962f13f481f84bba587f21d0e1bd0bf",
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.9.4/yarn-1.9.4.js",
+          "sha512": "ec76b7b5218f7e1fe8a1528440d90672f173b557a2f22a359d40afc192c10221f95aabd9970d1ab7b74696535f848c5cede1f508d7f7ae19bc6afbd4df54cb2f",
           "dest": "bin",
           "dest-filename": "yarn.js"
         },
