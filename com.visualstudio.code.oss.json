@@ -200,7 +200,7 @@
             "    Path('/app/local/bin/yarn.js').chmod(Path('/app/local/bin/yarn.js').stat().st_mode | stat.S_IXUSR)",
             "    Path('/app/local/bin/yarn').symlink_to('yarn.js')",
             "    subprocess.run(['yarn', 'config', 'set', 'yarn-offline-mirror', str(Path('yarn-mirror').resolve())], check=True)",
-            "    Path('.yarnrc').write_text(Path('.yarnrc').read_text() + ''.join('--install.' + option + ' true\\n' for option in [",
+            "    (Path.home() / '.yarnrc').write_text((Path.home() / '.yarnrc').read_text() + ''.join('--install.' + option + ' true\\n' for option in [",
             "        'offline',",
             "        'verbose',",
             "        'frozen-lockfile'",
