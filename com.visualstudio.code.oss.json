@@ -126,8 +126,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://nodejs.org/dist/v8.9.2/node-v8.9.2.tar.xz",
-          "sha512": "94d442c69eea1548281bd068a6dd1fb2a8ccddda3615dd2a364e7f9095554f6d114e3aeba0034198cfa3e0782506a36c56a7c75a86a099478ca456d15fee0da7"
+          "url": "https://nodejs.org/dist/v8.9.1/node-v8.9.1.tar.xz",
+          "sha512": "e1d93def34c1b91de90b807031e2f313661658cd045d44d290950190b10512770df05cb92e9657bab7ad6654d3359364193567cf693ddb2b3574d2a48e4ee256"
         }
       ],
       "post-install": [
@@ -200,6 +200,12 @@
             "    Path('/app/local/bin/yarn.js').chmod(Path('/app/local/bin/yarn.js').stat().st_mode | stat.S_IXUSR)",
             "    Path('/app/local/bin/yarn').symlink_to('yarn.js')",
             "    subprocess.run(['yarn', 'config', 'set', 'yarn-offline-mirror', str(Path('yarn-mirror').resolve())], check=True)",
+            "    yarnrc = (Path.home() / '.yarnrc').read_text()",
+            "    (Path.home() / '.yarnrc').write_text(yarnrc + ''.join('--install.' + option + ' true\\n' for option in [",
+            "        'offline',",
+            "        'verbose',",
+            "        'frozen-lockfile'",
+            "    ]))",
             "",
             "    os.chdir('vscode')",
             "    Path('product.json').write_text(json.dumps({",
@@ -250,10 +256,12 @@
             "    del package_vscode_extension['scripts']['postinstall']",
             "    Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension))",
             "",
-            "    subprocess.run(['yarn', 'install', '--offline', '--verbose', '--frozen-lockfile'], check=True, env={",
+            "    subprocess.run(['yarn', 'install'], check=True, env={",
             "        **os.environ,",
             "        'npm_config_tarball': str(Path('../misc/iojs.tar.gz').resolve()),",
             "    })",
+            "",
+            "    # (Path.home() / '.yarnrc').write_text(yarnrc)",
             "",
             "    shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')",
             "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + (",
