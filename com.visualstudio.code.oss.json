@@ -14122,7 +14122,7 @@
         "GOPATH=$PWD go install github.com/golangci/golangci-lint/cmd/golangci-lint",
         "GOPATH=$PWD go install github.com/mgechev/revive",
         "GOPATH=$PWD go install github.com/sourcegraph/go-langserver",
-        "[[ $FLATPAK_ARCH = \"x86_64\" ]] && GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv",
+        "[[ $FLATPAK_ARCH = \"x86_64\" ]] && GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv || true",
         "GOPATH=$PWD go install github.com/davidrjenni/reftools/cmd/fillstruct",
         "mv bin/* /app/local/bin"
       ],
