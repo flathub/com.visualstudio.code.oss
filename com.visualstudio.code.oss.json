@@ -13955,9 +13955,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "jedi-0.12.1-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/3d/68/8bbf0ef969095a13ba0d4c77c1945bd86e9811960d052510551d29a2f23b/jedi-0.12.1-py2.py3-none-any.whl",
-          "sha256": "c254b135fb39ad76e78d4d8f92765ebc9bf92cbc76f49e97ade1d5f5121e1f6f"
+          "dest-filename": "jedi-0.13.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/50/a2/b01263ac7192cda0207e5353176091e563183691f399b0b5d30f5b4e0549/jedi-0.13.0-py2.py3-none-any.whl",
+          "sha256": "0ad328f5d9d0a6c8b22a0ca429c7b0cea1974e2b2d5a00e0bc45074dcd44d255"
         },
         {
           "type": "file",
@@ -14003,9 +14003,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "prompt_toolkit-2.0.4-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/91/ef/f4010d53dbd736c47e78d2226b12ab446bbe0ce66616d0b92d51d8a15fe4/prompt_toolkit-2.0.4-py3-none-any.whl",
-          "sha256": "f2289fe9dd7f27c305421bffe880a543b04cc67660796a2a912595dbcd0d209f"
+          "dest-filename": "prompt_toolkit-2.0.5-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/e5/c5/f1ee6698bdcf615f171a77e81ca70293b16a6d82285f1760b388b4348263/prompt_toolkit-2.0.5-py3-none-any.whl",
+          "sha256": "c67c1c264d8a0d9e1070e9272bacee00f76c81daab7bc4bf09ff991bd1e224a7"
         },
         {
           "type": "file",
@@ -14090,9 +14090,6 @@
     {
       "name": "vscode-go",
       "buildsystem": "simple",
-      "only-arches": [
-        "x86_64"
-      ],
       "build-options": {
         "append-path": "/usr/lib/sdk/golang/bin",
         "env": {
@@ -14125,7 +14122,7 @@
         "GOPATH=$PWD go install github.com/golangci/golangci-lint/cmd/golangci-lint",
         "GOPATH=$PWD go install github.com/mgechev/revive",
         "GOPATH=$PWD go install github.com/sourcegraph/go-langserver",
-        "GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv",
+        "[[ $FLATPAK_ARCH = \"x86_64\" ]] && GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv || true",
         "GOPATH=$PWD go install github.com/davidrjenni/reftools/cmd/fillstruct",
         "mv bin/* /app/local/bin"
       ],
@@ -14145,7 +14142,7 @@
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "b3c0be4c978b9aca5acfec41ac043ed3914154a7",
+          "commit": "b71db7f417f13fa74a2565bc57b2387fdbf2c611",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14283,7 +14280,7 @@
         {
           "type": "git",
           "url": "https://github.com/mgechev/revive.git",
-          "commit": "672b7cdf374e9f2a36bdcb794a7ecb06e40e6adc",
+          "commit": "cd6459542bc7b90d2a23a158c2b47f1ed529ae18",
           "dest": "src/github.com/mgechev/revive"
         },
         {
@@ -14325,7 +14322,7 @@
         {
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git",
-          "commit": "e1b4a1b1f25a0e70582780a7da7c2c85b21614e0",
+          "commit": "b877569e93ac0926758e7b2823d6808bd36745c9",
           "dest": "src/github.com/sourcegraph/go-langserver"
         },
         {
