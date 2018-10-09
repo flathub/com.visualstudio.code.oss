@@ -126,8 +126,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://nodejs.org/dist/v8.12.0/node-v8.12.0.tar.xz",
-          "sha512": "665d2dba287d78bcd723d7b4d00a6897fb996f4aa69a541e010a3dfeb2614257892117fcce7123966b1ecaddc9269a6667e0e262df693baea1f476c96de55c42"
+          "url": "https://nodejs.org/dist/v8.9.1/node-v8.9.1.tar.xz",
+          "sha512": "e1d93def34c1b91de90b807031e2f313661658cd045d44d290950190b10512770df05cb92e9657bab7ad6654d3359364193567cf693ddb2b3574d2a48e4ee256"
         }
       ],
       "post-install": [
@@ -13612,8 +13612,8 @@
         },
         {
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.10.1/yarn-1.10.1.js",
-          "sha512": "906c5e5f824efbcd72e2a081d8f3763790fb74d0d1d8c6cd477ec2816200cd76f5fba6ed7f9fb6e3e95a14e2533cec573962f13f481f84bba587f21d0e1bd0bf",
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.9.4/yarn-1.9.4.js",
+          "sha512": "ec76b7b5218f7e1fe8a1528440d90672f173b557a2f22a359d40afc192c10221f95aabd9970d1ab7b74696535f848c5cede1f508d7f7ae19bc6afbd4df54cb2f",
           "dest": "bin",
           "dest-filename": "yarn.js"
         },
