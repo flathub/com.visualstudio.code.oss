@@ -126,8 +126,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://nodejs.org/dist/v8.9.1/node-v8.9.1.tar.xz",
-          "sha512": "e1d93def34c1b91de90b807031e2f313661658cd045d44d290950190b10512770df05cb92e9657bab7ad6654d3359364193567cf693ddb2b3574d2a48e4ee256"
+          "url": "https://nodejs.org/dist/v8.12.0/node-v8.12.0.tar.xz",
+          "sha512": "665d2dba287d78bcd723d7b4d00a6897fb996f4aa69a541e010a3dfeb2614257892117fcce7123966b1ecaddc9269a6667e0e262df693baea1f476c96de55c42"
         }
       ],
       "post-install": [
@@ -150,8 +150,8 @@
         {
           "type": "git",
           "url": "https://github.com/Microsoft/vscode.git",
-          "tag": "1.27.2",
-          "commit": "f46c4c469d6e6d8c46f268d1553c5dc4b475840f",
+          "tag": "1.28.0",
+          "commit": "431ef9da3cf88a7e164f9d33bf62695e07c6c2a9",
           "dest": "vscode",
           "disable-shallow-clone": true
         },
@@ -173,7 +173,7 @@
             "import hashlib",
             "import stat",
             "from collections import OrderedDict",
-            "METADATA={'Releases': OrderedDict([('1.27.2', '2018-09-12T06:51:07+00:00'), ('1.27.1', '2018-09-06T06:33:18+00:00'), ('1.27.0', '2018-09-03T08:54:54+00:00'), ('1.26.1', '2018-08-16T18:11:25+00:00'), ('1.26.0', '2018-08-13T16:06:21+00:00'), ('1.25.1', '2018-07-11T13:48:42+00:00'), ('1.25.0', '2018-07-04T13:51:36+00:00'), ('1.24.1', '2018-06-13T17:23:34+00:00'), ('1.24.0', '2018-06-06T17:17:59+00:00'), ('1.23.1', '2018-05-10T15:43:30+00:00'), ('1.23.0', '2018-05-03T15:11:04+00:00'), ('1.22.2', '2018-04-12T16:21:42+00:00'), ('1.22.1', '2018-04-06T00:06:35+00:00'), ('1.22.0', '2018-04-04T12:46:43+00:00'), ('1.21.1', '2018-03-14T14:29:41+00:00'), ('1.21.0', '2018-03-07T08:10:01+00:00'), ('1.20.1', '2018-02-13T15:06:40+00:00'), ('1.20.0', '2018-02-07T16:53:36+00:00'), ('1.19.3', '2018-01-25T10:13:13+00:00'), ('1.19.2', '2018-01-10T15:39:39+00:00'), ('1.19.1', '2017-12-19T08:39:31+00:00'), ('1.19.0', '2017-12-13T11:21:16+00:00'), ('1.18.1', '2017-11-16T18:06:34+00:00'), ('1.18.0', '2017-11-08T05:52:12+00:00'), ('1.17.2', '2017-10-16T13:32:14+00:00'), ('1.17.1', '2017-10-10T13:58:12+00:00'), ('1.17.0', '2017-10-04T21:46:22+00:00'), ('1.16.1', '2017-09-14T16:04:43+00:00'), ('1.16.0', '2017-09-05T20:35:52+00:00'), ('1.15.1', '2017-08-16T17:04:20+00:00'), ('1.15.0', '2017-08-09T18:17:39+00:00'), ('1.14.2', '2017-07-19T23:09:45+00:00'), ('1.14.1', '2017-07-13T18:53:01+00:00'), ('1.14.0', '2017-07-06T20:04:09+00:00'), ('1.13.1', '2017-06-14T18:04:00+00:00'), ('1.13.0', '2017-06-07T22:36:25+00:00'), ('1.12.2', '2017-05-10T13:06:48+00:00'), ('1.12.1', '2017-05-04T21:11:31+00:00'), ('1.12.0', '2017-05-04T14:36:06+00:00'), ('1.11.2', '2017-04-13T07:50:27+00:00'), ('1.11.1', '2017-04-06T13:42:12+00:00'), ('1.11.0', '2017-04-05T20:37:12+00:00'), ('1.10.2', '2017-03-08T10:34:22+00:00'), ('1.10.1', '2017-03-02T00:20:46+00:00'), ('1.10.0', '2017-03-01T01:19:30+00:00'), ('1.9.1', '2017-02-08T23:18:43+00:00'), ('1.9.0', '2017-02-01T11:26:20+00:00'), ('1.8.1', '2016-12-19T14:36:24+00:00'), ('1.8.0', '2016-12-13T14:19:32+00:00'), ('1.7.2', '2016-11-21T21:54:46+00:00'), ('1.7.1', '2016-11-03T13:39:13+00:00'), ('1.6.1', '2016-10-13T15:20:53+00:00'), ('1.6.0', '2016-10-10T18:20:20+00:00'), ('1.5.3', '2016-09-22T08:38:05+00:00'), ('1.5.2', '2016-09-12T12:59:50+00:00'), ('1.5.1', '2016-09-08T21:21:57+00:00'), ('1.5.0', '2016-09-08T08:47:15+00:00'), ('1.4.0', '2016-08-03T16:08:16+00:00'), ('1.3.1', '2016-07-12T13:27:02+00:00'), ('1.3.0', '2016-07-06T13:38:08+00:00'), ('1.2.1', '2016-06-14T12:51:34+00:00'), ('1.2.0', '2016-06-01T10:09:28+00:00'), ('1.1.1', '2016-05-13T13:12:29+00:00'), ('1.1.0', '2016-05-09T12:33:53+00:00'), ('1.0.0', '2016-04-13T08:36:36+00:00')]), 'Extensions': {'ms-vscode.node-debug': {'id': 'b6ded8fb-a0a0-4c1c-acbd-ab2a3bc995a6', 'publisherId': {'publisherId': '5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee', 'publisherName': 'ms-vscode', 'displayName': 'Microsoft', 'flags': 'verified'}, 'publisherDisplayName': 'Microsoft'}, 'ms-vscode.node-debug2': {'id': '36d19e17-7569-4841-a001-947eb18602b2', 'publisherId': {'publisherId': '5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee', 'publisherName': 'ms-vscode', 'displayName': 'Microsoft', 'flags': 'verified'}, 'publisherDisplayName': 'Microsoft'}}}",
+            "METADATA={'Releases': OrderedDict([('1.28.0', '2018-10-03T12:24:13+00:00'), ('1.27.2', '2018-09-12T06:51:07+00:00'), ('1.27.1', '2018-09-06T06:33:18+00:00'), ('1.27.0', '2018-09-03T08:54:54+00:00'), ('1.26.1', '2018-08-16T18:11:25+00:00'), ('1.26.0', '2018-08-13T16:06:21+00:00'), ('1.25.1', '2018-07-11T13:48:42+00:00'), ('1.25.0', '2018-07-04T13:51:36+00:00'), ('1.24.1', '2018-06-13T17:23:34+00:00'), ('1.24.0', '2018-06-06T17:17:59+00:00'), ('1.23.1', '2018-05-10T15:43:30+00:00'), ('1.23.0', '2018-05-03T15:11:04+00:00'), ('1.22.2', '2018-04-12T16:21:42+00:00'), ('1.22.1', '2018-04-06T00:06:35+00:00'), ('1.22.0', '2018-04-04T12:46:43+00:00'), ('1.21.1', '2018-03-14T14:29:41+00:00'), ('1.21.0', '2018-03-07T08:10:01+00:00'), ('1.20.1', '2018-02-13T15:06:40+00:00'), ('1.20.0', '2018-02-07T16:53:36+00:00'), ('1.19.3', '2018-01-25T10:13:13+00:00'), ('1.19.2', '2018-01-10T15:39:39+00:00'), ('1.19.1', '2017-12-19T08:39:31+00:00'), ('1.19.0', '2017-12-13T11:21:16+00:00'), ('1.18.1', '2017-11-16T18:06:34+00:00'), ('1.18.0', '2017-11-08T05:52:12+00:00'), ('1.17.2', '2017-10-16T13:32:14+00:00'), ('1.17.1', '2017-10-10T13:58:12+00:00'), ('1.17.0', '2017-10-04T21:46:22+00:00'), ('1.16.1', '2017-09-14T16:04:43+00:00'), ('1.16.0', '2017-09-05T20:35:52+00:00'), ('1.15.1', '2017-08-16T17:04:20+00:00'), ('1.15.0', '2017-08-09T18:17:39+00:00'), ('1.14.2', '2017-07-19T23:09:45+00:00'), ('1.14.1', '2017-07-13T18:53:01+00:00'), ('1.14.0', '2017-07-06T20:04:09+00:00'), ('1.13.1', '2017-06-14T18:04:00+00:00'), ('1.13.0', '2017-06-07T22:36:25+00:00'), ('1.12.2', '2017-05-10T13:06:48+00:00'), ('1.12.1', '2017-05-04T21:11:31+00:00'), ('1.12.0', '2017-05-04T14:36:06+00:00'), ('1.11.2', '2017-04-13T07:50:27+00:00'), ('1.11.1', '2017-04-06T13:42:12+00:00'), ('1.11.0', '2017-04-05T20:37:12+00:00'), ('1.10.2', '2017-03-08T10:34:22+00:00'), ('1.10.1', '2017-03-02T00:20:46+00:00'), ('1.10.0', '2017-03-01T01:19:30+00:00'), ('1.9.1', '2017-02-08T23:18:43+00:00'), ('1.9.0', '2017-02-01T11:26:20+00:00'), ('1.8.1', '2016-12-19T14:36:24+00:00'), ('1.8.0', '2016-12-13T14:19:32+00:00'), ('1.7.2', '2016-11-21T21:54:46+00:00'), ('1.7.1', '2016-11-03T13:39:13+00:00'), ('1.6.1', '2016-10-13T15:20:53+00:00'), ('1.6.0', '2016-10-10T18:20:20+00:00'), ('1.5.3', '2016-09-22T08:38:05+00:00'), ('1.5.2', '2016-09-12T12:59:50+00:00'), ('1.5.1', '2016-09-08T21:21:57+00:00'), ('1.5.0', '2016-09-08T08:47:15+00:00'), ('1.4.0', '2016-08-03T16:08:16+00:00'), ('1.3.1', '2016-07-12T13:27:02+00:00'), ('1.3.0', '2016-07-06T13:38:08+00:00'), ('1.2.1', '2016-06-14T12:51:34+00:00'), ('1.2.0', '2016-06-01T10:09:28+00:00'), ('1.1.1', '2016-05-13T13:12:29+00:00'), ('1.1.0', '2016-05-09T12:33:53+00:00'), ('1.0.0', '2016-04-13T08:36:36+00:00')]), 'Extensions': {'ms-vscode.node-debug': {'id': 'b6ded8fb-a0a0-4c1c-acbd-ab2a3bc995a6', 'publisherId': {'publisherId': '5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee', 'publisherName': 'ms-vscode', 'displayName': 'Microsoft', 'flags': 'verified'}, 'publisherDisplayName': 'Microsoft'}, 'ms-vscode.node-debug2': {'id': '36d19e17-7569-4841-a001-947eb18602b2', 'publisherId': {'publisherId': '5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee', 'publisherName': 'ms-vscode', 'displayName': 'Microsoft', 'flags': 'verified'}, 'publisherDisplayName': 'Microsoft'}}}",
             "def build():",
             "    product = json.loads(Path('vscode/product.json').read_text())",
             "    product['nameLong'] = 'Visual Studio Code - OSS'",
@@ -345,15 +345,15 @@
         },
         {
           "type": "file",
-          "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/node-debug/1.27.6/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-          "sha512": "3303203e325fdfead06a3bc6a0b91edb0383943065e0defe11db19070aeebf6a4976351c5e6665f82c5df69c14882f2fe78fdd328574a545c0067821ce1c4079",
+          "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/node-debug/1.28.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+          "sha512": "9ace609a68e95e841b95750d03a292d240a43593b9605a157b21bfdd80a1cfbac27c3dafd4a6ff983f607557f96f7b8c8fa5d50f4bab387d841caa848456ad59",
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.node-debug.vsix"
         },
         {
           "type": "file",
-          "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/node-debug2/1.27.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-          "sha512": "5e6ee99ee6ecf06810245e27fe0ec8cab4838a63053dba9807e8d2b6302fedc3670f572bdef4e695d1a2e161cd0d7bc1c1f2e0c7619fa66ff9c8d32d7fe8de25",
+          "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/node-debug2/1.28.3/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+          "sha512": "a6bc7addfc0f95452fe15c40d689ecede09d3f63974ed34cbd23d7e8ae2e27eb62e20609ec2fe89d2528e96961523a3b7c690fda29d96524dc09012824cbb99d",
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.node-debug2.vsix"
         },
@@ -1192,17 +1192,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/applicationinsights/-/applicationinsights-0.18.0.tgz",
-          "sha1": "162ebb48a383408bc4de44db32b417307f45bbc1",
+          "url": "https://registry.yarnpkg.com/applicationinsights/-/applicationinsights-1.0.5.tgz",
+          "sha1": "a60d1ffdf7aa1ac77c637c0ef7fcf2a9671cc869",
           "dest": "yarn-mirror",
-          "dest-filename": "applicationinsights-0.18.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/applicationinsights/-/applicationinsights-1.0.1.tgz",
-          "sha1": "53446b830fe8d5d619eee2a278b31d3d25030927",
-          "dest": "yarn-mirror",
-          "dest-filename": "applicationinsights-1.0.1.tgz"
+          "dest-filename": "applicationinsights-1.0.5.tgz"
         },
         {
           "type": "file",
@@ -4160,10 +4153,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/electron-mksnapshot/-/electron-mksnapshot-1.7.1.tgz",
-          "sha1": "926be7c20cfe0593249df979b0a12a2a0c5b27f1",
+          "url": "https://registry.yarnpkg.com/electron-mksnapshot/-/electron-mksnapshot-2.0.0.tgz",
+          "sha1": "c7a9e95b86693fdfe60ea7b65df6c237009e4be8",
           "dest": "yarn-mirror",
-          "dest-filename": "electron-mksnapshot-1.7.1.tgz"
+          "dest-filename": "electron-mksnapshot-2.0.0.tgz"
         },
         {
           "type": "file",
@@ -4174,10 +4167,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/electron/-/electron-2.0.6.tgz",
-          "sha1": "8e5c1bd2ebc08fa7a6ee906de3753c1ece9d7300",
+          "url": "https://registry.yarnpkg.com/electron/-/electron-2.0.9.tgz",
+          "sha1": "dfc863d653fa3a2dd4fea0c63303df9c0e33c602",
           "dest": "yarn-mirror",
-          "dest-filename": "electron-2.0.6.tgz"
+          "dest-filename": "electron-2.0.9.tgz"
         },
         {
           "type": "file",
@@ -6218,13 +6211,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-2.0.0.tgz",
-          "sha1": "46482a2f0523a4d6082551709f469cb3e4a85ff4",
-          "dest": "yarn-mirror",
-          "dest-filename": "http-proxy-agent-2.0.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-2.1.0.tgz",
           "sha1": "e4821beef5b2142a2026bd73926fe537631c5405",
           "dest": "yarn-mirror",
@@ -6250,13 +6236,6 @@
           "sha1": "ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73",
           "dest": "yarn-mirror",
           "dest-filename": "https-browserify-1.0.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.1.1.tgz",
-          "sha1": "a7ce4382a1ba8266ee848578778122d491260fd9",
-          "dest": "yarn-mirror",
-          "dest-filename": "https-proxy-agent-2.1.1.tgz"
         },
         {
           "type": "file",
@@ -7202,13 +7181,6 @@
           "sha1": "ddcc864ae708e60a7a6dd36daea00172fa8d9272",
           "dest": "yarn-mirror",
           "dest-filename": "jsonc-parser-1.0.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-1.0.1.tgz",
-          "sha1": "7f8f296414e6e7c4a33b9e4914fc8c47e4421675",
-          "dest": "yarn-mirror",
-          "dest-filename": "jsonc-parser-1.0.1.tgz"
         },
         {
           "type": "file",
@@ -8654,13 +8626,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/nan/-/nan-2.4.0.tgz",
-          "sha1": "fb3c59d45fe4effe215f0b890f8adf6eb32d2232",
-          "dest": "yarn-mirror",
-          "dest-filename": "nan-2.4.0.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz",
           "sha1": "e4ff34e6c95fdfb5aecc08de6596f43605a7db45",
           "dest": "yarn-mirror",
@@ -8717,10 +8682,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/native-watchdog/-/native-watchdog-0.3.0.tgz",
-          "sha1": "c7d952ca05e9877f1ff7a3ff80991610b6104bbb",
+          "url": "https://registry.yarnpkg.com/native-watchdog/-/native-watchdog-1.0.0.tgz",
+          "sha1": "97344e83cd6815a8c8e6c44a52e7be05832e65ca",
           "dest": "yarn-mirror",
-          "dest-filename": "native-watchdog-0.3.0.tgz"
+          "dest-filename": "native-watchdog-1.0.0.tgz"
         },
         {
           "type": "file",
@@ -8822,10 +8787,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/node-pty/-/node-pty-0.7.6.tgz",
-          "sha1": "bff6148c9c5836ca7e73c7aaaec067dcbdac2f7b",
+          "url": "https://registry.yarnpkg.com/node-pty/-/node-pty-0.7.8.tgz",
+          "sha1": "9ed2f01f84263acc96982876e734aa75490bf3d8",
           "dest": "yarn-mirror",
-          "dest-filename": "node-pty-0.7.6.tgz"
+          "dest-filename": "node-pty-0.7.8.tgz"
         },
         {
           "type": "file",
@@ -9109,10 +9074,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/oniguruma/-/oniguruma-7.0.0.tgz",
-          "sha1": "cf258a8b1a2ec1d0d68964d6336df264008ebf4c",
+          "url": "https://registry.yarnpkg.com/oniguruma/-/oniguruma-7.0.2.tgz",
+          "sha1": "a5c922cf7066da1dbcc60f6385a90437a83f8d0b",
           "dest": "yarn-mirror",
-          "dest-filename": "oniguruma-7.0.0.tgz"
+          "dest-filename": "oniguruma-7.0.2.tgz"
         },
         {
           "type": "file",
@@ -10320,6 +10285,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/rcedit/-/rcedit-1.1.0.tgz",
+          "sha1": "ae21c28d4efdd78e95fcab7309a5dd084920b16a",
+          "dest": "yarn-mirror",
+          "dest-filename": "rcedit-1.1.0.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/read-chunk/-/read-chunk-2.1.0.tgz",
           "sha1": "6a04c0928005ed9d42e1a6ac5600e19cbc7ff655",
           "dest": "yarn-mirror",
@@ -10614,17 +10586,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/request-light/-/request-light-0.2.2.tgz",
-          "sha1": "53e48af32ad1514e45221ea5ece5ce782720f712",
+          "url": "https://registry.yarnpkg.com/request-light/-/request-light-0.2.4.tgz",
+          "sha1": "3cea29c126682e6bcadf7915353322eeba01a755",
           "dest": "yarn-mirror",
-          "dest-filename": "request-light-0.2.2.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/request-light/-/request-light-0.2.3.tgz",
-          "sha1": "a18635ec6dd92f8705c019c42ef645f684d94f7e",
-          "dest": "yarn-mirror",
-          "dest-filename": "request-light-0.2.3.tgz"
+          "dest-filename": "request-light-0.2.4.tgz"
         },
         {
           "type": "file",
@@ -11412,10 +11377,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/spdlog/-/spdlog-0.7.1.tgz",
-          "sha1": "960b8cdced12e8c482d1df9fa65220789f276979",
+          "url": "https://registry.yarnpkg.com/spdlog/-/spdlog-0.7.2.tgz",
+          "sha1": "9298753d7694b9ee9bbfd7e01ea1e4c6ace1e64d",
           "dest": "yarn-mirror",
-          "dest-filename": "spdlog-0.7.1.tgz"
+          "dest-filename": "spdlog-0.7.2.tgz"
         },
         {
           "type": "file",
@@ -12441,6 +12406,13 @@
         },
         {
           "type": "file",
+          "url": "https://registry.yarnpkg.com/typescript/-/typescript-3.1.1.tgz",
+          "sha1": "3362ba9dd1e482ebb2355b02dfe8bcd19a2c7c96",
+          "dest": "yarn-mirror",
+          "dest-filename": "typescript-3.1.1.tgz"
+        },
+        {
+          "type": "file",
           "url": "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.3.tgz",
           "sha1": "7ed50d5e0f9a9fb0a573379259f2a77458d50192",
           "dest": "yarn-mirror",
@@ -12987,10 +12959,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vsce/-/vsce-1.33.2.tgz",
-          "sha1": "3645f69aaf984e22f74ea49d35f38dd18d66ff5f",
+          "url": "https://registry.yarnpkg.com/vsce/-/vsce-1.48.0.tgz",
+          "sha1": "31c1a4c6909c3b8bdc48b3d32cc8c8e94c7113a2",
           "dest": "yarn-mirror",
-          "dest-filename": "vsce-1.33.2.tgz"
+          "dest-filename": "vsce-1.48.0.tgz"
         },
         {
           "type": "file",
@@ -13008,38 +12980,31 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-css-languageservice/-/vscode-css-languageservice-3.0.10.tgz",
-          "sha1": "71ece7e0d19227e9f21bcd5d5d928f817a7d701e",
+          "url": "https://registry.yarnpkg.com/vscode-css-languageservice/-/vscode-css-languageservice-3.0.12-next.1.tgz",
+          "sha1": "1bc76d04f68b6d3d9b25cf01592ba46cea91c26c",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-css-languageservice-3.0.10.tgz"
+          "dest-filename": "vscode-css-languageservice-3.0.12-next.1.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-css-languageservice/-/vscode-css-languageservice-3.0.11-next.2.tgz",
-          "sha1": "7aa41a895abbcb3c0884d9612ae546c39de8b984",
+          "url": "https://registry.yarnpkg.com/vscode-debugprotocol/-/vscode-debugprotocol-1.32.0.tgz",
+          "sha1": "cca9eccb3f73ded5e525e01621a72ca2bb577dc3",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-css-languageservice-3.0.11-next.2.tgz"
+          "dest-filename": "vscode-debugprotocol-1.32.0.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-debugprotocol/-/vscode-debugprotocol-1.31.0.tgz",
-          "sha1": "8467eeabeea65f52da5ac03b03c18e10e8b95eb4",
+          "url": "https://registry.yarnpkg.com/vscode-emmet-helper/-/vscode-emmet-helper-1.2.12.tgz",
+          "sha1": "6a75d5a74af735db179c708a9a91feb191f3edb5",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-debugprotocol-1.31.0.tgz"
+          "dest-filename": "vscode-emmet-helper-1.2.12.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-emmet-helper/-/vscode-emmet-helper-1.2.11.tgz",
-          "sha1": "4de78223666bf917eb6dc4b225b6c40f6901950c",
+          "url": "https://registry.yarnpkg.com/vscode-extension-telemetry/-/vscode-extension-telemetry-0.0.22.tgz",
+          "sha1": "ec7d6d85afb5b198aab09e80cba9e16b6d588e56",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-emmet-helper-1.2.11.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-extension-telemetry/-/vscode-extension-telemetry-0.0.18.tgz",
-          "sha1": "602ba20d8c71453aa34533a291e7638f6e5c0327",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-extension-telemetry-0.0.18.tgz"
+          "dest-filename": "vscode-extension-telemetry-0.0.22.tgz"
         },
         {
           "type": "file",
@@ -13050,80 +13015,45 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-2.1.7.tgz",
-          "sha1": "0177c01f0946ea42aae1068bc0b7ef09e3959daa",
+          "url": "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-2.1.9.tgz",
+          "sha1": "906f2f894b023d3a464739ebc5b4eb695ef1cf58",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-html-languageservice-2.1.7.tgz"
+          "dest-filename": "vscode-html-languageservice-2.1.9.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-json-languageservice/-/vscode-json-languageservice-3.1.6.tgz",
-          "sha1": "272e21eb9abcefe6c1ed38be141f0a76d5ddf0cd",
+          "url": "https://registry.yarnpkg.com/vscode-json-languageservice/-/vscode-json-languageservice-3.2.0.tgz",
+          "sha1": "fe796c2ddbda966d87905442f9636f139e00f341",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-json-languageservice-3.1.6.tgz"
+          "dest-filename": "vscode-json-languageservice-3.2.0.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-3.6.2.tgz",
-          "sha1": "3b5eef691159a15556ecc500e9a8a0dd143470c8",
+          "url": "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-4.0.0.tgz",
+          "sha1": "a7bf74ef3254d0a0c272fab15c82128e378b3be9",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-jsonrpc-3.6.2.tgz"
+          "dest-filename": "vscode-jsonrpc-4.0.0.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-jsonrpc/-/vscode-jsonrpc-3.7.0-next.1.tgz",
-          "sha1": "e7521cd8135006ba8bf57ebcedbf5b03ce17b23e",
+          "url": "https://registry.yarnpkg.com/vscode-languageclient/-/vscode-languageclient-5.1.0.tgz",
+          "sha1": "650ab0dc9fd0daaade058a8471aaff5bc3f9580e",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-jsonrpc-3.7.0-next.1.tgz"
+          "dest-filename": "vscode-languageclient-5.1.0.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageclient/-/vscode-languageclient-5.1.0-next.9.tgz",
-          "sha1": "fe56c523637c118f7b262952b889f760223ab75a",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.13.0.tgz",
+          "sha1": "710d8e42119bb3affb1416e1e104bd6b4d503595",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageclient-5.1.0-next.9.tgz"
+          "dest-filename": "vscode-languageserver-protocol-3.13.0.tgz"
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.12.0.tgz",
-          "sha1": "5b23501292abad88f0463b01e83ff98e64a37652",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.13.0.tgz",
+          "sha1": "b704b024cef059f7b326611c99b9c8753c0a18b4",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-protocol-3.12.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.13.0-next.1.tgz",
-          "sha1": "24d15aa5769e4b035f6ce38342685959e1eb454e",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-protocol-3.13.0-next.1.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.13.0-next.2.tgz",
-          "sha1": "7083e50d0d2096ba52de448082445b9c39081fdb",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-protocol-3.13.0-next.2.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.10.0.tgz",
-          "sha1": "944e5308f3b36a3f372c766f1a344e903ec9c389",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-types-3.10.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.12.0.tgz",
-          "sha1": "f96051381b6a050b7175b37d6cb5d2f2eb64b944",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-types-3.12.0.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.13.0-next.1.tgz",
-          "sha1": "dd91b78b13a2a6c7131e8291e3db3183cf566280",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-types-3.13.0-next.1.tgz"
+          "dest-filename": "vscode-languageserver-types-3.13.0.tgz"
         },
         {
           "type": "file",
@@ -13134,17 +13064,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver/-/vscode-languageserver-5.1.0-next.3.tgz",
-          "sha1": "352ce1f0f8bdfc47c1236277ebe865e25b087ccd",
+          "url": "https://registry.yarnpkg.com/vscode-languageserver/-/vscode-languageserver-5.1.0.tgz",
+          "sha1": "012a28f154cc7a848c443d217894942e4c3eeb39",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-5.1.0-next.3.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-languageserver/-/vscode-languageserver-5.1.0-next.5.tgz",
-          "sha1": "d343278b4de448a31f9db146b98638898c8d4f55",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-languageserver-5.1.0-next.5.tgz"
+          "dest-filename": "vscode-languageserver-5.1.0.tgz"
         },
         {
           "type": "file",
@@ -13162,24 +13085,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-2.0.2.tgz",
-          "sha1": "808522380844b8ad153499af5c3b03921aea02da",
+          "url": "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-4.0.0.tgz",
+          "sha1": "4001c8a6caba5cedb23a9c5ce1090395c0e44002",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-nls-2.0.2.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-3.2.4.tgz",
-          "sha1": "2166b4183c8aea884d20727f5449e62be69fd398",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-nls-3.2.4.tgz"
-        },
-        {
-          "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-3.2.5.tgz",
-          "sha1": "25520c1955108036dec607c85e00a522f247f1a4",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-nls-3.2.5.tgz"
+          "dest-filename": "vscode-nls-4.0.0.tgz"
         },
         {
           "type": "file",
@@ -13204,13 +13113,6 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.5.tgz",
-          "sha1": "3b899a8ef71c37f3054d79bdbdda31c7bf36f20d",
-          "dest": "yarn-mirror",
-          "dest-filename": "vscode-uri-1.0.5.tgz"
-        },
-        {
-          "type": "file",
           "url": "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.6.tgz",
           "sha1": "6b8f141b0bbc44ad7b07e94f82f168ac7608ad4d",
           "dest": "yarn-mirror",
@@ -13218,10 +13120,10 @@
         },
         {
           "type": "file",
-          "url": "https://registry.yarnpkg.com/vscode-xterm/-/vscode-xterm-3.7.0-beta5.tgz",
-          "sha1": "04c7564d1cc8d73b268f04046b3da050c6e59be7",
+          "url": "https://registry.yarnpkg.com/vscode-xterm/-/vscode-xterm-3.8.0-beta4.tgz",
+          "sha1": "669b8aab0990f42c4aa368189baa6fdecb277488",
           "dest": "yarn-mirror",
-          "dest-filename": "vscode-xterm-3.7.0-beta5.tgz"
+          "dest-filename": "vscode-xterm-3.8.0-beta4.tgz"
         },
         {
           "type": "file",
@@ -13729,135 +13631,135 @@
         },
         {
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.9.4/yarn-1.9.4.js",
-          "sha512": "ec76b7b5218f7e1fe8a1528440d90672f173b557a2f22a359d40afc192c10221f95aabd9970d1ab7b74696535f848c5cede1f508d7f7ae19bc6afbd4df54cb2f",
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.10.1/yarn-1.10.1.js",
+          "sha512": "906c5e5f824efbcd72e2a081d8f3763790fb74d0d1d8c6cd477ec2816200cd76f5fba6ed7f9fb6e3e95a14e2533cec573962f13f481f84bba587f21d0e1bd0bf",
           "dest": "bin",
           "dest-filename": "yarn.js"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v1.7.0/mksnapshot-v1.7.0-linux-x64.zip",
-          "sha256": "b704ae94e3f7ac0aed48e7996897a020f710b2f36f7ade3a23ed3e5e8ea77a68",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.0/mksnapshot-v2.0.0-linux-x64.zip",
+          "sha256": "aa72aa3cabaf0fd27c7ef5c883a346ae0d42987cdb849c58a6e4998d33ec7d7b",
           "only-arches": [
             "x86_64"
           ],
           "dest": ".electron",
-          "dest-filename": "mksnapshot-v1.7.0-linux-x64.zip"
+          "dest-filename": "mksnapshot-v2.0.0-linux-x64.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v1.7.0/mksnapshot-v1.7.0-linux-ia32.zip",
-          "sha256": "182cf7c6502f134ade59f1ad6a9875ce924e34d234c572b8b59f6fb7eef66da0",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.0/mksnapshot-v2.0.0-linux-ia32.zip",
+          "sha256": "315809490214685db7678cbabcad754e827146c1c37fd20cef76834f1f954c54",
           "only-arches": [
             "i386"
           ],
           "dest": ".electron",
-          "dest-filename": "mksnapshot-v1.7.0-linux-ia32.zip"
+          "dest-filename": "mksnapshot-v2.0.0-linux-ia32.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v1.7.0/mksnapshot-v1.7.0-linux-arm.zip",
-          "sha256": "d6d3767aab758fe80295eb2c4ac5be841fe59cf7fe47f520d1aadd09af227290",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.0/mksnapshot-v2.0.0-linux-arm.zip",
+          "sha256": "df25a6f2b175eec0d6a5c73dc62d9b1c9e59b848bc0806d605842585205d8204",
           "only-arches": [
             "arm"
           ],
           "dest": ".electron",
-          "dest-filename": "mksnapshot-v1.7.0-linux-arm.zip"
+          "dest-filename": "mksnapshot-v2.0.0-linux-arm.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.6/electron-v2.0.6-linux-x64.zip",
-          "sha256": "71f96c5f06494bd8812763aaf15654e0ab61ba0e4cbe0ee9a6041c5187a5607c",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-x64.zip",
+          "sha256": "ce34b4f3710bf880b680ac587b6a857f7821680659eb0526948ab09c2285aefd",
           "only-arches": [
             "x86_64"
           ],
           "dest": ".electron",
-          "dest-filename": "electron-v2.0.6-linux-x64.zip"
+          "dest-filename": "electron-v2.0.9-linux-x64.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.6/electron-v2.0.6-linux-ia32.zip",
-          "sha256": "87b58b66f25ef71718da789ac5e2979fb933ba3fa9c0d7408b2d3606ac3bc52b",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-ia32.zip",
+          "sha256": "378e5c60d339d6359f7f99fbbf6783f51635f15dbeabc9c64537c9de649929ef",
           "only-arches": [
             "i386"
           ],
           "dest": ".electron",
-          "dest-filename": "electron-v2.0.6-linux-ia32.zip"
+          "dest-filename": "electron-v2.0.9-linux-ia32.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.6/electron-v2.0.6-linux-arm.zip",
-          "sha256": "3724f89f9a9b70a3e0bf201ae8ef8848cbe2fcf9ee5e1b583480fba6c33629a6",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-arm.zip",
+          "sha256": "70bcf944a7742a70438166dcd1208ae6de3bb76d15c139a586bfccfd93c3f5d4",
           "only-arches": [
             "arm"
           ],
           "dest": ".electron",
-          "dest-filename": "electron-v2.0.6-linux-arm.zip"
+          "dest-filename": "electron-v2.0.9-linux-arm.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.7/electron-v2.0.7-linux-x64.zip",
-          "sha256": "617f547285452940cf6be8af22075640989261f3f6fae8ab327426f0434b446c",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-x64.zip",
+          "sha256": "ce34b4f3710bf880b680ac587b6a857f7821680659eb0526948ab09c2285aefd",
           "only-arches": [
             "x86_64"
           ],
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v2.0.7-linux-x64.zip"
+          "dest-filename": "electron-v2.0.9-linux-x64.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.7/electron-v2.0.7-linux-ia32.zip",
-          "sha256": "49a5537084c19ff29ec7caeb54739b4be9ee93b291c5663fdcc36bc1cd26cbdf",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-ia32.zip",
+          "sha256": "378e5c60d339d6359f7f99fbbf6783f51635f15dbeabc9c64537c9de649929ef",
           "only-arches": [
             "i386"
           ],
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v2.0.7-linux-ia32.zip"
+          "dest-filename": "electron-v2.0.9-linux-ia32.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.7/electron-v2.0.7-linux-arm.zip",
-          "sha256": "991631f72d82cb5e20ebbbd9c9ca5cde1334f403a37c7c6b5223ec6360a4ed71",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-arm.zip",
+          "sha256": "70bcf944a7742a70438166dcd1208ae6de3bb76d15c139a586bfccfd93c3f5d4",
           "only-arches": [
             "arm"
           ],
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v2.0.7-linux-arm.zip"
+          "dest-filename": "electron-v2.0.9-linux-arm.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.7/ffmpeg-v2.0.7-linux-x64.zip",
-          "sha256": "7e8d2116cfe6835ed4e07d05a9af43fd08164fd9b987abed0369d9e11af36fca",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/ffmpeg-v2.0.9-linux-x64.zip",
+          "sha256": "cd16a824bcdb317ef15450af19e29387ed61ead5a7617dd035cd2cb2d51e2e91",
           "only-arches": [
             "x86_64"
           ],
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v2.0.7-linux-x64.zip"
+          "dest-filename": "ffmpeg-v2.0.9-linux-x64.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.7/ffmpeg-v2.0.7-linux-ia32.zip",
-          "sha256": "3f748781bc655d24ff767c4d49e9daaaf8701e4cb63888dbb61d132597c97d4b",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/ffmpeg-v2.0.9-linux-ia32.zip",
+          "sha256": "a6cf70742747f3ae080bfc3e22d91bd1957895dc1bd9549f667411df4ac7c8e4",
           "only-arches": [
             "i386"
           ],
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v2.0.7-linux-ia32.zip"
+          "dest-filename": "ffmpeg-v2.0.9-linux-ia32.zip"
         },
         {
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v2.0.7/ffmpeg-v2.0.7-linux-arm.zip",
-          "sha256": "774d3f5daa6123d6c975e53a9f08a9691a301e51ff0935ce6f49e8af5d1642f4",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/ffmpeg-v2.0.9-linux-arm.zip",
+          "sha256": "1ecda6922df622ed3f1b14bc6326cc950a5b2cdabe25a1abdf801adc68e075c7",
           "only-arches": [
             "arm"
           ],
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v2.0.7-linux-arm.zip"
+          "dest-filename": "ffmpeg-v2.0.9-linux-arm.zip"
         },
         {
           "type": "file",
-          "url": "https://atom.io/download/electron/v2.0.7/iojs-v2.0.7.tar.gz",
-          "sha512": "6ce43a3bd4825d419c20e51f1bc2cbebd119d375f97088a5afc9e8dae7ab6f4c07e90e0a2c9cb9a348c11bfe0ccc0821714ebbe2ee5e752c0d5fd5ce1fc184d2",
+          "url": "https://atom.io/download/electron/v2.0.9/iojs-v2.0.9.tar.gz",
+          "sha512": "4c455557a95c2377cb4ab1c616f6ea4f43a5c7e6a864eab19b6de89110fe56462f590a3081764f957959ab8c0ef71ff65876aad96c8ff1d30e8fb7e89d0b2730",
           "dest": "misc",
           "dest-filename": "iojs.tar.gz"
         },
@@ -13955,9 +13857,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "jedi-0.13.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/50/a2/b01263ac7192cda0207e5353176091e563183691f399b0b5d30f5b4e0549/jedi-0.13.0-py2.py3-none-any.whl",
-          "sha256": "0ad328f5d9d0a6c8b22a0ca429c7b0cea1974e2b2d5a00e0bc45074dcd44d255"
+          "dest-filename": "jedi-0.13.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/7a/1a/9bd24a185873b998611c2d8d4fb15cd5e8a879ead36355df7ee53e9111bf/jedi-0.13.1-py2.py3-none-any.whl",
+          "sha256": "0191c447165f798e6a730285f2eee783fff81b0d3df261945ecb80983b5c3ca7"
         },
         {
           "type": "file",
@@ -13991,9 +13893,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "pip-18.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/5f/25/e52d3f31441505a5f3af41213346e5b6c221c9e086a166f3703d2ddaf940/pip-18.0-py2.py3-none-any.whl",
-          "sha256": "070e4bf493c7c2c9f6a08dd797dd3c066d64074c38e9e8a0fb4e6541f266d96c"
+          "dest-filename": "pip-18.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/c2/d7/90f34cb0d83a6c5631cf71dfe64cc1054598c843a92b400e55675cc2ac37/pip-18.1-py2.py3-none-any.whl",
+          "sha256": "7909d0a0932e88ea53a7014dfd14522ffef91a464daaaf5c573343852ef98550"
         },
         {
           "type": "file",
@@ -14136,13 +14038,13 @@
         {
           "type": "git",
           "url": "https://github.com/stamblerre/gocode.git",
-          "commit": "568f8ec1b910bd76e141bcd95bd895fde9521a15",
+          "commit": "22fe690fecdcee81680726e0701edb025cf84fe0",
           "dest": "src/github.com/stamblerre/gocode"
         },
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "b71db7f417f13fa74a2565bc57b2387fdbf2c611",
+          "commit": "a2b3f7f249e90c6fe7ca632df1cbbb6fd73c0cfa",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14160,7 +14062,7 @@
         {
           "type": "git",
           "url": "https://github.com/pkg/errors.git",
-          "commit": "c059e472caf75dbe73903f6521a20abac245b17f",
+          "commit": "2233dee583dcf88f3c8b22cb7a33f05a499800d8",
           "dest": "src/github.com/pkg/errors"
         },
         {
@@ -14202,7 +14104,7 @@
         {
           "type": "git",
           "url": "https://github.com/tylerb/gotype-live.git",
-          "commit": "f79ab408ad0a3c210ba4a8279d77f13c9dc7cbab",
+          "commit": "440f9c77a467d5837d88978ce8494248140473be",
           "dest": "src/github.com/tylerb/gotype-live"
         },
         {
@@ -14220,7 +14122,7 @@
         {
           "type": "git",
           "url": "https://github.com/zmb3/gogetdoc.git",
-          "commit": "dcba5406a6fc3fca2d0ca4fea601e3348b5fa247",
+          "commit": "cb68f4bb0168aa4fb0711ff9ee57a98f0b878882",
           "dest": "src/github.com/zmb3/gogetdoc"
         },
         {
@@ -14274,13 +14176,13 @@
         {
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git",
-          "commit": "0c82b641236764940235a15c3d51a4623b8045a1",
+          "commit": "59c3d20303503c7f13b604238ea45aeeaaf33675",
           "dest": "src/github.com/golangci/golangci-lint"
         },
         {
           "type": "git",
           "url": "https://github.com/mgechev/revive.git",
-          "commit": "cd6459542bc7b90d2a23a158c2b47f1ed529ae18",
+          "commit": "da63d0a9655db4b84c5599db41e0d967efdf5bf3",
           "dest": "src/github.com/mgechev/revive"
         },
         {
@@ -14322,13 +14224,13 @@
         {
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git",
-          "commit": "b877569e93ac0926758e7b2823d6808bd36745c9",
+          "commit": "80b5b55336fd96290f9e43e4e93d43e1318e5e06",
           "dest": "src/github.com/sourcegraph/go-langserver"
         },
         {
           "type": "git",
           "url": "https://github.com/derekparker/delve.git",
-          "commit": "79a0e216ab2650c3460afbd87668fa38be9fffb2",
+          "commit": "ca0596724fa461204e68d456024c9173b20964e8",
           "dest": "src/github.com/derekparker/delve"
         },
         {
