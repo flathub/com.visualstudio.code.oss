@@ -13973,9 +13973,6 @@
     {
       "name": "vscode-go",
       "buildsystem": "simple",
-      "only-arches": [
-        "x86_64"
-      ],
       "build-options": {
         "append-path": "/usr/lib/sdk/golang/bin",
         "env": {
