@@ -13969,6 +13969,254 @@
           "sha256": "d4d560d479f2c21e1b5443bbd15fe7ec4b37fe7e53d335d3b9b0a7b1226fe3c6"
         }
       ]
+    },
+    {
+      "name": "vscode-go",
+      "buildsystem": "simple",
+      "only-arches": [
+        "x86_64"
+      ],
+      "build-options": {
+        "append-path": "/usr/lib/sdk/golang/bin",
+        "env": {
+          "GOROOT": "/usr/lib/sdk/golang"
+        }
+      },
+      "build-commands": [
+        "GOPATH=$PWD go install github.com/mdempsky/gocode",
+        "GOPATH=$PWD go build -o /app/local/bin/gocode-gomod github.com/stamblerre/gocode",
+        "GOPATH=$PWD go install github.com/uudashr/gopkgs/cmd/gopkgs",
+        "GOPATH=$PWD go install github.com/ramya-rao-a/go-outline",
+        "GOPATH=$PWD go install github.com/acroca/go-symbols",
+        "GOPATH=$PWD go install golang.org/x/tools/cmd/guru",
+        "GOPATH=$PWD go install golang.org/x/tools/cmd/gorename",
+        "GOPATH=$PWD go install github.com/fatih/gomodifytags",
+        "GOPATH=$PWD go install github.com/haya14busa/goplay/cmd/goplay",
+        "GOPATH=$PWD go install github.com/josharian/impl",
+        "GOPATH=$PWD go install github.com/tylerb/gotype-live",
+        "GOPATH=$PWD go install github.com/rogpeppe/godef",
+        "GOPATH=$PWD go build -o /app/local/bin/godef-gomod github.com/ianthehat/godef",
+        "GOPATH=$PWD go install github.com/zmb3/gogetdoc",
+        "GOPATH=$PWD go install golang.org/x/tools/cmd/goimports",
+        "GOPATH=$PWD go install github.com/sqs/goreturns",
+        "GOPATH=$PWD go install winterdrache.de/goformat/goformat",
+        "GOPATH=$PWD go install golang.org/x/lint/golint",
+        "GOPATH=$PWD go install github.com/cweill/gotests/...",
+        "GOPATH=$PWD go install github.com/alecthomas/gometalinter",
+        "GOPATH=$PWD go install honnef.co/go/tools/...",
+        "GOPATH=$PWD go install github.com/golangci/golangci-lint/cmd/golangci-lint",
+        "GOPATH=$PWD go install github.com/mgechev/revive",
+        "GOPATH=$PWD go install github.com/sourcegraph/go-langserver",
+        "[[ $FLATPAK_ARCH = \"x86_64\" ]] && GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv || true",
+        "GOPATH=$PWD go install github.com/davidrjenni/reftools/cmd/fillstruct",
+        "mv bin/* /app/local/bin"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mdempsky/gocode.git",
+          "commit": "0f94242ccdb9fae06fce2c81cedafee64251e018",
+          "dest": "src/github.com/mdempsky/gocode"
+        },
+        {
+          "type": "git",
+          "url": "https://go.googlesource.com/tools",
+          "commit": "a2dc47679d30b6c496245bafc6a166b46c5fe318",
+          "dest": "src/golang.org/x/tools"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/stamblerre/gocode.git",
+          "commit": "12640289f65065d652cc942ffa01a52bece1dd53",
+          "dest": "src/github.com/stamblerre/gocode"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/uudashr/gopkgs.git",
+          "commit": "84fe2e5def163139cd0279c212981bc1564d4e59",
+          "dest": "src/github.com/uudashr/gopkgs"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/karrick/godirwalk.git",
+          "commit": "2de2192f9e35ce981c152a873ed943b93b79ced4",
+          "dest": "src/github.com/karrick/godirwalk"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/pkg/errors.git",
+          "commit": "059132a15dd08d6704c67711dae0cf35ab991756",
+          "dest": "src/github.com/pkg/errors"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/ramya-rao-a/go-outline.git",
+          "commit": "9e9d089bb61a5ce4f8e0c8d8dc5b4e41b0e02a48",
+          "dest": "src/github.com/ramya-rao-a/go-outline"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/acroca/go-symbols.git",
+          "commit": "953befd75e223f514580fcb698aead0dd6ad3421",
+          "dest": "src/github.com/acroca/go-symbols"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/fatih/gomodifytags.git",
+          "commit": "141225bf62b6e5c9c0c9554a2e993e8c30aebb1d",
+          "dest": "src/github.com/fatih/gomodifytags"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/haya14busa/goplay.git",
+          "commit": "f2d63a841a096a18bc5a974563dee7706af5708e",
+          "dest": "src/github.com/haya14busa/goplay"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/skratchdot/open-golang.git",
+          "commit": "75fb7ed4208cf72d323d7d02fd1a5964a7a9073c",
+          "dest": "src/github.com/skratchdot/open-golang"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/josharian/impl.git",
+          "commit": "3d0f908298c49598b6aa84f101c69670e15d1d03",
+          "dest": "src/github.com/josharian/impl"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/tylerb/gotype-live.git",
+          "commit": "440f9c77a467d5837d88978ce8494248140473be",
+          "dest": "src/github.com/tylerb/gotype-live"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/rogpeppe/godef.git",
+          "commit": "7b4626be9fa8081987905fd4719d2f6628f9d8b5",
+          "dest": "src/github.com/rogpeppe/godef"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/ianthehat/godef.git",
+          "commit": "f2eb530fb8dbca312f4661b985ec2ae5ba5e7b3a",
+          "dest": "src/github.com/ianthehat/godef"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/zmb3/gogetdoc.git",
+          "commit": "9098cf5fc236a5e25060730544af2ba6d65cd968",
+          "dest": "src/github.com/zmb3/gogetdoc"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/sqs/goreturns.git",
+          "commit": "83e02874ec120f73d5f7dd382d62449dc8abe9c6",
+          "dest": "src/github.com/sqs/goreturns"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/mbenkmann/goformat",
+          "commit": "256ef38c4271ab773bc33d6fc759db0e34611e62",
+          "dest": "src/winterdrache.de/goformat"
+        },
+        {
+          "type": "git",
+          "url": "https://go.googlesource.com/lint",
+          "commit": "1baf3a9d7d675b3c7e974b7a00ded54b88a88379",
+          "dest": "src/golang.org/x/lint"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/cweill/gotests.git",
+          "commit": "c51312f508e7040f06d1eb174da68364155b1fc0",
+          "dest": "src/github.com/cweill/gotests"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/alecthomas/gometalinter.git",
+          "commit": "8edca99e8a88355e29f550113bcba6ecfa39ae11",
+          "dest": "src/github.com/alecthomas/gometalinter"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/dominikh/go-tools",
+          "commit": "e3ad64cb4ed3e25a30bf42def711f9cb5b004f72",
+          "dest": "src/honnef.co/go/tools"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/kisielk/gotool.git",
+          "commit": "80517062f582ea3340cd4baf70e86d539ae7d84d",
+          "dest": "src/github.com/kisielk/gotool"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/golangci/golangci-lint.git",
+          "commit": "4570c043a9b56ccf0372cb6ba7a8b645d92b3357",
+          "dest": "src/github.com/golangci/golangci-lint"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/mgechev/revive.git",
+          "commit": "1dbda0e4730c9069ee3289dae6c61ed95430ae80",
+          "dest": "src/github.com/mgechev/revive"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/BurntSushi/toml.git",
+          "commit": "3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005",
+          "dest": "src/github.com/BurntSushi/toml"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/fatih/color.git",
+          "commit": "3f9d52f7176a6927daacff70a3e8d1dc2025c53e",
+          "dest": "src/github.com/fatih/color"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/fatih/structtag.git",
+          "commit": "76ae1d6d2117609598c7d4e8f3e938145f204e8f",
+          "dest": "src/github.com/fatih/structtag"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/mgechev/dots.git",
+          "commit": "8e09d8ea2757cbf7f6455794db8eca08f31f515c",
+          "dest": "src/github.com/mgechev/dots"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/olekukonko/tablewriter.git",
+          "commit": "e6d60cf7ba1f42d86d54cdf5508611c4aafb3970",
+          "dest": "src/github.com/olekukonko/tablewriter"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/mattn/go-runewidth.git",
+          "commit": "b20a3daf6a39840c202fd42cc23d53607162b045",
+          "dest": "src/github.com/mattn/go-runewidth"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/sourcegraph/go-langserver.git",
+          "commit": "2b832060206196a6bfdfbe40e249ffa1f5c52264",
+          "dest": "src/github.com/sourcegraph/go-langserver"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/derekparker/delve.git",
+          "commit": "ea3428550d3ff55fd569640fc01e5aaefe37bc18",
+          "dest": "src/github.com/derekparker/delve"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/davidrjenni/reftools.git",
+          "commit": "654d0ba4f96d62286ca33cd46f7674b84f76d399",
+          "dest": "src/github.com/davidrjenni/reftools"
+        }
+      ]
     }
   ],
   "base": "io.atom.electron.BaseApp",
