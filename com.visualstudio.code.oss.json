@@ -13649,6 +13649,16 @@
         },
         {
           "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.0/mksnapshot-v2.0.0-linux-arm64.zip",
+          "sha256": "d50063e4294a155d7e2ebc687d11798d9e3ededc5f3f069b82251321d1d44a80",
+          "only-arches": [
+            "aarch64"
+          ],
+          "dest": ".electron",
+          "dest-filename": "mksnapshot-v2.0.0-linux-arm64.zip"
+        },
+        {
+          "type": "file",
           "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-x64.zip",
           "sha256": "ce34b4f3710bf880b680ac587b6a857f7821680659eb0526948ab09c2285aefd",
           "only-arches": [
@@ -13679,6 +13689,16 @@
         },
         {
           "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-arm64.zip",
+          "sha256": "dd0f0bc5a55a87afd6344413b99faf323029579780734d6f570fbd142a05db91",
+          "only-arches": [
+            "aarch64"
+          ],
+          "dest": ".electron",
+          "dest-filename": "electron-v2.0.9-linux-arm64.zip"
+        },
+        {
+          "type": "file",
           "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-x64.zip",
           "sha256": "ce34b4f3710bf880b680ac587b6a857f7821680659eb0526948ab09c2285aefd",
           "only-arches": [
@@ -13706,6 +13726,16 @@
           ],
           "dest": "gulp-electron-cache/atom/electron",
           "dest-filename": "electron-v2.0.9-linux-arm.zip"
+        },
+        {
+          "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/electron-v2.0.9-linux-arm64.zip",
+          "sha256": "dd0f0bc5a55a87afd6344413b99faf323029579780734d6f570fbd142a05db91",
+          "only-arches": [
+            "aarch64"
+          ],
+          "dest": "gulp-electron-cache/atom/electron",
+          "dest-filename": "electron-v2.0.9-linux-arm64.zip"
         },
         {
           "type": "file",
@@ -13736,6 +13766,16 @@
           ],
           "dest": "gulp-electron-cache/atom/electron",
           "dest-filename": "ffmpeg-v2.0.9-linux-arm.zip"
+        },
+        {
+          "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.9/ffmpeg-v2.0.9-linux-arm64.zip",
+          "sha256": "cbe3df5bfcabbe5054ef5fa2132c180860b42037f01f87f051732b9f7e8dd065",
+          "only-arches": [
+            "aarch64"
+          ],
+          "dest": "gulp-electron-cache/atom/electron",
+          "dest-filename": "ffmpeg-v2.0.9-linux-arm64.zip"
         },
         {
           "type": "file",
@@ -13770,15 +13810,26 @@
             "arm"
           ],
           "dest": "vscode-ripgrep-cache"
+        },
+        {
+          "type": "file",
+          "url": "https://github.com/roblourens/ripgrep/releases/download/0.9.0/ripgrep-0.9.0-linux-arm64.zip",
+          "sha512": "6eb2ca35a562490499beb2708ed47b63891bdc130219d7a090abda7ed24d6a1757aa1056f9304243839e87bd43d4475df5953ea1945570e3f8827b6b5d1f9b27",
+          "only-arches": [
+            "aarch64"
+          ],
+          "dest": "vscode-ripgrep-cache"
         }
       ]
     },
     {
       "name": "python_packages",
       "buildsystem": "simple",
+      "only-arches": [
+        "x86_64"
+      ],
       "build-commands": [
         "mkdir -p /app/local",
-        "echo -e \"[easy_install]\\nallow_hosts = ''\\nfind_links = file://$PWD/\" > ~/.pydistutils.cfg",
         "PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope"
       ],
       "sources": [
@@ -13844,9 +13895,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "lazy-object-proxy-1.3.1.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/55/08/23c0753599bdec1aec273e322f277c4e875150325f565017f6280549f554/lazy-object-proxy-1.3.1.tar.gz",
-          "sha256": "eb91be369f945f10d3a49f5f9be8b3d0b93a4c2be8f8a5b83b0571b8123e0a7a"
+          "dest-filename": "lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/10/88/d7b8274edf912be71d73a1e5de7988f62b63d9e88e591da2e6f921ab69e6/lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
+          "sha256": "7bd527f36a605c914efca5d3d014170b2cb184723e423d26b1fb2fd9108e264d"
         },
         {
           "type": "file",
@@ -13934,9 +13985,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "typed-ast-1.1.0.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/52/cf/2ebc7d282f026e21eed4987e42e10964a077c13cfc168b42f3573a7f178c/typed-ast-1.1.0.tar.gz",
-          "sha256": "57fe287f0cdd9ceaf69e7b71a2e94a24b5d268b35df251a88fef5cc241bf73aa"
+          "dest-filename": "typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/5b/4e/79e873aa89b8038ca6474c00afe96f9468973b604e7f737cb82697a680c0/typed_ast-1.1.0-cp35-cp35m-manylinux1_x86_64.whl",
+          "sha256": "2e214b72168ea0275efd6c884b114ab42e316de3ffa125b267e732ed2abda892"
         },
         {
           "type": "file",
@@ -13946,9 +13997,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "virtualenv-clone-0.3.0.tar.gz",
-          "url": "https://files.pythonhosted.org/packages/14/2f/84b6a8e380439cdfdb71e0ced2a805a66e343ac540d3304bde6bc28fbb46/virtualenv-clone-0.3.0.tar.gz",
-          "sha256": "b5cfe535d14dc68dfc1d1bb4ac1209ea28235b91156e2bba8e250d291c3fb4f8"
+          "dest-filename": "virtualenv_clone-0.4.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/16/9d/6419a4f0fe4350db7fdc01e9d22e949779b6f2d2650e4884aa8aededc5ae/virtualenv_clone-0.4.0-py2.py3-none-any.whl",
+          "sha256": "afce268508aa5596c90dda234abe345deebc401a57d287bcbd76baa140a1aa58"
         },
         {
           "type": "file",
@@ -14015,7 +14066,7 @@
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "138c20b9325349fbf5b50a83e7f2f0853adaa591",
+          "commit": "92d8274bd7b8a4c65f24bafe401a029e58392704",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14201,7 +14252,7 @@
         {
           "type": "git",
           "url": "https://github.com/derekparker/delve.git",
-          "commit": "51c342c6b70ac8f75298ffc534e220da751c19d6",
+          "commit": "89c8da65b69c8bde2f567991ccab8319f4f9846a",
           "dest": "src/github.com/derekparker/delve"
         },
         {
@@ -14211,6 +14262,17 @@
           "dest": "src/github.com/davidrjenni/reftools"
         }
       ]
+    },
+    {
+      "name": "placeholder",
+      "buildsystem": "simple",
+      "skip-arches": [
+        "x86_64"
+      ],
+      "build-commands": [
+        "echo THIS DIRECTORY IS FOR x86_64 ONLY > /app/local/README"
+      ],
+      "sources": []
     }
   ],
   "base": "io.atom.electron.BaseApp",

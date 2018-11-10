@@ -8,6 +8,7 @@ from pathlib import Path
 from xml.dom import minidom
 from contextlib import contextmanager
 import urllib.request
+from html.parser import HTMLParser
 import urllib.parse
 import tempfile
 import re
@@ -16,6 +17,7 @@ import stat
 import inspect
 import operator
 from collections import OrderedDict
+import gzip
 
 METADATA = {
     'Releases': OrderedDict(),
@@ -46,9 +48,6 @@ def inline(text):
 
 
 def httpget(*args, **kwargs):
-    if 'GITHUB_TOKEN' in os.environ and (urllib.parse.urlsplit(args[0]).netloc.endswith('github.com') or urllib.parse.urlsplit(args[0]).netloc.endswith('githubusercontent.com')):
-        args = [*args]
-        args[0] += '?access_token=' + os.environ['GITHUB_TOKEN']
     return urllib.request.urlopen(urllib.request.Request(*args, **kwargs)).read()
 
 
@@ -77,7 +76,9 @@ def get_yarn_recipe():
 
     return {
         'type': 'file',
-        **get_url_sha512(url),
+        # **get_url_sha512(url),
+        # https://github.com/Microsoft/vscode/blob/master/build/tfs/linux/product-build-linux.yml
+        **get_url_sha512('https://github.com/yarnpkg/yarn/releases/download/v1.9.4/yarn-1.9.4.js'),
         'dest': 'bin',
         'dest-filename': 'yarn.js'
     }
@@ -126,73 +127,183 @@ def get_git_with_tag(url, tag):
     }
 
 
-def get_python_packages():
+def get_python_packages_x86_64():
     packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope']
-    # setup_requires = ['setuptools_scm', 'pytest-runner']
-    setup_requires = []
-    sources = []
+    patterns = {
+        '.whl': re.compile(r'(?P<package>.*)-(?P<version>.*?)-.*?-.*?-.*?\.whl'),
+        '.tar.gz': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.tar\.gz'),
+        '.zip': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.zip')
+    }
     with tempfile.TemporaryDirectory() as tmpdir:
-        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 install -U pip; pip3 download --no-binary :all: -d' + tmpdir + ' ' + ' '.join(packages + setup_requires), shell=True)
+        sources = []
+        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 install -U pip; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True)
 
-        versions = [re.fullmatch(r'(.*)-(.*?)(\.zip|\.tar\.gz)', filename).groups()[:2] for filename in sorted(os.listdir(tmpdir))]
-
-        for package, version in versions:
-            subprocess.run('eval "$(pyenv init -)"; pyenv shell 3.5.2; pip3 download --no-deps --platform any --abi none --implementation cp --python-version 35 -d ' + tmpdir + ' ' + package + '==' + version, shell=True)
-
-        filenames = os.listdir(tmpdir)
-        wheels = list(filter(lambda filename: filename.endswith('-none-any.whl'), filenames))
-
-        for package, version in versions:
-            filename = next((name for name in wheels if name.startswith(package + '-' + version + '-')), None)
-            if filename is None:
-                filename = next(name for name in filenames if name.startswith(package + '-' + version + '.'))
-
+        for filename in sorted(os.listdir(tmpdir)):
+            for extension, pattern in patterns.items():
+                if filename.endswith(extension):
+                    match = pattern.fullmatch(filename)
+                    package = match.group('package')
+                    version = match.group('version')
+                    break
+            else:
+                continue
             metadata = json.loads(httpget('https://pypi.org/pypi/' + package + '/json/').decode())
-            entry = next(filter(lambda entry: entry['filename'] == filename, metadata['releases'][version]))
+            entry = next(entry for entry in metadata['releases'][version] if entry['filename'] == filename)
             sources.append({
                 'type': 'file',
                 'dest-filename': filename,
                 'url': entry['url'],
                 'sha256': entry['digests']['sha256']
             })
+
         return {
             'name': 'python_packages',
             'buildsystem': 'simple',
+            'only-arches': ['x86_64'],
             'build-commands': [
                 'mkdir -p /app/local',
-                r'''echo -e "[easy_install]\nallow_hosts = ''\nfind_links = file://$PWD/" > ~/.pydistutils.cfg''',
                 'PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . ' + ' '.join(packages)
             ],
             'sources': sources
         }
 
 
-def get_delve_recipe():
-    tag_name = json.loads(httpget('https://api.github.com/repos/derekparker/delve/releases/latest').decode())['tag_name']
-    commit = json.loads(httpget('https://api.github.com/repos/derekparker/delve/git/refs/tags/' + tag_name).decode())['object']['sha']
+def get_go_tools():
+    class IgnoreErrorHandler(urllib.request.HTTPDefaultErrorHandler):
+        def http_error_default(self, req, fp, code, msg, hdrs):
+            if req.host == 'winterdrache.de' and code == 404:
+                return fp
+            else:
+                super().http_error_default(req, fp, code, msg, hdrs)
+
+    opener = urllib.request.build_opener(IgnoreErrorHandler)
+    GOPATH = Path(os.environ.get('GOPATH', str(Path.home() / 'go')))
+    GOPATH.mkdir(parents=True, exist_ok=True)
+    environ = {**os.environ, 'GOPATH': str(GOPATH)}
+    sources = []
+
+    def get_meta_import(url):
+        class ContentEncounteredException(Exception):
+            def __init__(self, data):
+                self.data = data
+
+        class GoImportHTMLParser(HTMLParser):
+            def handle_starttag(self, tag, attrs):
+                if tag == 'meta' and next((value for key, value in attrs if key == 'name'), '') == 'go-import':
+                    raise ContentEncounteredException(next((value for key, value in attrs if key == 'content')).split(' '))
+
+        with opener.open(url + '?go-get=1') as stream:
+            parser = GoImportHTMLParser()
+            data = None
+            try:
+                parser.feed(stream.read().decode())
+            except ContentEncounteredException as exception:
+                data = exception.data
+            return data
+
+    def get_package_path(package):
+        if package.startswith('github.com'):
+            url = 'https://' + package
+            path = urllib.parse.urlsplit(url).path.split('/')
+            return Path('github.com') / path[1] / path[2], 'https://github.com/' + path[1] + '/' + path[2] + '.git'
+        elif package.startswith('bitbucket.org'):
+            raise NotImplementedError()
+        elif package.startswith('launchpad.net'):
+            raise NotImplementedError()
+        elif package.startswith('hub.jazz.net'):
+            raise NotImplementedError()
+        else:
+            url = 'https://' + package
+            path = urllib.parse.urlsplit(url).path
+            imports = get_meta_import(url)
+            assert imports is not None
+            if imports[1] != 'git':
+                raise NotImplementedError()
+            assert package.startswith(imports[0])
+            if package != imports[0]:
+                real_imports = get_meta_import('https://' + imports[0])
+                assert real_imports is not None and real_imports[0] == imports[0]
+            return imports[0], imports[2]
+
+    def get_dependencies(package):
+        path, url = get_package_path(package)
+        if not (GOPATH / 'src' / path).exists():
+            subprocess.run([
+                'git',
+                'clone',
+                '--depth=1',
+                url,
+                str(GOPATH / 'src' / path)
+            ], check=True)
+            sources.append({
+                'type': 'git',
+                'url': url,
+                'commit': subprocess.run([
+                    'git', 'rev-parse', 'master',
+                ], stdout=subprocess.PIPE, universal_newlines=True, check=True, cwd=str(GOPATH / 'src' / path)).stdout.strip(),
+                'dest': str(Path('src') / path)
+            })
+
+        output = subprocess.run([
+            'go',
+            'list',
+            '-json',
+            package
+        ], stdout=subprocess.PIPE, universal_newlines=True, check=True, env=environ).stdout.strip()
+        decoder = json.JSONDecoder()
+        while len(output):
+            info, index = decoder.raw_decode(output)
+            output = output[index:].strip()
+            if 'DepsErrors' in info:
+                for error in info['DepsErrors']:
+                    get_dependencies(error['ImportStack'][-1])
+
+    commands = []
+    for name, package in {
+        'gocode': 'github.com/mdempsky/gocode',
+        'gocode-gomod': 'github.com/stamblerre/gocode',
+        'gopkgs': 'github.com/uudashr/gopkgs/cmd/gopkgs',
+        'go-outline': 'github.com/ramya-rao-a/go-outline',
+        'go-symbols': 'github.com/acroca/go-symbols',
+        'guru': 'golang.org/x/tools/cmd/guru',
+        'gorename': 'golang.org/x/tools/cmd/gorename',
+        'gomodifytags': 'github.com/fatih/gomodifytags',
+        'goplay': 'github.com/haya14busa/goplay/cmd/goplay',
+        'impl': 'github.com/josharian/impl',
+        'gotype-live': 'github.com/tylerb/gotype-live',
+        'godef': 'github.com/rogpeppe/godef',
+        'godef-gomod': 'github.com/ianthehat/godef',
+        'gogetdoc': 'github.com/zmb3/gogetdoc',
+        'goimports': 'golang.org/x/tools/cmd/goimports',
+        'goreturns': 'github.com/sqs/goreturns',
+        'goformat': 'winterdrache.de/goformat/goformat',
+        'golint': 'golang.org/x/lint/golint',
+        'gotests': 'github.com/cweill/gotests/...',
+        'gometalinter': 'github.com/alecthomas/gometalinter',
+        'megacheck': 'honnef.co/go/tools/...',
+        'golangci-lint': 'github.com/golangci/golangci-lint/cmd/golangci-lint',
+        'revive': 'github.com/mgechev/revive',
+        'go-langserver': 'github.com/sourcegraph/go-langserver',
+        'dlv': 'github.com/derekparker/delve/cmd/dlv',
+        'fillstruct': 'github.com/davidrjenni/reftools/cmd/fillstruct',
+    }.items():
+        get_dependencies(package)
+        if name.endswith('-gomod'):
+            commands.append('GOPATH=$PWD go build -o /app/local/bin/' + name + ' ' + package)
+        else:
+            commands.append('GOPATH=$PWD go install ' + package)
+    commands.append('mv bin/* /app/local/bin')
+
     return {
-        'name': 'delve',
+        'name': 'vscode-go',
         'buildsystem': 'simple',
         'only-arches': ['x86_64'],
-        'build-commands': ['./build.sh'],
-        'sources': [
-            {
-                'type': 'script',
-                'dest-filename': 'build.sh',
-                'commands': [
-                    '. /usr/lib/sdk/golang/enable.sh',
-                    'GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv',
-                    'mv bin/dlv /app/local/bin'
-                ]
-            },
-            {
-                'type': 'git',
-                'url': 'https://github.com/derekparker/delve.git',
-                'tag': tag_name,
-                'commit': commit,
-                'dest': 'src/github.com/derekparker/delve'
-            }
-        ]
+        'build-options': {
+            'append-path': '/usr/lib/sdk/golang/bin',
+            'env': {'GOROOT': '/usr/lib/sdk/golang'}
+        },
+        'build-commands': commands,
+        'sources': sources
     }
 
 
@@ -237,6 +348,9 @@ def parse_repo():
         METADATA['Releases'] = OrderedDict([(release['version'], release['date']) for release in releases])
 
         product_json = json.loads(Path('product.json').read_text())
+        # nodejs_version = Path('.nvmrc').read_text().strip()
+        # https://github.com/Microsoft/vscode/blob/master/build/tfs/linux/product-build-linux.yml
+        nodejs_version = '8.9.1'
 
         re_node_version = re.compile(r'(.*)@.*?')
         packages = {}
@@ -264,45 +378,13 @@ def parse_repo():
 
         builtInExtensions = []
         for item in json.loads(Path('build/builtInExtensions.json').read_text()):
-            gallery_url = 'https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery'
-            extension = json.loads(urllib.request.urlopen(urllib.request.Request(gallery_url, data=json.dumps({
-                'filters': [
-                    {
-                        'criteria': [
-                            {
-                                'filterType': 7,
-                                'value': item['name']
-                            }
-                        ],
-                        'pageNumber': 1,
-                        'pageSize': 1,
-                        'sortBy': 0,
-                        'sortOrder': 0
-                    }
-                ],
-                'assetTypes': [
-                    'Microsoft.VisualStudio.Services.VSIXPackage'
-                ],
-                'flags': 131
-            }).encode(), headers={
-                'X-Market-Client-Id': 'VSCode Build',
-                'User-Agent': 'VSCode Build',
-                'X-Market-User-Id': '291C1CD0-051A-4123-9B4B-30D60EF52EE2',
-                'Content-Type': 'application/json',
-                'Accept': 'application/json;api-version=3.0-preview.1'
-            })).read())['results'][0]['extensions'][0]
-
-            METADATA['Extensions'][item['name']] = {
-                'id': extension['extensionId'],
-                'publisherId': extension['publisher'],
-                'publisherDisplayName': extension['publisher']['displayName']
-            }
+            publisher, name = item['name'].split('.')
+            version = item['version']
+            url = 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/' + publisher + '/vsextensions/' + name + '/' + version + '/vspackage'
 
             builtInExtensions.append({
                 'type': 'file',
-                **get_url_sha512(next(file for file in next(
-                        version for version in extension['versions'] if version['version'] == item['version']
-                )['files'] if file['assetType'] == 'Microsoft.VisualStudio.Services.VSIXPackage')['source']),
+                **get_url_sha512(url),
                 'dest': 'builtInExtensions',
                 'dest-filename': item['name'] + '.vsix'
             })
@@ -421,7 +503,7 @@ def parse_repo():
                     'sources': [
                         {
                             'type': 'archive',
-                            **get_url_sha512('https://nodejs.org/dist/v8.9.2/node-v8.9.2.tar.xz')
+                            **get_url_sha512('https://nodejs.org/dist/v' + nodejs_version + '/node-v' + nodejs_version + '.tar.xz')
                         }
                     ],
                     'post-install': [
@@ -467,6 +549,7 @@ def parse_repo():
                                 'import hashlib',
                                 'import stat',
                                 'from collections import OrderedDict',
+                                'import gzip',
                                 'METADATA=' + repr(METADATA),
                                 *inspect.getsource(build).split('\n'),
                                 'build()'
@@ -485,8 +568,17 @@ def parse_repo():
                         *sorted(packages.values(), key=operator.itemgetter('url'))
                     ]
                 },
-                get_python_packages(),
-                get_delve_recipe()
+                get_python_packages_x86_64(),
+                get_go_tools(),
+                {
+                    'name': 'placeholder',
+                    'buildsystem': 'simple',
+                    'skip-arches': ['x86_64'],
+                    'build-commands': [
+                        'echo THIS DIRECTORY IS FOR x86_64 ONLY > /app/local/README'
+                    ],
+                    'sources': []
+                }
             ]
         }
 
@@ -511,7 +603,8 @@ def get_electron_recipe(packages, iojs_version):
         for arch_linux, arch_node in [
             ('x86_64', 'x64'),
             ('i386', 'ia32'),
-            ('arm', 'arm')
+            ('arm', 'arm'),
+            ('aarch64', 'arm64')
         ]:
             filename = name + '-v' + version + '-linux-' + arch_node + '.zip'
             electron_recipe.append({
@@ -547,7 +640,8 @@ def get_ripgrep_recipe(packages):
     } for arch_linux, arch_node in [
         ('x86_64', 'x64'),
         ('i386', 'ia32'),
-        ('arm', 'arm')
+        ('arm', 'arm'),
+        ('aarch64', 'arm64')
     ]]
 
 
@@ -575,6 +669,16 @@ def generate_recipe():
 
 def build():
     product = json.loads(Path('vscode/product.json').read_text())
+    product['nameLong'] = 'Visual Studio Code - OSS'
+    product['extensionsGallery'] = json.loads(Path('product.json').read_text())['extensionsGallery']
+    # From https://docs.microsoft.com/en-us/visualstudio/liveshare/reference/linux#vs-code-oss-issues
+    product['extensionAllowedProposedApi'] = [
+        'ms-vsliveshare.vsliveshare',
+        'ms-vscode.node-debug',
+        'ms-vscode.node-debug2'
+    ]
+    Path('vscode/product.json').write_text(json.dumps(product))
+
     recipe = json.loads(Path(os.environ['FLATPAK_ID'] + '.json').read_text())
     arch = ' '.join(subprocess.run(['node', '-e', 'console.log(process.arch)'], stdout=subprocess.PIPE, universal_newlines=True).stdout.split())
 
@@ -599,65 +703,40 @@ def build():
     Path('/app/local/bin/yarn.js').chmod(Path('/app/local/bin/yarn.js').stat().st_mode | stat.S_IXUSR)
     Path('/app/local/bin/yarn').symlink_to('yarn.js')
     subprocess.run(['yarn', 'config', 'set', 'yarn-offline-mirror', str(Path('yarn-mirror').resolve())], check=True)
+    yarnrc = (Path.home() / '.yarnrc').read_text()
+    (Path.home() / '.yarnrc').write_text(yarnrc + ''.join('--install.' + option + ' true\n' for option in [
+        'offline',
+        'verbose',
+        'frozen-lockfile'
+    ]))
 
     os.chdir('vscode')
-    Path('product.json').write_text(json.dumps({
-        **json.loads(Path('product.json').read_text()),
-        'extensionsGallery': json.loads(Path('../product.json').read_text())['extensionsGallery'],
-        # From https://docs.microsoft.com/en-us/visualstudio/liveshare/reference/linux#vs-code-oss-issues
-        'extensionAllowedProposedApi': [
-            'ms-vsliveshare.vsliveshare',
-            'ms-vscode.node-debug',
-            'ms-vscode.node-debug2'
-        ]
-    }))
 
-    patch = r'''
-{
-    return require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.json').pipe(flatmap(function (stream, f) {
-        var metadata = JSON.parse(f.contents.toString('utf8'));
-        return require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.vsix').pipe(flatmap(function (stream) {
-            var packageJsonFilter = filter('package.json', { restore: true });
-            return stream
-                .pipe(vzip.src())
-                .pipe(filter('extension/**'))
-                .pipe(rename(function (p) { return p.dirname = p.dirname.replace(/^extension\/?/, ''); }))
-                .pipe(packageJsonFilter)
-                .pipe(buffer())
-                .pipe(json({ __metadata: metadata }))
-                .pipe(packageJsonFilter.restore);
-        }));
-    }));
-}
+    for path in Path('/tmp/builtInExtensions').glob('*.vsix'):
+        path.write_bytes(gzip.decompress(path.read_bytes()))
 
-    '''
-
-    for version, data in METADATA['Extensions'].items():
-        (Path('/tmp/builtInExtensions') / (version + '.json')).write_text(json.dumps(data))
-    Path('build/lib/extensions.js').write_text(Path('build/lib/extensions.js').read_text().replace('fromMarketplace', '__fromMarketplace', 3) + ''.join([
-        'function fromMarketplace(extensionName, version) ',
-        patch,
-        'exports.fromMarketplace = fromMarketplace;'
-    ]))
-    Path('build/lib/extensions.ts').write_text(Path('build/lib/extensions.ts').read_text().replace('fromMarketplace', '__fromMarketplace', 1) + ''.join([
-        'export function fromMarketplace(extensionName: string, version: string): Stream ',
-        patch
-    ]))
+    Path('build/lib/extensions.js').write_text(Path('build/lib/extensions.js').read_text().replace(
+        "remote('', options)",
+        "require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.vsix')", 1)
+    )
+    Path('build/lib/extensions.ts').write_text(Path('build/lib/extensions.ts').read_text().replace(
+        "remote('', options)",
+        "require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.vsix')", 1)
+    )
 
     package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())
     del package_vscode_extension['scripts']['postinstall']
     Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension))
 
-    subprocess.run(['yarn', 'install', '--offline', '--verbose', '--frozen-lockfile'], check=True, env={
+    subprocess.run(['yarn', 'install'], check=True, env={
         **os.environ,
         'npm_config_tarball': str(Path('../misc/iojs.tar.gz').resolve()),
     })
 
     shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')
-    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + {
-        'x64': '4096',
-        'ia32': '2047'
-    }[arch]], check=True)
+    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + (
+        '4096' if '64' in arch else '2047'
+    )], check=True)
 
     os.chdir('..')
     shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])
