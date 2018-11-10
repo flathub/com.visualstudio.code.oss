@@ -245,7 +245,7 @@
             "",
             "    shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')",
             "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + (",
-            "        '4096' if '64' in arch else '2047'",
+            "        '4096' if '64' in arch else '4095'",
             "    )], check=True)",
             "",
             "    os.chdir('..')",
@@ -14052,7 +14052,7 @@
         "GOPATH=$PWD go install github.com/golangci/golangci-lint/cmd/golangci-lint",
         "GOPATH=$PWD go install github.com/mgechev/revive",
         "GOPATH=$PWD go install github.com/sourcegraph/go-langserver",
-        "[[ $FLATPAK_ARCH = \"x86_64\" ]] && GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv || true",
+        "GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv",
         "GOPATH=$PWD go install github.com/davidrjenni/reftools/cmd/fillstruct",
         "mv bin/* /app/local/bin"
       ],
@@ -14262,6 +14262,17 @@
           "dest": "src/github.com/davidrjenni/reftools"
         }
       ]
+    },
+    {
+      "name": "placeholder",
+      "buildsystem": "simple",
+      "skip-arches": [
+        "x86_64"
+      ],
+      "build-commands": [
+        "echo THIS DIRECTORY IS FOR x86_64 ONLY > /app/local/README"
+      ],
+      "sources": []
     }
   ],
   "base": "io.atom.electron.BaseApp",
