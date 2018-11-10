@@ -13820,9 +13820,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "ipython-7.0.1-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/a0/27/29d66ed395a5c2c3a912332d446a54e2bc3277c36b0bbd22bc71623e0193/ipython-7.0.1-py3-none-any.whl",
-          "sha256": "47b17ea874454a5c2eacc2732b04a750d260b01ba479323155ac8a39031f5535"
+          "dest-filename": "ipython-7.1.1-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/1b/e2/ffb8c1b574f972cf4183b0aac8f16b57f1e3bbe876b31555b107ea3fd009/ipython-7.1.1-py3-none-any.whl",
+          "sha256": "a5781d6934a3341a1f9acb4ea5acdc7ea0a0855e689dbe755d070ca51e995435"
         },
         {
           "type": "file",
@@ -13886,9 +13886,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "prompt_toolkit-2.0.6-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/06/6f/03f10d2206e34a81934b10fb43975a29028e0fe2ae330f9f000bbc0780b7/prompt_toolkit-2.0.6-py3-none-any.whl",
-          "sha256": "ccad8461b5d912782726af17122113e196085e7e11d57cf0c9b982bf1ab2c7be"
+          "dest-filename": "prompt_toolkit-2.0.7-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/d1/e6/adb3be5576f5d27c6faa33f1e9fea8fe5dbd9351db12148de948507e352c/prompt_toolkit-2.0.7-py3-none-any.whl",
+          "sha256": "c1d6aff5252ab2ef391c2fe498ed8c088066f66bc64a8d5c095bbf795d9fec34"
         },
         {
           "type": "file",
@@ -13916,15 +13916,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "setuptools-40.4.3-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/96/06/c8ee69628191285ddddffb277bd5abdf769166e7a14b867c2a172f0175b1/setuptools-40.4.3-py2.py3-none-any.whl",
-          "sha256": "ce4137d58b444bac11a31d4e0c1805c69d89e8ed4e91fde1999674ecc2f6f9ff"
-        },
-        {
-          "type": "file",
-          "dest-filename": "simplegeneric-0.8.1.zip",
-          "url": "https://files.pythonhosted.org/packages/3d/57/4d9c9e3ae9a255cd4e1106bb57e24056d3d0709fc01b2e3e345898e49d5b/simplegeneric-0.8.1.zip",
-          "sha256": "dc972e06094b9af5b855b3df4a646395e43d1c9d0d39ed345b7393560d0b9173"
+          "dest-filename": "setuptools-40.5.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/82/a1/ba6fb41367b375f5cb653d1317d8ca263c636cff6566e2da1b0da716069d/setuptools-40.5.0-py2.py3-none-any.whl",
+          "sha256": "e329a5c458c6acb5edc2b5c4ad44280c053ba827dc82fd5e84a83e22bb05460d"
         },
         {
           "type": "file",
@@ -13946,9 +13940,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "virtualenv-16.0.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/b6/30/96a02b2287098b23b875bc8c2f58071c35d2efe84f747b64d523721dc2b5/virtualenv-16.0.0-py2.py3-none-any.whl",
-          "sha256": "2ce32cd126117ce2c539f0134eb89de91a8413a29baac49cbab3eb50e2026669"
+          "dest-filename": "virtualenv-16.1.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/7c/17/9b7b6cddfd255388b58c61e25b091047f6814183e1d63741c8df8dcd65a2/virtualenv-16.1.0-py2.py3-none-any.whl",
+          "sha256": "686176c23a538ecc56d27ed9d5217abd34644823d6391cbeb232f42bf722baad"
         },
         {
           "type": "file",
@@ -13973,6 +13967,9 @@
     {
       "name": "vscode-go",
       "buildsystem": "simple",
+      "only-arches": [
+        "x86_64"
+      ],
       "build-options": {
         "append-path": "/usr/lib/sdk/golang/bin",
         "env": {
@@ -14012,13 +14009,13 @@
         {
           "type": "git",
           "url": "https://github.com/mdempsky/gocode.git",
-          "commit": "0f94242ccdb9fae06fce2c81cedafee64251e018",
+          "commit": "68f5472551baee41050cc975fa6e7cb7ad829024",
           "dest": "src/github.com/mdempsky/gocode"
         },
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "a2dc47679d30b6c496245bafc6a166b46c5fe318",
+          "commit": "138c20b9325349fbf5b50a83e7f2f0853adaa591",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14090,7 +14087,7 @@
         {
           "type": "git",
           "url": "https://github.com/rogpeppe/godef.git",
-          "commit": "7b4626be9fa8081987905fd4719d2f6628f9d8b5",
+          "commit": "e3e68bcc441ab83dc2b87cd217cd95ae2a034fdb",
           "dest": "src/github.com/rogpeppe/godef"
         },
         {
@@ -14108,7 +14105,7 @@
         {
           "type": "git",
           "url": "https://github.com/sqs/goreturns.git",
-          "commit": "83e02874ec120f73d5f7dd382d62449dc8abe9c6",
+          "commit": "538ac601451833c7c4449f8431d65d53c1c60e41",
           "dest": "src/github.com/sqs/goreturns"
         },
         {
@@ -14120,19 +14117,19 @@
         {
           "type": "git",
           "url": "https://go.googlesource.com/lint",
-          "commit": "1baf3a9d7d675b3c7e974b7a00ded54b88a88379",
+          "commit": "c67002cb31c3a748b7688c27f20d8358b4193582",
           "dest": "src/golang.org/x/lint"
         },
         {
           "type": "git",
           "url": "https://github.com/cweill/gotests.git",
-          "commit": "c51312f508e7040f06d1eb174da68364155b1fc0",
+          "commit": "276664f3b507425723807b6ac2cfd12ae7794349",
           "dest": "src/github.com/cweill/gotests"
         },
         {
           "type": "git",
           "url": "https://github.com/alecthomas/gometalinter.git",
-          "commit": "8edca99e8a88355e29f550113bcba6ecfa39ae11",
+          "commit": "e8d801238da6f0dfd14078d68f9b53fa50a7eeb5",
           "dest": "src/github.com/alecthomas/gometalinter"
         },
         {
@@ -14150,13 +14147,13 @@
         {
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git",
-          "commit": "4570c043a9b56ccf0372cb6ba7a8b645d92b3357",
+          "commit": "7836034ecf08ad1f9dfea3619c1924eb7444722e",
           "dest": "src/github.com/golangci/golangci-lint"
         },
         {
           "type": "git",
           "url": "https://github.com/mgechev/revive.git",
-          "commit": "1dbda0e4730c9069ee3289dae6c61ed95430ae80",
+          "commit": "47d2b15cf9bcc59b428b7d07e301074881f2a6c9",
           "dest": "src/github.com/mgechev/revive"
         },
         {
@@ -14198,13 +14195,13 @@
         {
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git",
-          "commit": "2b832060206196a6bfdfbe40e249ffa1f5c52264",
+          "commit": "4a51fa2e1238079785a695e842ce7d202c4f2c5c",
           "dest": "src/github.com/sourcegraph/go-langserver"
         },
         {
           "type": "git",
           "url": "https://github.com/derekparker/delve.git",
-          "commit": "ea3428550d3ff55fd569640fc01e5aaefe37bc18",
+          "commit": "51c342c6b70ac8f75298ffc534e220da751c19d6",
           "dest": "src/github.com/derekparker/delve"
         },
         {
