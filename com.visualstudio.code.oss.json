@@ -245,7 +245,7 @@
             "",
             "    shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')",
             "    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + (",
-            "        '4096' if '64' in arch else '2047'",
+            "        '4096' if '64' in arch else '4095'",
             "    )], check=True)",
             "",
             "    os.chdir('..')",
@@ -14052,7 +14052,7 @@
         "GOPATH=$PWD go install github.com/golangci/golangci-lint/cmd/golangci-lint",
         "GOPATH=$PWD go install github.com/mgechev/revive",
         "GOPATH=$PWD go install github.com/sourcegraph/go-langserver",
-        "[[ $FLATPAK_ARCH = \"x86_64\" ]] && GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv || true",
+        "GOPATH=$PWD go install github.com/derekparker/delve/cmd/dlv",
         "GOPATH=$PWD go install github.com/davidrjenni/reftools/cmd/fillstruct",
         "mv bin/* /app/local/bin"
       ],
@@ -14066,7 +14066,7 @@
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "92d8274bd7b8a4c65f24bafe401a029e58392704",
+          "commit": "6d71ab8aade08605ffc36622332264e2f6991952",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14198,7 +14198,7 @@
         {
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git",
-          "commit": "7836034ecf08ad1f9dfea3619c1924eb7444722e",
+          "commit": "898ae4d3647ceb1404ca9ee25f20b0c9ea373849",
           "dest": "src/github.com/golangci/golangci-lint"
         },
         {
