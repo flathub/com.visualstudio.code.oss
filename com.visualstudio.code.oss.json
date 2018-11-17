@@ -239,7 +239,7 @@
             "    subprocess.run(['yarn', 'install'], check=True, env={",
             "        **os.environ,",
             "        'npm_config_tarball': str(Path('../misc/iojs.tar.gz').resolve()),",
-            ".       'CHILD_CONCURRENCY': '1',",
+            "        'CHILD_CONCURRENCY': '1',",
             "    })",
             "",
             "    # (Path.home() / '.yarnrc').write_text(yarnrc)",
