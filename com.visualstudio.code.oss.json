@@ -230,7 +230,7 @@
             "    )",
             "    Path('build/lib/extensions.ts').write_text(Path('build/lib/extensions.ts').read_text().replace(",
             "        \"remote('', options)\",",
-            "        \"require((remote, options, 'gulp')).src('/tmp/builtInExtensions/' + extensionName + '.vsix')\", 1)",
+            "        \"require((console.log(remote), console.log(options), 'gulp')).src('/tmp/builtInExtensions/' + extensionName + '.vsix')\", 1)",
             "    )",
             "",
             "    package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())",
