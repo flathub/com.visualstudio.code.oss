@@ -14264,20 +14264,20 @@
       ],
       "build-commands": [
         "mkdir -p /app/local",
-        "PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope"
+        "PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . autopep8 pylint pipenv ipython rope flake8"
       ],
       "sources": [
         {
           "type": "file",
-          "dest-filename": "Pygments-2.2.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/02/ee/b6e02dc6529e82b75bb06823ff7d005b141037cb1416b10c6f00fc419dca/Pygments-2.2.0-py2.py3-none-any.whl",
-          "sha256": "78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d"
+          "dest-filename": "Pygments-2.3.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/fc/41/4f900a7852e25bb9350b4e3ee8c4aba0ee32abefd401456962b25f954823/Pygments-2.3.0-py2.py3-none-any.whl",
+          "sha256": "6301ecb0997a52d2d31385e62d0a4a4cf18d2f2da7054a5ddad5c366cd39cee7"
         },
         {
           "type": "file",
-          "dest-filename": "astroid-2.0.4-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/19/92/6f6d3591c429dbdb31c18d8476ba1af08d5973d7cc09f66346109e9de7fb/astroid-2.0.4-py3-none-any.whl",
-          "sha256": "292fa429e69d60e4161e7612cb7cc8fa3609e2e309f80c224d93a76d5e7b58be"
+          "dest-filename": "astroid-2.1.0-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/fc/53/8809bc008bad0300897281a7b320b286dc0e84e836396c0cff6279841e8a/astroid-2.1.0-py3-none-any.whl",
+          "sha256": "6a5d668d7dc69110de01cdf7aeec69a679ef486862a0850cc0fd5571505b6b7e"
         },
         {
           "type": "file",
@@ -14302,6 +14302,12 @@
           "dest-filename": "decorator-4.3.0-py2.py3-none-any.whl",
           "url": "https://files.pythonhosted.org/packages/bc/bb/a24838832ba35baf52f32ab1a49b906b5f82fb7c76b2f6a7e35e140bac30/decorator-4.3.0-py2.py3-none-any.whl",
           "sha256": "2c51dff8ef3c447388fe5e4453d24a2bf128d3a4c32af3fabef1f01c6851ab82"
+        },
+        {
+          "type": "file",
+          "dest-filename": "flake8-3.6.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/34/a6/49e2849a0e5464e1b5d621f63bc8453066f0f367bb3b744a33fca0bc1ddd/flake8-3.6.0-py2.py3-none-any.whl",
+          "sha256": "c01f8a3963b3571a8e6bd7a4063359aff90749e160778e03817cd9b71c9e07d2"
         },
         {
           "type": "file",
@@ -14365,9 +14371,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "pipenv-2018.11.14-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/7d/ed/526ea0c23f95cc431e67768718de91a69083c060118c5fcc79ece8f23141/pipenv-2018.11.14-py3-none-any.whl",
-          "sha256": "117b0015837578cef25ee09c9d38094245966cbff92f0984e0f0fbebdbb5bc75"
+          "dest-filename": "pipenv-2018.11.26-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/13/b4/3ffa55f77161cff9a5220f162670f7c5eb00df52e00939e203f601b0f579/pipenv-2018.11.26-py3-none-any.whl",
+          "sha256": "56ad5f5cb48f1e58878e14525a6e3129d4306049cb76d2f6a3e95df0d5fc6330"
         },
         {
           "type": "file",
@@ -14389,9 +14395,15 @@
         },
         {
           "type": "file",
-          "dest-filename": "pylint-2.1.1-py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/6e/c2/1e97c238877b6a86562d32297eb33a6670b6220e8ec0ca85f67b66dc893f/pylint-2.1.1-py3-none-any.whl",
-          "sha256": "1d6d3622c94b4887115fe5204982eee66fdd8a951cf98635ee5caee6ec98c3ec"
+          "dest-filename": "pyflakes-2.0.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/44/98/af7a72c9a543b1487d92813c648cb9b9adfbc96faef5455d60f4439aa99b/pyflakes-2.0.0-py2.py3-none-any.whl",
+          "sha256": "f661252913bc1dbe7fcfcbf0af0db3f42ab65aabd1a6ca68fe5d466bace94dae"
+        },
+        {
+          "type": "file",
+          "dest-filename": "pylint-2.2.2-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/a5/06/ecef826f319055e6b231716730d7f9047dd7524ffda224b521d989f085b6/pylint-2.2.2-py3-none-any.whl",
+          "sha256": "771467c434d0d9f081741fec1d64dfb011ed26e65e12a28fe06ca2f61c4d556c"
         },
         {
           "type": "file",
@@ -14494,19 +14506,19 @@
         {
           "type": "git",
           "url": "https://github.com/mdempsky/gocode.git",
-          "commit": "fa5c674aad2c2d9b67b2339701b192d95da2849d",
+          "commit": "525aa8bb282cf4751a10d11522172d53fd922b45",
           "dest": "src/github.com/mdempsky/gocode"
         },
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "04b5d21e00f1f47bd824a6ade581e7189bacde87",
+          "commit": "c5b00d9557fd23dd2a6d9c2f4c80a31d08cac00d",
           "dest": "src/golang.org/x/tools"
         },
         {
           "type": "git",
           "url": "https://github.com/stamblerre/gocode.git",
-          "commit": "7ab6cc1b0f8b4d701574c2bd1b5fb7265c1a7ab6",
+          "commit": "22843d89bc5a49e31d0e84abb8b9b8c27100619b",
           "dest": "src/github.com/stamblerre/gocode"
         },
         {
@@ -14632,13 +14644,13 @@
         {
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git",
-          "commit": "dba3907ff3bfd71638f51a63997b7b685478d1b3",
+          "commit": "ef7864383087163c1330f90342b6a5887e847c37",
           "dest": "src/github.com/golangci/golangci-lint"
         },
         {
           "type": "git",
           "url": "https://github.com/mgechev/revive.git",
-          "commit": "47d2b15cf9bcc59b428b7d07e301074881f2a6c9",
+          "commit": "b4b876c3472d1887975eee69061f155144195963",
           "dest": "src/github.com/mgechev/revive"
         },
         {
@@ -14680,13 +14692,13 @@
         {
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git",
-          "commit": "e01bf53c7ec103d7b4352b509b0cd6f2aad8b19a",
+          "commit": "87d2c043cbb95c84f846959cae03870ccdfac1c2",
           "dest": "src/github.com/sourcegraph/go-langserver"
         },
         {
           "type": "git",
           "url": "https://github.com/derekparker/delve.git",
-          "commit": "85e4ba439cf0b206f5b63836b166cffe9516312e",
+          "commit": "6611fbe919a6e230970e0de1907c9b6c7cc7e272",
           "dest": "src/github.com/derekparker/delve"
         },
         {
