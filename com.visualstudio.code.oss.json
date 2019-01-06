@@ -7,6 +7,7 @@
     "--share=ipc",
     "--socket=x11",
     "--socket=pulseaudio",
+    "--socket=ssh-auth",
     "--share=network",
     "--device=dri",
     "--filesystem=host",
@@ -45,8 +46,8 @@
         {
           "type": "git",
           "url": "https://gitlab.gnome.org/GNOME/libsecret.git",
-          "tag": "0.18.6",
-          "commit": "b01e54991a7f067e24a4f309690ea2c9233d1a35"
+          "tag": "0.18.7",
+          "commit": "c5b734f4e86a8c25d5afa6525ca0513768fc2832"
         }
       ]
     },
@@ -80,8 +81,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-19.tar.xz",
-          "sha256": "e35ba756447b38be793ee7ea3c493d0f04d913cbfd4dc4eca9f5bfef68ac86ad"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-23.tar.xz",
+          "sha256": "e535ef9c0e7e5961a9907a13475ffc4c0d7b84a2788484910337bcdb30498656"
         }
       ],
       "config-opts": [
@@ -14143,9 +14144,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "virtualenv-16.1.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/7c/17/9b7b6cddfd255388b58c61e25b091047f6814183e1d63741c8df8dcd65a2/virtualenv-16.1.0-py2.py3-none-any.whl",
-          "sha256": "686176c23a538ecc56d27ed9d5217abd34644823d6391cbeb232f42bf722baad"
+          "dest-filename": "virtualenv-16.2.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/6a/d1/e0d142ce7b8a5c76adbfad01d853bca84c7c0240e35577498e20bc2ade7d/virtualenv-16.2.0-py2.py3-none-any.whl",
+          "sha256": "34b9ae3742abed2f95d3970acf4d80533261d6061b51160b197f84e5b4c98b4c"
         },
         {
           "type": "file",
@@ -14218,13 +14219,13 @@
         {
           "type": "git",
           "url": "https://github.com/mdempsky/gocode.git",
-          "commit": "9c77a290fde29d6a5ca63bab139a35654da6607d",
+          "commit": "be056ad32a5e9e6b0f640e650319100c464e19a7",
           "dest": "src/github.com/mdempsky/gocode"
         },
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "92cdcd90bf52150d9c63b7a8432ab7b10fc92385",
+          "commit": "498d95493402f719ce3de5c8cb60d1b50d0a1239",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14248,7 +14249,7 @@
         {
           "type": "git",
           "url": "https://github.com/pkg/errors.git",
-          "commit": "059132a15dd08d6704c67711dae0cf35ab991756",
+          "commit": "c38ea53d8c3f78ac85b9b0f1247abeb6d38f6988",
           "dest": "src/github.com/pkg/errors"
         },
         {
@@ -14278,7 +14279,7 @@
         {
           "type": "git",
           "url": "https://github.com/skratchdot/open-golang.git",
-          "commit": "75fb7ed4208cf72d323d7d02fd1a5964a7a9073c",
+          "commit": "a2dfa6d0dab6634ecf39251031a3d52db73b5c7e",
           "dest": "src/github.com/skratchdot/open-golang"
         },
         {
@@ -14308,7 +14309,7 @@
         {
           "type": "git",
           "url": "https://github.com/zmb3/gogetdoc.git",
-          "commit": "c5ca8f4d4936d4852f065372f3b89c8785b948f7",
+          "commit": "a2964ac3d615b00742f1a02db7a4f13f42cc936c",
           "dest": "src/github.com/zmb3/gogetdoc"
         },
         {
@@ -14344,8 +14345,14 @@
         {
           "type": "git",
           "url": "https://github.com/dominikh/go-tools",
-          "commit": "e3ad64cb4ed3e25a30bf42def711f9cb5b004f72",
+          "commit": "c51f1e51d5a3f3c686a9e8229818d34e8fe4e547",
           "dest": "src/honnef.co/go/tools"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/BurntSushi/toml.git",
+          "commit": "3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005",
+          "dest": "src/github.com/BurntSushi/toml"
         },
         {
           "type": "git",
@@ -14356,7 +14363,7 @@
         {
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git",
-          "commit": "ef7864383087163c1330f90342b6a5887e847c37",
+          "commit": "658f4addbdc61ec1518bf0cffc8a819ceef714f0",
           "dest": "src/github.com/golangci/golangci-lint"
         },
         {
@@ -14364,12 +14371,6 @@
           "url": "https://github.com/mgechev/revive.git",
           "commit": "b4cc152955fbbcd2afafd5df3d46393d621a7fdf",
           "dest": "src/github.com/mgechev/revive"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/BurntSushi/toml.git",
-          "commit": "3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005",
-          "dest": "src/github.com/BurntSushi/toml"
         },
         {
           "type": "git",
@@ -14386,7 +14387,7 @@
         {
           "type": "git",
           "url": "https://github.com/mgechev/dots.git",
-          "commit": "8e09d8ea2757cbf7f6455794db8eca08f31f515c",
+          "commit": "18fa4c4b71cc044b836fdcf922b26c44962164e0",
           "dest": "src/github.com/mgechev/dots"
         },
         {
@@ -14410,8 +14411,14 @@
         {
           "type": "git",
           "url": "https://github.com/derekparker/delve.git",
-          "commit": "34e802a42b9dc3ba3c4a513b50e9eec6afedcdf2",
+          "commit": "7e86d6749faaaa4386b58daa4e409f881a38ba78",
           "dest": "src/github.com/derekparker/delve"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/go-delve/delve.git",
+          "commit": "7e86d6749faaaa4386b58daa4e409f881a38ba78",
+          "dest": "src/github.com/go-delve/delve"
         },
         {
           "type": "git",
