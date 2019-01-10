@@ -401,6 +401,7 @@ def parse_repo():
                 '--share=network',
                 '--device=dri',
                 '--filesystem=host',
+                '--allow=devel',
                 '--persist=' + product_json['dataFolderName'],
                 '--talk-name=org.freedesktop.Notifications'
             ],
@@ -413,9 +414,6 @@ def parse_repo():
                     'no-autodownload': True
                 }
             },
-            'sdk-extensions': [
-                'org.freedesktop.Sdk.Extension.golang'
-            ],
             'modules': [
                 {
                     'name': 'libsecret',

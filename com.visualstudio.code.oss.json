@@ -11,6 +11,7 @@
     "--share=network",
     "--device=dri",
     "--filesystem=host",
+    "--allow=devel",
     "--persist=.vscode-oss",
     "--talk-name=org.freedesktop.Notifications"
   ],
@@ -23,9 +24,6 @@
       "no-autodownload": true
     }
   },
-  "sdk-extensions": [
-    "org.freedesktop.Sdk.Extension.golang"
-  ],
   "modules": [
     {
       "name": "libsecret",
