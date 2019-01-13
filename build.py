@@ -402,7 +402,8 @@ def parse_repo():
                 '--device=dri',
                 '--filesystem=host',
                 '--persist=' + product_json['dataFolderName'],
-                '--talk-name=org.freedesktop.Notifications'
+                '--talk-name=org.freedesktop.Notifications',
+                '--talk-name=org.freedesktop.secrets'
             ],
             'add-extensions': {
                 product_json['darwinBundleIdentifier'] + '.Tools': {
