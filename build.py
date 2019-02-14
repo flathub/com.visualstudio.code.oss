@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import io
 import sys
@@ -18,6 +19,7 @@ import inspect
 import operator
 from collections import OrderedDict
 import gzip
+import yaml
 
 METADATA = {
     'Releases': OrderedDict(),
@@ -51,34 +53,37 @@ def httpget(*args, **kwargs):
     return urllib.request.urlopen(urllib.request.Request(*args, **kwargs)).read()
 
 
-def get_url_sha512(url):
+def get_url_sha512(url, *, headers={}):
     sha512 = hashlib.sha512()
-    sha512.update(httpget(url, headers={'Accept': 'application/octet-stream'}))
+    sha512.update(httpget(url, headers={'Accept': 'application/octet-stream', **headers}))
     return {
         'url': url,
         'sha512': sha512.hexdigest()
     }
 
 
-def load_lockfile():
+def load_lockfile(node_version):
     result = None
     script = "console.log(JSON.stringify(require('@yarnpkg/lockfile').parse(require('fs').readFileSync(process.stdin.fd, 'utf8')).object))"
     with tempfile.TemporaryDirectory() as tmp:
-        call('npm', 'install', '--no-save', '@yarnpkg/lockfile', cwd=tmp)
+        call(str(Path(os.environ['NVM_DIR']) / 'nvm-exec'), 'npm', 'install', '--no-save', '@yarnpkg/lockfile', cwd=tmp, env={
+            'NODE_VERSION': node_version
+        })
         while True:
             path = Path((yield result))
             with path.open() as fd:
-                result = json.loads(call('node', '-e', script, stdin=fd, cwd=tmp, output=True))
+                result = json.loads(call(str(Path(os.environ['NVM_DIR']) / 'nvm-exec'), 'node', '-e', script, stdin=fd, cwd=tmp, output=True, env={
+                    'NODE_VERSION': node_version
+                }))
 
 
-def get_yarn_recipe():
+def get_yarn_recipe(version):
     url = json.loads(httpget('https://api.github.com/repos/yarnpkg/yarn/releases/latest').decode())['assets'][1]['browser_download_url']
 
     return {
         'type': 'file',
         # **get_url_sha512(url),
-        # https://github.com/Microsoft/vscode/blob/master/build/tfs/linux/product-build-linux.yml
-        **get_url_sha512('https://github.com/yarnpkg/yarn/releases/download/v1.9.4/yarn-1.9.4.js'),
+        **get_url_sha512('https://github.com/yarnpkg/yarn/releases/download/v' + version + '/yarn-' + version + '.js'),
         'dest': 'bin',
         'dest-filename': 'yarn.js'
     }
@@ -128,7 +133,7 @@ def get_git_with_tag(url, tag):
 
 
 def get_python_packages_x86_64():
-    packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope']
+    packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope', 'flake8', 'yapf']
     patterns = {
         '.whl': re.compile(r'(?P<package>.*)-(?P<version>.*?)-.*?-.*?-.*?\.whl'),
         '.tar.gz': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.tar\.gz'),
@@ -334,8 +339,6 @@ def get_gitlab_with_tag(path, netloc='gitlab.com', scheme='https'):
 
 
 def parse_repo():
-    loader = load_lockfile()
-    next(loader)
     releases = json.loads(httpget('https://vscode-update.azurewebsites.net/api/releases/stable', headers={'X-API-Version': '2'}).decode())
     with tempfile.TemporaryDirectory() as tmp, pushd(tmp):
         call('git', 'clone', '--branch', releases[0]['version'], 'https://github.com/Microsoft/vscode.git', '.')
@@ -349,8 +352,19 @@ def parse_repo():
 
         product_json = json.loads(Path('product.json').read_text())
         # nodejs_version = Path('.nvmrc').read_text().strip()
-        # https://github.com/Microsoft/vscode/blob/master/build/tfs/linux/product-build-linux.yml
-        nodejs_version = '8.9.1'
+        product_build_linux = yaml.load(Path('build/azure-pipelines/linux/product-build-linux.yml').read_text())
+        nodejs_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step['task'] == 'NodeTool@0')
+        yarn_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step['task'] == 'geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2')
+
+        nvm_exec = Path(os.environ['NVM_DIR']) / 'nvm-exec'
+        if not nvm_exec.exists():
+            nvm_exec.write_bytes(httpget('https://github.com/creationix/nvm/raw/v0.33.6/nvm-exec'))
+            nvm_exec.chmod(nvm_exec.stat().st_mode | stat.S_IXUSR)
+
+        subprocess.run(r'\. "$NVM_DIR/nvm.sh" --no-use; nvm install ' + nodejs_version, shell=True, check=True)
+
+        loader = load_lockfile(nodejs_version)
+        next(loader)
 
         re_node_version = re.compile(r'(.*)@.*?')
         packages = {}
@@ -384,12 +398,16 @@ def parse_repo():
 
             builtInExtensions.append({
                 'type': 'file',
-                **get_url_sha512(url),
+                **get_url_sha512(url, headers={
+                    'X-Market-Client-Id': 'VSCode Build',
+                    'User-Agent': 'VSCode Build',
+                    'X-Market-User-Id': '291C1CD0-051A-4123-9B4B-30D60EF52EE2',
+                }),
                 'dest': 'builtInExtensions',
                 'dest-filename': item['name'] + '.vsix'
             })
 
-        return loader.send('.yarnrc')['target'], packages, {
+        return {
             'app-id': product_json['darwinBundleIdentifier'],
             'branch': 'stable',
             'command': product_json['applicationName'],
@@ -398,6 +416,7 @@ def parse_repo():
                 '--share=ipc',
                 '--socket=x11',
                 '--socket=pulseaudio',
+                '--socket=ssh-auth',
                 '--share=network',
                 '--device=dri',
                 '--filesystem=host',
@@ -550,7 +569,7 @@ def parse_repo():
                                 'import stat',
                                 'from collections import OrderedDict',
                                 'import gzip',
-                                'METADATA=' + repr(METADATA),
+                                'METADATA = ' + repr(METADATA),
                                 *inspect.getsource(build).split('\n'),
                                 'build()'
                             ],
@@ -565,7 +584,10 @@ def parse_repo():
                             **get_url_sha512('https://raw.githubusercontent.com/Microsoft/vscode/b00945fc8c79f6db74b280ef53eba060ed9a1388/product.json')
                         },
                         *builtInExtensions,
-                        *sorted(packages.values(), key=operator.itemgetter('url'))
+                        *sorted(packages.values(), key=operator.itemgetter('url')),
+                        get_yarn_recipe(yarn_version),
+                        *get_electron_recipe(packages, loader.send('.yarnrc')['target']),
+                        *get_ripgrep_recipe(packages, nodejs_version)
                     ]
                 },
                 get_python_packages_x86_64(),
@@ -624,19 +646,21 @@ def get_electron_recipe(packages, iojs_version):
     return electron_recipe
 
 
-def get_ripgrep_recipe(packages):
-    version = next(package[1] for package in packages if package[0] == 'vscode-ripgrep')
-    url = 'https://cdn.jsdelivr.net/npm/vscode-ripgrep@' + version + '/lib/postinstall.js'
+def get_ripgrep_recipe(packages, node_version):
+    package_version = next(package[1] for package in packages if package[0] == 'vscode-ripgrep')
+    url = 'https://cdn.jsdelivr.net/npm/vscode-ripgrep@' + package_version + '/lib/postinstall.js'
     line = next(line for line in httpget(url).decode().split('\n') if line.startswith('const version'))
-    line += ';console.log(version)'
-    version = inline(call('node', '-e', line, output=True))
+    line += '; console.log(version)'
+    ripgrep_version = inline(call(str(Path(os.environ['NVM_DIR']) / 'nvm-exec'), 'node', '-e', line, output=True, env={
+        'NODE_VERSION': node_version
+    }))
     return [{
         'type': 'file',
-        **get_url_sha512('https://github.com/roblourens/ripgrep/releases/download/' + version + '/ripgrep-' + version + '-linux-' + arch_node + '.zip'),
+        **get_url_sha512('https://github.com/roblourens/ripgrep/releases/download/' + ripgrep_version + '/ripgrep-' + ripgrep_version + '-linux-' + arch_node + '.zip'),
         'only-arches': [
             arch_linux
         ],
-        'dest': 'vscode-ripgrep-cache'
+        'dest': 'vscode-ripgrep-cache-' + package_version
     } for arch_linux, arch_node in [
         ('x86_64', 'x64'),
         ('i386', 'ia32'),
@@ -658,12 +682,8 @@ def get_base_recipe():
 
 
 def generate_recipe():
-    iojs_version, packages, recipe = parse_repo()
+    recipe = parse_repo()
     recipe.update(get_base_recipe())
-    sources = next(module for module in recipe['modules'] if module['name'] == 'vscode')['sources']
-    sources.append(get_yarn_recipe())
-    sources.extend(get_electron_recipe(packages, iojs_version))
-    sources.extend(get_ripgrep_recipe(packages))
     return recipe
 
 
@@ -696,7 +716,8 @@ def build():
         )
 
     shutil.move('gulp-electron-cache', '/tmp')
-    shutil.move('vscode-ripgrep-cache', '/tmp')
+    for cache in Path().glob('vscode-ripgrep-cache-*'):
+        shutil.move(str(cache), '/tmp')
     shutil.move('builtInExtensions', '/tmp')
     shutil.move('.electron', str(Path.home()))
     shutil.move('bin/yarn.js', '/app/local/bin')
@@ -721,7 +742,7 @@ def build():
     )
     Path('build/lib/extensions.ts').write_text(Path('build/lib/extensions.ts').read_text().replace(
         "remote('', options)",
-        "require('gulp').src('/tmp/builtInExtensions/' + extensionName + '.vsix')", 1)
+        "require((console.log(remote), console.log(options), 'gulp')).src('/tmp/builtInExtensions/' + extensionName + '.vsix')", 1)
     )
 
     package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())
@@ -731,12 +752,11 @@ def build():
     subprocess.run(['yarn', 'install'], check=True, env={
         **os.environ,
         'npm_config_tarball': str(Path('../misc/iojs.tar.gz').resolve()),
+        'CHILD_CONCURRENCY': '1'
     })
 
     shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')
-    subprocess.run(['node_modules/.bin/gulp', 'vscode-linux-' + arch + '-min', '--max_old_space_size=' + (
-        '4096' if '64' in arch else '2047'
-    )], check=True)
+    subprocess.run(['npm', 'run', 'gulp', '--', 'vscode-linux-' + arch + '-min'], check=True)
 
     os.chdir('..')
     shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])
