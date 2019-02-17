@@ -252,8 +252,6 @@
             "    os.chdir('..')",
             "    shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])",
             "    os.symlink('../share/' + product['applicationName'] + '/bin/' + product['applicationName'], '/app/bin/' + product['applicationName'])",
-            "   # Path('/app/share/icons/hicolor/1024x1024/apps').mkdir(parents=True)",
-            "  #  shutil.copy('vscode/resources/linux/code.png', '/app/share/icons/hicolor/1024x1024/apps/' + os.environ['FLATPAK_ID'] + '.png')",
             "    for size in [16, 24, 32, 48, 64, 128, 192, 256, 512]:",
             "        size = str(size)",
             "        Path('/app/share/icons/hicolor/' + size + 'x' + size + '/apps').mkdir(parents=True)",
@@ -293,16 +291,20 @@
             "        release.setAttribute('date', date)",
             "        releases.appendChild(release)",
             "    dom.getElementsByTagName('component')[0].appendChild(releases)",
-            "    description_paragraph = dom.createElement('p')",
-            "    description_paragraph.appendChild(dom.createTextNode(re.sub(r'\\s+', r' ', '''",
-            "        The above paragraph, from upstream Microsoft, is the same for this OSS version and the non-OSS",
-            "        version https://flathub.org/apps/details/com.visualstudio.code. The difference between them is",
-            "        described at https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999.",
-            "        This version is compiled directly from the source code provided in the upstream GitHub repository",
-            "        with minor modifications, as the official binary is licensed proprietarily. Essential features",
-            "        are all present.",
+            "    description_paragraph_1 = dom.createElement('p')",
+            "    description_paragraph_1.appendChild(dom.createTextNode(re.sub(r'\\s+', r' ', '''",
+            "        This is the Open Source build of Visual Studio Code, packaged into a Flatpak. Some features are",
+            "        different from the proprietary version: There is no telemetry nor Twitter integration, and the",
+            "        logo is a different one without copyright issue. This OSS repackaging, as well as the proprietary",
+            "        repackaging in Flathub, are not supported by Microsoft.",
             "    '''.strip())))",
-            "    dom.getElementsByTagName('description')[0].appendChild(description_paragraph)",
+            "    dom.getElementsByTagName('description')[0].appendChild(description_paragraph_1)",
+            "    description_paragraph_2 = dom.createElement('p')",
+            "    description_paragraph_2.appendChild(dom.createTextNode(re.sub(r'\\s+', r' ', '''",
+            "        This OSS build is created due to the proprietarily licensed official binary. For more information,",
+            "        see https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999.",
+            "    '''.strip())))",
+            "    dom.getElementsByTagName('description')[0].appendChild(description_paragraph_2)",
             "    lines = dom.toxml(encoding='UTF-8').decode()",
             "    Path('/app/share/appdata').mkdir(parents=True)",
             "    Path('/app/share/appdata/' + os.environ['FLATPAK_ID'] + '.appdata.xml').write_text(",
@@ -13801,6 +13803,16 @@
         },
         {
           "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v2.0.0/mksnapshot-v2.0.0-linux-armv7l.zip",
+          "sha256": "df25a6f2b175eec0d6a5c73dc62d9b1c9e59b848bc0806d605842585205d8204",
+          "only-arches": [
+            "arm"
+          ],
+          "dest": ".electron",
+          "dest-filename": "mksnapshot-v2.0.0-linux-armv7l.zip"
+        },
+        {
+          "type": "file",
           "url": "https://github.com/electron/electron/releases/download/v2.0.0/mksnapshot-v2.0.0-linux-arm64.zip",
           "sha256": "d50063e4294a155d7e2ebc687d11798d9e3ededc5f3f069b82251321d1d44a80",
           "only-arches": [
@@ -13831,6 +13843,16 @@
         },
         {
           "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v3.1.2/electron-v3.1.2-linux-armv7l.zip",
+          "sha256": "133724170c6d7b924275d8c6f8c1507e07f3a74a223348211a3d2ab76fa5e5de",
+          "only-arches": [
+            "arm"
+          ],
+          "dest": ".electron",
+          "dest-filename": "electron-v3.1.2-linux-armv7l.zip"
+        },
+        {
+          "type": "file",
           "url": "https://github.com/electron/electron/releases/download/v3.1.2/electron-v3.1.2-linux-arm64.zip",
           "sha256": "4545db14205524866b0cd331d33d698cf86816fb87e4cadb62e13bf965d6e3d5",
           "only-arches": [
@@ -13861,6 +13883,16 @@
         },
         {
           "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v3.1.2/electron-v3.1.2-linux-armv7l.zip",
+          "sha256": "133724170c6d7b924275d8c6f8c1507e07f3a74a223348211a3d2ab76fa5e5de",
+          "only-arches": [
+            "arm"
+          ],
+          "dest": "gulp-electron-cache/atom/electron",
+          "dest-filename": "electron-v3.1.2-linux-armv7l.zip"
+        },
+        {
+          "type": "file",
           "url": "https://github.com/electron/electron/releases/download/v3.1.2/electron-v3.1.2-linux-arm64.zip",
           "sha256": "4545db14205524866b0cd331d33d698cf86816fb87e4cadb62e13bf965d6e3d5",
           "only-arches": [
@@ -13888,6 +13920,16 @@
           ],
           "dest": "gulp-electron-cache/atom/electron",
           "dest-filename": "ffmpeg-v3.1.2-linux-ia32.zip"
+        },
+        {
+          "type": "file",
+          "url": "https://github.com/electron/electron/releases/download/v3.1.2/ffmpeg-v3.1.2-linux-armv7l.zip",
+          "sha256": "732011679a3cf8ddb0c939bb65eac6e580b640ec03e059165b1d5652eab23a2c",
+          "only-arches": [
+            "arm"
+          ],
+          "dest": "gulp-electron-cache/atom/electron",
+          "dest-filename": "ffmpeg-v3.1.2-linux-armv7l.zip"
         },
         {
           "type": "file",
