@@ -1,6 +1,8 @@
 {
     "only-arches": [
         "x86_64",
-        "aarch64"
+        "i386",
+        "aarch64",
+        "arm"
     ]
 }
