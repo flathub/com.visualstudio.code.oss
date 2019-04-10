@@ -52,25 +52,6 @@
       ]
     },
     {
-      "name": "libxkbfile",
-      "cleanup": [
-        "/include",
-        "/lib/*.la",
-        "/lib/pkgconfig"
-      ],
-      "config-opts": [
-        "--disable-static"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git",
-          "tag": "libxkbfile-1.1.0",
-          "commit": "261992d42905f209cd5bf6afcf8a7ae3aa30b3ff"
-        }
-      ]
-    },
-    {
       "name": "ImageMagick",
       "build-options": {
         "prefix": "/app/local"
@@ -81,8 +62,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-37.tar.xz",
-          "sha256": "0cce573b89c9059bad87903d0c2df3a0222e7f7cae7e3ea84438b764a03cd851"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-39.tar.xz",
+          "sha256": "e6964b764bf90e9f41619f198f28207cc73efe2e309ec2275134f449f5b6a0a7"
         }
       ],
       "config-opts": [
@@ -14402,9 +14383,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "isort-4.3.16-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/28/66/f31fbe908420ef77a88012c76d3dd88ce6d0fb3c925dc1f8b4d5f929bf3c/isort-4.3.16-py2.py3-none-any.whl",
-          "sha256": "4e9e9c4bd1acd66cf6c36973f29b031ec752cbfd991c69695e4e259f9a756927"
+          "dest-filename": "isort-4.3.17-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/d3/57/2c79076db3c2aa9fc482628b8e70a9f6f2b4cb4b276636645b7080ac26ae/isort-4.3.17-py2.py3-none-any.whl",
+          "sha256": "01cb7e1ca5e6c5b3f235f0385057f70558b70d2f00320208825fa62887292f43"
         },
         {
           "type": "file",
@@ -14414,9 +14395,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
-          "url": "https://files.pythonhosted.org/packages/10/88/d7b8274edf912be71d73a1e5de7988f62b63d9e88e591da2e6f921ab69e6/lazy_object_proxy-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
-          "sha256": "7bd527f36a605c914efca5d3d014170b2cb184723e423d26b1fb2fd9108e264d"
+          "dest-filename": "lazy-object-proxy-1.3.1.tar.gz",
+          "url": "https://files.pythonhosted.org/packages/55/08/23c0753599bdec1aec273e322f277c4e875150325f565017f6280549f554/lazy-object-proxy-1.3.1.tar.gz",
+          "sha256": "eb91be369f945f10d3a49f5f9be8b3d0b93a4c2be8f8a5b83b0571b8123e0a7a"
         },
         {
           "type": "file",
@@ -14426,15 +14407,15 @@
         },
         {
           "type": "file",
-          "dest-filename": "parso-0.3.4-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/19/b1/522b2671cc6d134c9d3f5dfc0d02fee07cab848e908d03d2bffea78cca8f/parso-0.3.4-py2.py3-none-any.whl",
-          "sha256": "4580328ae3f548b358f4901e38c0578229186835f0fa0846e47369796dd5bcc9"
+          "dest-filename": "parso-0.4.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/a7/bd/e2f4753c5fa93932899243b4299011a757ac212e9bc8ddf062f38df4e78b/parso-0.4.0-py2.py3-none-any.whl",
+          "sha256": "17cc2d7a945eb42c3569d4564cdf49bde221bc2b552af3eca9c1aad517dcdd33"
         },
         {
           "type": "file",
-          "dest-filename": "pexpect-4.6.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/89/e6/b5a1de8b0cc4e07ca1b305a4fcc3f9806025c1b651ea302646341222f88b/pexpect-4.6.0-py2.py3-none-any.whl",
-          "sha256": "3fbd41d4caf27fa4a377bfd16fef87271099463e6fa73e92a52f92dfee5d425b"
+          "dest-filename": "pexpect-4.7.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/0e/3e/377007e3f36ec42f1b84ec322ee12141a9e10d808312e5738f52f80a232c/pexpect-4.7.0-py2.py3-none-any.whl",
+          "sha256": "2094eefdfcf37a1fdbfb9aa090862c1a4878e5c7e0e7e7088bdb511c558e5cd1"
         },
         {
           "type": "file",
@@ -14492,9 +14473,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "setuptools-40.9.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/44/56/75e64a8fbbe9e0bd30cfdd58ca1856bc0dc15a43e41504a58d8373f34213/setuptools-40.9.0-py2.py3-none-any.whl",
-          "sha256": "a96b1bef41915307025ae357fde45c1ccbd2bb0d37b3a8bc239dddd55bd01ca3"
+          "dest-filename": "setuptools-41.0.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/c8/b0/cc6b7ba28d5fb790cf0d5946df849233e32b8872b6baca10c9e002ff5b41/setuptools-41.0.0-py2.py3-none-any.whl",
+          "sha256": "e67486071cd5cdeba783bd0b64f5f30784ff855b35071c8670551fd7fc52d4a1"
         },
         {
           "type": "file",
@@ -14510,9 +14491,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "typed_ast-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
-          "url": "https://files.pythonhosted.org/packages/b1/62/7e0bfe7bb75bf8a41b58ccb7bd3ab3afaec61e06d9abfda113ad0dc227be/typed_ast-1.3.1-cp35-cp35m-manylinux1_x86_64.whl",
-          "sha256": "af5fbdde0690c7da68e841d7fc2632345d570768ea7406a9434446d7b33b0ee1"
+          "dest-filename": "typed_ast-1.3.1-cp37-cp37m-manylinux1_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/eb/6a/d6877019d38f5557e286253fc31a5f53a72be9f740ca9617028f4528930a/typed_ast-1.3.1-cp37-cp37m-manylinux1_x86_64.whl",
+          "sha256": "bac5f444c118aeb456fac1b0b5d14c6a71ea2a42069b09c176f75e9bd4c186f6"
         },
         {
           "type": "file",
@@ -14522,9 +14503,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "virtualenv_clone-0.5.2-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/37/2b/e34e411da0b960b2245f86ea83cdc20be62150a0966004f54fd2e00e5909/virtualenv_clone-0.5.2-py2.py3-none-any.whl",
-          "sha256": "f4f1d0d73adbc87bc9bfe14a7fd1025c48e46c449b625e6ba3edc5f22b305a1f"
+          "dest-filename": "virtualenv_clone-0.5.3-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/ba/f8/50c2b7dbc99e05fce5e5b9d9a31f37c988c99acd4e8dedd720b7b8d4011d/virtualenv_clone-0.5.3-py2.py3-none-any.whl",
+          "sha256": "532f789a5c88adf339506e3ca03326f20ee82fd08ee5586b44dc859b5b4468c5"
         },
         {
           "type": "file",
@@ -14540,9 +14521,9 @@
         },
         {
           "type": "file",
-          "dest-filename": "yapf-0.26.0-py2.py3-none-any.whl",
-          "url": "https://files.pythonhosted.org/packages/f7/b6/266774a11dc81539dcf3b5117cd7a3c1c2b11a47853940b7f0803cf389b2/yapf-0.26.0-py2.py3-none-any.whl",
-          "sha256": "f58069d5e0df60c078f3f986b8a63acfda73aa6ebb7cd423f6eabd1cb06420ba"
+          "dest-filename": "yapf-0.27.0-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/bb/f1/d453afc8653f49edf6382dd43f69bef1a1df3e240949eba8b7adb649b868/yapf-0.27.0-py2.py3-none-any.whl",
+          "sha256": "613deba14233623ff3432d9d5032631b5f600be97b39f66932cbe67648bfa8ea"
         }
       ]
     },
@@ -14597,7 +14578,7 @@
         {
           "type": "git",
           "url": "https://go.googlesource.com/tools",
-          "commit": "923d25813098b2ffdf1b4bb7ee4ec425fef796a9",
+          "commit": "96f2e7ef861b625ecc256679029cf597531360bc",
           "dest": "src/golang.org/x/tools"
         },
         {
@@ -14699,13 +14680,13 @@
         {
           "type": "git",
           "url": "https://go.googlesource.com/lint",
-          "commit": "d0100b6bd8b389f0385611eb39152c4d7c3a7905",
+          "commit": "959b441ac422379a43da2230f62be024250818b0",
           "dest": "src/golang.org/x/lint"
         },
         {
           "type": "git",
           "url": "https://github.com/cweill/gotests.git",
-          "commit": "276664f3b507425723807b6ac2cfd12ae7794349",
+          "commit": "afa0a378663a63a98287714c3f3359e22a4ab29e",
           "dest": "src/github.com/cweill/gotests"
         },
         {
@@ -14765,7 +14746,7 @@
         {
           "type": "git",
           "url": "https://github.com/olekukonko/tablewriter.git",
-          "commit": "f82d31373321de71ad0289113725564fe180a301",
+          "commit": "7e037d187b0c13d81ccf0dd1c6b990c2759e6597",
           "dest": "src/github.com/olekukonko/tablewriter"
         },
         {
@@ -14777,7 +14758,7 @@
         {
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git",
-          "commit": "f9fdcbb3871320e0655530b707a3d276d561311a",
+          "commit": "61b1debf13ba14e09e29042727d698073bb87f83",
           "dest": "src/github.com/sourcegraph/go-langserver"
         },
         {
@@ -14812,9 +14793,9 @@
       "sources": []
     }
   ],
-  "base": "io.atom.electron.BaseApp",
-  "base-version": "stable",
-  "runtime": "org.freedesktop.Sdk",
-  "runtime-version": "1.6",
+  "base": "org.electronjs.Electron2.BaseApp",
+  "base-version": "18.08",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
   "sdk": "org.freedesktop.Sdk"
 }
