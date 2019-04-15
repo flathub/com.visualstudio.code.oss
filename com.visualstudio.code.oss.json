@@ -302,28 +302,28 @@
           "type": "file"
         },
         {
-          "sha512": "068f88905f28b1f824ba925a610d99f9456623b377db73d59f31176597952236f6d5415ec70a7b56092e907cf007e5a6a1af21584e40c6170828605e22b572bd",
+          "sha512": "01b2e6b30ef3e389f6bdb2b2e4e8ba6241ac205879e47d7b71a2b5e0d58d7a998df6698c0f34c53959faae0847da746a1f3500411bf945e3e5a8c610dba0a896",
           "type": "file",
           "url": "https://raw.githubusercontent.com/Microsoft/vscode/b00945fc8c79f6db74b280ef53eba060ed9a1388/product.json"
         },
         {
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.node-debug.vsix",
-          "sha512": "705a22a318974b59f793efd1b08230e8a514ee02c063d22bc9738a4fd4f0f67124cb106b03db22ddd6050fffba2d7b16517e9436cad65a6982066d6749e00f9a",
+          "sha512": "45941946abb7078706d9f2f2d4731af00edd0bcd3418fd2778c9ef0b32bc8bea714a86f92e35fe451306b3acc7cf9b196598b4aec97d7d6e25fb598b49b96e5d",
           "type": "file",
           "url": "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/node-debug/1.33.3/vspackage"
         },
         {
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.node-debug2.vsix",
-          "sha512": "09d5c93a7f5d3369eab27562f51f2fa1ba52dc9f88207523765013ab519019666b3a4d5f04a47bd9945f4c4c34ddc6667efde0c9553ce290affc43788fb2b95d",
+          "sha512": "fe3eede9d39fc4350159440104b3b013b9427c4571a4779783fce91ba9e451b3c46a831ca7d00103b57ce76ec64f223e1c41dd022a77782dddccad356ba11774",
           "type": "file",
           "url": "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/node-debug2/1.33.0/vspackage"
         },
         {
           "dest": "builtInExtensions",
           "dest-filename": "ms-vscode.references-view.vsix",
-          "sha512": "8eed74dfc081d72559ff7beed97d732b994513393ef4f72278a22daa09e08d86e0396cbca7cbac0c57e61cb6cce1fea29de1aae7b494aa72ca16f094589a870f",
+          "sha512": "37ec6f2e99b84d59ef5608c910085eca759ca66eb625acf2656de14a653ba4f4a33f142b2654baea60ccc1c651ea285494946bfd437e79d7452698500d448cf6",
           "type": "file",
           "url": "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/references-view/0.0.26/vspackage"
         },
