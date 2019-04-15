@@ -302,7 +302,7 @@
           "type": "file"
         },
         {
-          "sha512": "01b2e6b30ef3e389f6bdb2b2e4e8ba6241ac205879e47d7b71a2b5e0d58d7a998df6698c0f34c53959faae0847da746a1f3500411bf945e3e5a8c610dba0a896",
+          "sha512": "068f88905f28b1f824ba925a610d99f9456623b377db73d59f31176597952236f6d5415ec70a7b56092e907cf007e5a6a1af21584e40c6170828605e22b572bd",
           "type": "file",
           "url": "https://raw.githubusercontent.com/Microsoft/vscode/b00945fc8c79f6db74b280ef53eba060ed9a1388/product.json"
         },
