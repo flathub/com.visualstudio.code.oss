@@ -14488,10 +14488,10 @@
           "url": "https://files.pythonhosted.org/packages/93/d6/abcb22de61d78e2fc3959c964628a5771e47e7cc60d53e9342e21ed6cc9a/traitlets-4.3.2-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "typed_ast-1.3.1-cp37-cp37m-manylinux1_x86_64.whl",
-          "sha256": "bac5f444c118aeb456fac1b0b5d14c6a71ea2a42069b09c176f75e9bd4c186f6",
+          "dest-filename": "typed_ast-1.3.4-cp37-cp37m-manylinux1_x86_64.whl",
+          "sha256": "56b6978798502ef66625a2e0f80cf923da64e328da8bbe16c1ff928c70c873de",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/eb/6a/d6877019d38f5557e286253fc31a5f53a72be9f740ca9617028f4528930a/typed_ast-1.3.1-cp37-cp37m-manylinux1_x86_64.whl"
+          "url": "https://files.pythonhosted.org/packages/18/99/44c67a8349e5115be8239094baabda1c98b4811ec810dd2f2780e0e3fe93/typed_ast-1.3.4-cp37-cp37m-manylinux1_x86_64.whl"
         },
         {
           "dest-filename": "virtualenv-16.4.3-py2.py3-none-any.whl",
@@ -14604,7 +14604,7 @@
           "url": "https://github.com/derekparker/delve.git"
         },
         {
-          "commit": "e87e8279b4cda00a53befd43a6c808809c80bebd",
+          "commit": "e561f6794a2a09dd97bd3cdefde08db0d564f55c",
           "dest": "src/honnef.co/go/tools",
           "type": "git",
           "url": "https://github.com/dominikh/go-tools"
@@ -14694,7 +14694,7 @@
           "url": "https://github.com/mgechev/dots.git"
         },
         {
-          "commit": "2ce440cf9612fc32888104546e2c92ac6737992e",
+          "commit": "4c0c2b62da372b1f0cd37233e7f5ac3ca785723f",
           "dest": "src/github.com/mgechev/revive",
           "type": "git",
           "url": "https://github.com/mgechev/revive.git"
@@ -14730,7 +14730,7 @@
           "url": "https://github.com/skratchdot/open-golang.git"
         },
         {
-          "commit": "843793335d0f8d70c1d9f1c948ff584a979b5bab",
+          "commit": "0b3eb4b7b8da63598d99905dd63e1c9ba92aaf22",
           "dest": "src/github.com/sourcegraph/go-langserver",
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git"
@@ -14772,7 +14772,7 @@
           "url": "https://go.googlesource.com/lint"
         },
         {
-          "commit": "681f9ce8ac52c4ba431539a515ecb7f2ab72eca0",
+          "commit": "6732636ccdfd99c4301d1d1ac2307f091331f767",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
