@@ -89,9 +89,9 @@
       "name": "ImageMagick",
       "sources": [
         {
-          "sha256": "d892b41a08b24baa058bc59cee2dd329584525446e03a414bc250b93a2f2fc79",
+          "sha256": "7cda36ae15890fa81a198bbb8ad577c033fbf5cc0284cb7d12197dfdea25b0fb",
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-45.tar.xz"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-46.tar.xz"
         }
       ]
     },
@@ -14628,7 +14628,7 @@
           "url": "https://github.com/alecthomas/gometalinter.git"
         },
         {
-          "commit": "afa0a378663a63a98287714c3f3359e22a4ab29e",
+          "commit": "f4738f4d909f304c8801dc5651a7ab4c9de6d5bc",
           "dest": "src/github.com/cweill/gotests",
           "type": "git",
           "url": "https://github.com/cweill/gotests.git"
@@ -14646,7 +14646,7 @@
           "url": "https://github.com/derekparker/delve.git"
         },
         {
-          "commit": "e561f6794a2a09dd97bd3cdefde08db0d564f55c",
+          "commit": "ea95bdfd59fc14c1c9afa08716e0cd013eae4e12",
           "dest": "src/honnef.co/go/tools",
           "type": "git",
           "url": "https://github.com/dominikh/go-tools"
@@ -14658,7 +14658,7 @@
           "url": "https://github.com/fatih/color.git"
         },
         {
-          "commit": "141225bf62b6e5c9c0c9554a2e993e8c30aebb1d",
+          "commit": "df91c5bc755120bec5cfbd12fc394ba720acf88f",
           "dest": "src/github.com/fatih/gomodifytags",
           "type": "git",
           "url": "https://github.com/fatih/gomodifytags.git"
@@ -14814,7 +14814,7 @@
           "url": "https://go.googlesource.com/lint"
         },
         {
-          "commit": "1da8801a9502f29f3f03edfc3149b947e6e1913c",
+          "commit": "521d6ed310dd2348b2d3c64b91c55df233c52860",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
