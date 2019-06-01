@@ -89,9 +89,9 @@
       "name": "ImageMagick",
       "sources": [
         {
-          "sha256": "7cda36ae15890fa81a198bbb8ad577c033fbf5cc0284cb7d12197dfdea25b0fb",
+          "sha256": "73260ea071fa5b48b974020b2c9a8f7bd92f6fbaac92ea5c0ea78a0d05cc0594",
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-46.tar.xz"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-47.tar.xz"
         }
       ]
     },
@@ -269,6 +269,13 @@
             "        release.setAttribute('date', date)",
             "        releases.appendChild(release)",
             "    dom.getElementsByTagName('component')[0].appendChild(releases)",
+            "    content_rating = dom.createElement('content_rating')",
+            "    content_rating.setAttribute('type', 'oars-1.1')",
+            "    content_attribute = dom.createElement('content_attribute')",
+            "    content_attribute.setAttribute('id', 'social-info')",
+            "    content_attribute.appendChild(dom.createTextNode('moderate'))",
+            "    content_rating.appendChild(content_attribute)",
+            "    dom.getElementsByTagName('component')[0].appendChild(content_rating)",
             "    description_paragraph_1 = dom.createElement('p')",
             "    description_paragraph_1.appendChild(dom.createTextNode(re.sub(r'\\s+', r' ', '''",
             "        This is the Open Source build of Visual Studio Code, packaged into a Flatpak. Some features are",
@@ -14362,10 +14369,10 @@
       ],
       "sources": [
         {
-          "dest-filename": "Pygments-2.4.0-py2.py3-none-any.whl",
-          "sha256": "5ad302949b3c98dd73f8d9fcdc7e9cb592f120e32a18e23efd7f3dc51194472b",
+          "dest-filename": "Pygments-2.4.2-py2.py3-none-any.whl",
+          "sha256": "71e430bc85c88a430f000ac1d9b331d2407f681d6f6aec95e8bcfbc3df5b0127",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/6e/00/c5cb5fc7c047da4af049005d0146b3a961b1a25d9cefbbe24bf0882a11ad/Pygments-2.4.0-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/5c/73/1dfa428150e3ccb0fa3e68db406e5be48698f2a979ccbcec795f28f44048/Pygments-2.4.2-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "astroid-2.2.5-py3-none-any.whl",
@@ -14640,13 +14647,13 @@
           "url": "https://github.com/davidrjenni/reftools.git"
         },
         {
-          "commit": "c30a333f7be2f4ca636a93cd198b1762c5615513",
+          "commit": "b9f7dd50085df5ce2bb225468a34d25373475f8d",
           "dest": "src/github.com/derekparker/delve",
           "type": "git",
           "url": "https://github.com/derekparker/delve.git"
         },
         {
-          "commit": "ea95bdfd59fc14c1c9afa08716e0cd013eae4e12",
+          "commit": "42df64e2171aa2a244fed527cdbe487268fb9a76",
           "dest": "src/honnef.co/go/tools",
           "type": "git",
           "url": "https://github.com/dominikh/go-tools"
@@ -14664,13 +14671,13 @@
           "url": "https://github.com/fatih/gomodifytags.git"
         },
         {
-          "commit": "76ae1d6d2117609598c7d4e8f3e938145f204e8f",
+          "commit": "1c659cf57c3263125ad165d8648ddc27fa68c385",
           "dest": "src/github.com/fatih/structtag",
           "type": "git",
           "url": "https://github.com/fatih/structtag.git"
         },
         {
-          "commit": "c30a333f7be2f4ca636a93cd198b1762c5615513",
+          "commit": "b9f7dd50085df5ce2bb225468a34d25373475f8d",
           "dest": "src/github.com/go-delve/delve",
           "type": "git",
           "url": "https://github.com/go-delve/delve.git"
@@ -14680,6 +14687,12 @@
           "dest": "src/github.com/golangci/golangci-lint",
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git"
+        },
+        {
+          "commit": "f0e32980c006571efd537032e5f9cd8c1a92819e",
+          "dest": "src/github.com/google/renameio",
+          "type": "git",
+          "url": "https://github.com/google/renameio.git"
         },
         {
           "commit": "f2d63a841a096a18bc5a974563dee7706af5708e",
@@ -14760,6 +14773,12 @@
           "url": "https://github.com/ramya-rao-a/go-outline.git"
         },
         {
+          "commit": "6f68bf1e81f8552c7dbd47f3bc4371c2db0941a6",
+          "dest": "src/github.com/rogpeppe/go-internal",
+          "type": "git",
+          "url": "https://github.com/rogpeppe/go-internal.git"
+        },
+        {
           "commit": "5784335da72394c8f53d9036c26fcc876718879b",
           "dest": "src/github.com/rogpeppe/godef",
           "type": "git",
@@ -14772,7 +14791,7 @@
           "url": "https://github.com/skratchdot/open-golang.git"
         },
         {
-          "commit": "a94fb112d1f2e70f55851c6c569916a9e31caee1",
+          "commit": "02f41985f46b400b7a673c3dfb6bab8fd1ac6a6d",
           "dest": "src/github.com/sourcegraph/go-langserver",
           "type": "git",
           "url": "https://github.com/sourcegraph/go-langserver.git"
@@ -14814,7 +14833,13 @@
           "url": "https://go.googlesource.com/lint"
         },
         {
-          "commit": "521d6ed310dd2348b2d3c64b91c55df233c52860",
+          "commit": "d8296639b499981d50d327e4b5714c5734e925d6",
+          "dest": "src/golang.org/x/mod",
+          "type": "git",
+          "url": "https://go.googlesource.com/mod"
+        },
+        {
+          "commit": "26e35f15edef9a960ed13c88b445c5674371da18",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
