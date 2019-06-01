@@ -297,6 +297,7 @@
             "        .replace('@@NAME_LONG@@', product['nameLong'])",
             "        .replace('@@NAME@@', os.environ['FLATPAK_ID'])",
             "        .replace('@@LICENSE@@', product['licenseName'])",
+            "        .replace('https://', '')",
             "    )",
             "",
             "build()"
