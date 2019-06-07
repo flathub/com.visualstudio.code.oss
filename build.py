@@ -791,9 +791,9 @@ def build():
         "require((console.log(remote), console.log(options), 'gulp')).src('/tmp/builtInExtensions/' + extensionName + '.vsix')", 1)
     )
 
-    package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())
-    del package_vscode_extension['scripts']['postinstall']
-    Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension, sort_keys=True))
+    # package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())
+    # del package_vscode_extension['scripts']['postinstall']
+    # Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension, sort_keys=True))
 
     subprocess.run(['yarn', 'install'], check=True, env={
         **os.environ,

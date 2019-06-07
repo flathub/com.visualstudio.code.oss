@@ -212,9 +212,9 @@
             "        \"require((console.log(remote), console.log(options), 'gulp')).src('/tmp/builtInExtensions/' + extensionName + '.vsix')\", 1)",
             "    )",
             "",
-            "    package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())",
-            "    del package_vscode_extension['scripts']['postinstall']",
-            "    Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension, sort_keys=True))",
+            "    # package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())",
+            "    # del package_vscode_extension['scripts']['postinstall']",
+            "    # Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension, sort_keys=True))",
             "",
             "    subprocess.run(['yarn', 'install'], check=True, env={",
             "        **os.environ,",
@@ -15035,7 +15035,7 @@
           "url": "https://github.com/derekparker/delve.git"
         },
         {
-          "commit": "0a11fc526260d1bcd0686bd3c9bd1167895aeea9",
+          "commit": "91b34a6dad6c3aabea21270b2953579b48458732",
           "dest": "src/honnef.co/go/tools",
           "type": "git",
           "url": "https://github.com/dominikh/go-tools"
@@ -15221,7 +15221,7 @@
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "d0a3d012864b53e579e8ec5cbf6a5405dbc12423",
+          "commit": "0139d5756a7dfc6302f04af275a50cbc37ea0153",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
