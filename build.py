@@ -19,12 +19,20 @@ import inspect
 import operator
 from collections import OrderedDict
 import gzip
-import yaml
 
-METADATA = {
-    'Releases': OrderedDict(),
-    'Extensions': {}
-}
+try:
+    import yaml
+    import requests
+except ImportError:
+    subprocess.run('curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py; ' + sys.executable + ' /tmp/get-pip.py --user', shell=True, check=True)
+    subprocess.run(sys.executable + ' -m pip install -U pyyaml requests', shell=True, check=True)
+    os.execv(sys.executable, [sys.executable] + sys.argv)
+
+
+METADATA = OrderedDict([
+    ('Releases', OrderedDict()),
+    ('Extensions', OrderedDict())
+])
 
 
 @contextmanager
@@ -49,13 +57,10 @@ def inline(text):
     return ' '.join(text.split())
 
 
-def httpget(*args, **kwargs):
-    return urllib.request.urlopen(urllib.request.Request(*args, **kwargs)).read()
-
-
-def get_url_sha512(url, *, headers={}):
+def get_url_sha512(url, *, headers={}, raw=False):
     sha512 = hashlib.sha512()
-    sha512.update(httpget(url, headers={'Accept': 'application/octet-stream', **headers}))
+    response = requests.get(url, headers={'Accept': 'application/octet-stream', **headers}, stream=raw)
+    sha512.update(response.raw.data if raw else response.content)
     return {
         'url': url,
         'sha512': sha512.hexdigest()
@@ -78,7 +83,7 @@ def load_lockfile(node_version):
 
 
 def get_yarn_recipe(version):
-    url = json.loads(httpget('https://api.github.com/repos/yarnpkg/yarn/releases/latest').decode())['assets'][1]['browser_download_url']
+    url = requests.get('https://api.github.com/repos/yarnpkg/yarn/releases/latest').json()['assets'][1]['browser_download_url']
 
     return {
         'type': 'file',
@@ -97,7 +102,7 @@ def get_imagemagick_archive():
         return (version[4] == 'tar.xz', *(int(number) for number in version[0:4]))
 
     contents = [content for content in minidom.parseString(
-        httpget('https://www.imagemagick.org/download/releases/digest.rdf')
+        requests.get('https://www.imagemagick.org/download/releases/digest.rdf').text
     ).documentElement.childNodes if content.nodeName == 'digest:Content']
     releases = [(
         content.attributes['rdf:about'].value,
@@ -132,7 +137,51 @@ def get_git_with_tag(url, tag):
     }
 
 
-def get_python_packages_x86_64():
+def get_python_packages():
+    packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope']
+    # setup_requires = ['setuptools_scm', 'pytest-runner']
+    setup_requires = []
+    sources = []
+    with tempfile.TemporaryDirectory() as tmpdir:
+        subprocess.run('pip3 download --no-binary :all: -d' + tmpdir + ' ' + ' '.join(packages + setup_requires), shell=True)
+
+        versions = [re.fullmatch(r'(.*)-(.*?)(\.zip|\.tar\.gz)', filename).groups()[:2] for filename in sorted(os.listdir(tmpdir))]
+
+        for package, version in versions:
+            subprocess.run('pip3 download --no-deps --platform any --abi none --implementation cp --python-version 37 -d ' + tmpdir + ' ' + package + '==' + version, shell=True)
+
+        filenames = os.listdir(tmpdir)
+        wheels = list(filter(lambda filename: filename.endswith('-none-any.whl'), filenames))
+
+        for package, version in versions:
+            filename = next((name for name in wheels if name.startswith(package + '-' + version + '-')), None)
+            if filename is None:
+                filename = next(name for name in filenames if name.startswith(package + '-' + version + '.'))
+
+            metadata = requests.get('https://pypi.org/pypi/' + package + '/json/').json()
+            entry = next(filter(lambda entry: entry['filename'] == filename, metadata['releases'][version]))
+            sources.append({
+                'type': 'file',
+                'dest-filename': filename,
+                'url': entry['url'],
+                'sha256': entry['digests']['sha256']
+            })
+        return {
+            'name': 'python_packages',
+            'buildsystem': 'simple',
+            'only-arches': ['x86_64'],
+            'build-commands': [
+                'mkdir -p /app/local',
+                r'''echo -e "[easy_install]\nallow_hosts = ''\nfind_links = file://$PWD/" > ~/.pydistutils.cfg''',
+                'PYTHONUSERBASE=/app/local pip3 install --user --no-index --find-links . ' + ' '.join(packages)
+            ],
+            'sources': sources
+        }
+
+
+def get_python_packages_x86_64(python_version):
+    subprocess.run('curl https://storage.googleapis.com/travis-ci-language-archives/python/binaries/ubuntu/16.04/x86_64/python-' + python_version + '.tar.bz2 | sudo tar -xjf - --directory /', shell=True, check=True)
+
     packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope', 'flake8', 'yapf']
     patterns = {
         '.whl': re.compile(r'(?P<package>.*)-(?P<version>.*?)-.*?-.*?-.*?\.whl'),
@@ -141,7 +190,7 @@ def get_python_packages_x86_64():
     }
     with tempfile.TemporaryDirectory() as tmpdir:
         sources = []
-        subprocess.run('eval "$(pyenv init -)"; pyenv install -s 3.5.2; pyenv shell 3.5.2; pip3 install -U pip; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True)
+        subprocess.run('. ~/virtualenv/python' + python_version + '/bin/activate; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True, check=True)
 
         for filename in sorted(os.listdir(tmpdir)):
             for extension, pattern in patterns.items():
@@ -152,7 +201,7 @@ def get_python_packages_x86_64():
                     break
             else:
                 continue
-            metadata = json.loads(httpget('https://pypi.org/pypi/' + package + '/json/').decode())
+            metadata = requests.get('https://pypi.org/pypi/' + package + '/json/').json()
             entry = next(entry for entry in metadata['releases'][version] if entry['filename'] == filename)
             sources.append({
                 'type': 'file',
@@ -244,7 +293,7 @@ def get_go_tools():
                 'type': 'git',
                 'url': url,
                 'commit': subprocess.run([
-                    'git', 'rev-parse', 'master',
+                    'git', 'rev-parse', 'HEAD',
                 ], stdout=subprocess.PIPE, universal_newlines=True, check=True, cwd=str(GOPATH / 'src' / path)).stdout.strip(),
                 'dest': str(Path('src') / path)
             })
@@ -307,20 +356,20 @@ def get_go_tools():
             'append-path': '/usr/lib/sdk/golang/bin',
             'env': {'GOROOT': '/usr/lib/sdk/golang'}
         },
-        'build-commands': commands,
-        'sources': sources
+        'build-commands': sorted(commands),
+        'sources': sorted(sources, key=operator.itemgetter('url'))
     }
 
 
 def get_gitlab_with_tag(path, netloc='gitlab.com', scheme='https'):
-    project = json.loads(httpget(urllib.parse.urlunsplit((
+    project = requests.get(urllib.parse.urlunsplit((
         scheme,
         netloc,
         '/api/v4/projects/' + urllib.parse.quote_plus(path),
         '',
         ''
-    ))).decode())
-    tag = json.loads(httpget(urllib.parse.urlunsplit((
+    ))).json()
+    tag = requests.get(urllib.parse.urlunsplit((
         scheme,
         netloc,
         '/api/v4/projects/' + urllib.parse.quote_plus(path) + '/repository/tags',
@@ -329,7 +378,7 @@ def get_gitlab_with_tag(path, netloc='gitlab.com', scheme='https'):
             'per_page': 1
         }),
         ''
-    ))).decode())[0]
+    ))).json()[0]
     return {
         'type': 'git',
         'url': project['http_url_to_repo'],
@@ -338,8 +387,18 @@ def get_gitlab_with_tag(path, netloc='gitlab.com', scheme='https'):
     }
 
 
-def parse_repo():
-    releases = json.loads(httpget('https://vscode-update.azurewebsites.net/api/releases/stable', headers={'X-API-Version': '2'}).decode())
+def get_python_version(runtime_version):
+    sdk_tag = next(release['name'] for release in requests.get(
+        'https://gitlab.com/api/v4/projects/freedesktop-sdk%2Ffreedesktop-sdk/repository/tags'
+    ).json() if release['name'].startswith('freedesktop-sdk-' + runtime_version + '.'))
+
+    return re.match('v(\d+\.\d+\.\d+)-.*', yaml.load(requests.get(
+        'https://gitlab.com/freedesktop-sdk/freedesktop-sdk/raw/' + sdk_tag + '/elements/base/python3.bst'
+    ).text)['sources'][0]['ref']).groups()[0]
+
+
+def parse_repo(base_recipe):
+    releases = requests.get('https://vscode-update.azurewebsites.net/api/releases/stable', headers={'X-API-Version': '2'}).json()
     with tempfile.TemporaryDirectory() as tmp, pushd(tmp):
         call('git', 'clone', '--branch', releases[0]['version'], 'https://github.com/Microsoft/vscode.git', '.')
         releases = [{
@@ -358,7 +417,7 @@ def parse_repo():
 
         nvm_exec = Path(os.environ['NVM_DIR']) / 'nvm-exec'
         if not nvm_exec.exists():
-            nvm_exec.write_bytes(httpget('https://github.com/creationix/nvm/raw/v0.33.6/nvm-exec'))
+            nvm_exec.write_bytes(requests.get('https://github.com/creationix/nvm/raw/v0.33.6/nvm-exec').content)
             nvm_exec.chmod(nvm_exec.stat().st_mode | stat.S_IXUSR)
 
         subprocess.run(r'\. "$NVM_DIR/nvm.sh" --no-use; nvm install ' + nodejs_version, shell=True, check=True)
@@ -402,12 +461,13 @@ def parse_repo():
                     'X-Market-Client-Id': 'VSCode Build',
                     'User-Agent': 'VSCode Build',
                     'X-Market-User-Id': '291C1CD0-051A-4123-9B4B-30D60EF52EE2',
-                }),
+                }, raw=True),
                 'dest': 'builtInExtensions',
                 'dest-filename': item['name'] + '.vsix'
             })
 
         return {
+            **base_recipe,
             'app-id': product_json['darwinBundleIdentifier'],
             'branch': 'stable',
             'command': product_json['applicationName'],
@@ -453,20 +513,6 @@ def parse_repo():
                     ],
                     'sources': [
                         get_gitlab_with_tag('GNOME/libsecret', 'gitlab.gnome.org')
-                    ]
-                },
-                {
-                    'name': 'libxkbfile',
-                    'cleanup': [
-                        '/include',
-                        '/lib/*.la',
-                        '/lib/pkgconfig'
-                    ],
-                    'config-opts': [
-                        '--disable-static'
-                    ],
-                    'sources': [
-                        get_gitlab_with_tag('xorg/lib/libxkbfile', 'gitlab.freedesktop.org')
                     ]
                 },
                 {
@@ -590,7 +636,7 @@ def parse_repo():
                         *get_ripgrep_recipe(packages, nodejs_version)
                     ]
                 },
-                get_python_packages_x86_64(),
+                get_python_packages_x86_64(get_python_version(base_recipe['runtime-version'])),
                 get_go_tools(),
                 {
                     'name': 'placeholder',
@@ -621,18 +667,18 @@ def get_electron_recipe(packages, iojs_version):
     electrons.append(('ffmpeg', iojs_version, 'gulp-electron-cache/atom/electron'))
     for name, version, dest in electrons:
         if version not in sha256sums:
-            sha256sums[version] = httpget('https://github.com/electron/electron/releases/download/v' + version + '/SHASUMS256.txt')
+            sha256sums[version] = requests.get('https://github.com/electron/electron/releases/download/v' + version + '/SHASUMS256.txt').text
         for arch_linux, arch_node in [
             ('x86_64', 'x64'),
             ('i386', 'ia32'),
-            ('arm', 'arm'),
+            ('arm', 'armv7l'),
             ('aarch64', 'arm64')
         ]:
             filename = name + '-v' + version + '-linux-' + arch_node + '.zip'
             electron_recipe.append({
                 'type': 'file',
                 'url': 'https://github.com/electron/electron/releases/download/v' + version + '/' + filename,
-                'sha256': next(line.split(' ')[0] for line in sha256sums[version].decode().split('\n') if filename in line),
+                'sha256': next(line.split(' ')[0] for line in sha256sums[version].split('\n') if filename in line),
                 'only-arches': [arch_linux],
                 'dest': dest,
                 'dest-filename': filename
@@ -649,7 +695,7 @@ def get_electron_recipe(packages, iojs_version):
 def get_ripgrep_recipe(packages, node_version):
     package_version = next(package[1] for package in packages if package[0] == 'vscode-ripgrep')
     url = 'https://cdn.jsdelivr.net/npm/vscode-ripgrep@' + package_version + '/lib/postinstall.js'
-    line = next(line for line in httpget(url).decode().split('\n') if line.startswith('const version'))
+    line = next(line for line in requests.get(url).text.split('\n') if line.startswith('const version'))
     line += '; console.log(version)'
     ripgrep_version = inline(call(str(Path(os.environ['NVM_DIR']) / 'nvm-exec'), 'node', '-e', line, output=True, env={
         'NODE_VERSION': node_version
@@ -670,7 +716,9 @@ def get_ripgrep_recipe(packages, node_version):
 
 
 def get_base_recipe():
-    base = json.loads(httpget('https://github.com/flathub/io.atom.electron.BaseApp/raw/1.6/io.atom.electron.BaseApp.json').decode())
+    base = yaml.load(requests.get(
+        'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/master/org.electronjs.Electron2.BaseApp.yml'
+    ).text)
     return {
         'base': base['id'],
         'base-version': base['branch'],
@@ -682,9 +730,7 @@ def get_base_recipe():
 
 
 def generate_recipe():
-    recipe = parse_repo()
-    recipe.update(get_base_recipe())
-    return recipe
+    return parse_repo(get_base_recipe())
 
 
 def build():
@@ -697,7 +743,7 @@ def build():
         'ms-vscode.node-debug',
         'ms-vscode.node-debug2'
     ]
-    Path('vscode/product.json').write_text(json.dumps(product))
+    Path('vscode/product.json').write_text(json.dumps(product, sort_keys=True))
 
     recipe = json.loads(Path(os.environ['FLATPAK_ID'] + '.json').read_text())
     arch = ' '.join(subprocess.run(['node', '-e', 'console.log(process.arch)'], stdout=subprocess.PIPE, universal_newlines=True).stdout.split())
@@ -747,7 +793,7 @@ def build():
 
     package_vscode_extension = json.loads(Path('extensions/vscode-colorize-tests/package.json').read_text())
     del package_vscode_extension['scripts']['postinstall']
-    Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension))
+    Path('extensions/vscode-colorize-tests/package.json').write_text(json.dumps(package_vscode_extension, sort_keys=True))
 
     subprocess.run(['yarn', 'install'], check=True, env={
         **os.environ,
@@ -755,14 +801,14 @@ def build():
         'CHILD_CONCURRENCY': '1'
     })
 
+    # (Path.home() / '.yarnrc').write_text(yarnrc)
+
     shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')
     subprocess.run(['npm', 'run', 'gulp', '--', 'vscode-linux-' + arch + '-min'], check=True)
 
     os.chdir('..')
     shutil.move('VSCode-linux-' + arch, '/app/share/' + product['applicationName'])
     os.symlink('../share/' + product['applicationName'] + '/bin/' + product['applicationName'], '/app/bin/' + product['applicationName'])
-    Path('/app/share/icons/hicolor/1024x1024/apps').mkdir(parents=True)
-    shutil.copy('vscode/resources/linux/code.png', '/app/share/icons/hicolor/1024x1024/apps/' + os.environ['FLATPAK_ID'] + '.png')
     for size in [16, 24, 32, 48, 64, 128, 192, 256, 512]:
         size = str(size)
         Path('/app/share/icons/hicolor/' + size + 'x' + size + '/apps').mkdir(parents=True)
@@ -802,16 +848,31 @@ def build():
         release.setAttribute('date', date)
         releases.appendChild(release)
     dom.getElementsByTagName('component')[0].appendChild(releases)
-    description_paragraph = dom.createElement('p')
-    description_paragraph.appendChild(dom.createTextNode(re.sub(r'\s+', r' ', '''
-        The above paragraph, from upstream Microsoft, is the same for this OSS version and the non-OSS
-        version https://flathub.org/apps/details/com.visualstudio.code. The difference between them is
-        described at https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999.
-        This version is compiled directly from the source code provided in the upstream GitHub repository
-        with minor modifications, as the official binary is licensed proprietarily. Essential features
-        are all present.
+    # content_rating = dom.createElement('content_rating')
+    # content_rating.setAttribute('type', 'oars-1.1')
+    # content_attribute = dom.createElement('content_attribute')
+    # content_attribute.setAttribute('id', 'social-info')
+    # content_attribute.appendChild(dom.createTextNode('moderate'))
+    # content_rating.appendChild(content_attribute)
+    # dom.getElementsByTagName('component')[0].appendChild(content_rating)
+    description_paragraph_1 = dom.createElement('p')
+    description_paragraph_1.appendChild(dom.createTextNode(re.sub(r'\s+', r' ', '''
+        This is the Open Source build of Visual Studio Code, packaged into a Flatpak. Some features are
+        different from the proprietary version: There is no telemetry nor Twitter integration, and the
+        logo is a different one without copyright issue. This OSS repackaging, as well as the proprietary
+        repackaging in Flathub, are not supported by Microsoft.
     '''.strip())))
-    dom.getElementsByTagName('description')[0].appendChild(description_paragraph)
+    dom.getElementsByTagName('description')[0].appendChild(description_paragraph_1)
+    description_paragraph_2 = dom.createElement('p')
+    description_paragraph_2.appendChild(dom.createTextNode(re.sub(r'\s+', r' ', '''
+        This OSS build is created due to the proprietarily licensed official binary. For more information,
+        see https://github.com/flathub/com.visualstudio.code.oss/issues/6#issuecomment-380152999.
+    '''.strip())))
+    dom.getElementsByTagName('description')[0].appendChild(description_paragraph_2)
+    # for paragraph in dom.getElementsByTagName('p'):
+    #     for child in paragraph.childNodes:
+    #         if child.nodeType == minidom.Node.TEXT_NODE:
+    #             child.data = child.data.replace('https://', '')
     lines = dom.toxml(encoding='UTF-8').decode()
     Path('/app/share/appdata').mkdir(parents=True)
     Path('/app/share/appdata/' + os.environ['FLATPAK_ID'] + '.appdata.xml').write_text(
@@ -824,7 +885,7 @@ def build():
 
 def main():
     recipe = generate_recipe()
-    Path(recipe['app-id'] + '.json').write_text(json.dumps(recipe, indent=2) + '\n')
+    Path(recipe['app-id'] + '.json').write_text(json.dumps(recipe, indent=2, sort_keys=True) + '\n')
 
 
 if __name__ == '__main__':
