@@ -803,7 +803,7 @@ def build():
 
     # (Path.home() / '.yarnrc').write_text(yarnrc)
 
-    shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')
+    # shutil.copy('src/vs/vscode.d.ts', 'extensions/vscode-colorize-tests/node_modules/vscode')
     subprocess.run(['npm', 'run', 'gulp', '--', 'vscode-linux-' + arch + '-min'], check=True)
 
     os.chdir('..')
