@@ -481,7 +481,8 @@ def parse_repo(base_recipe):
                 '--device=dri',
                 '--filesystem=host',
                 '--persist=' + product_json['dataFolderName'],
-                '--talk-name=org.freedesktop.Notifications'
+                '--talk-name=org.freedesktop.Notifications',
+                '--talk-name=org.freedesktop.Flatpak'
             ],
             'add-extensions': {
                 product_json['darwinBundleIdentifier'] + '.Tools': {
