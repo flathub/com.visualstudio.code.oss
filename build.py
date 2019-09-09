@@ -412,8 +412,8 @@ def parse_repo(base_recipe):
         product_json = json.loads(Path('product.json').read_text())
         # nodejs_version = Path('.nvmrc').read_text().strip()
         product_build_linux = yaml.load(Path('build/azure-pipelines/linux/product-build-linux.yml').read_text())
-        nodejs_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step['task'] == 'NodeTool@0')
-        yarn_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step['task'] == 'geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2')
+        nodejs_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step.get('task', None) == 'NodeTool@0')
+        yarn_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step.get('task', None) == 'geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2')
 
         nvm_exec = Path(os.environ['NVM_DIR']) / 'nvm-exec'
         if not nvm_exec.exists():
@@ -696,8 +696,8 @@ def get_electron_recipe(packages, iojs_version):
 def get_ripgrep_recipe(packages, node_version):
     package_version = next(package[1] for package in packages if package[0] == 'vscode-ripgrep')
     url = 'https://cdn.jsdelivr.net/npm/vscode-ripgrep@' + package_version + '/lib/postinstall.js'
-    line = next(line for line in requests.get(url).text.split('\n') if line.startswith('const version'))
-    line += '; console.log(version)'
+    line = next(line for line in requests.get(url).text.split('\n') if line.startswith('const VERSION'))
+    line += '; console.log(VERSION)'
     ripgrep_version = inline(call(str(Path(os.environ['NVM_DIR']) / 'nvm-exec'), 'node', '-e', line, output=True, env={
         'NODE_VERSION': node_version
     }))
