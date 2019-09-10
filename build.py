@@ -703,16 +703,16 @@ def get_ripgrep_recipe(packages, node_version):
     }))
     return [{
         'type': 'file',
-        **get_url_sha512('https://github.com/roblourens/ripgrep/releases/download/' + ripgrep_version + '/ripgrep-' + ripgrep_version + '-linux-' + arch_node + '.zip'),
+        **get_url_sha512('https://github.com/microsoft/ripgrep-prebuilt/releases/download/' + ripgrep_version + '/ripgrep-' + ripgrep_version + '-' + arch_node + '.tar.gz'),
         'only-arches': [
             arch_linux
         ],
         'dest': 'vscode-ripgrep-cache-' + package_version
     } for arch_linux, arch_node in [
-        ('x86_64', 'x64'),
-        ('i386', 'ia32'),
-        ('arm', 'arm'),
-        ('aarch64', 'arm64')
+        ('x86_64', 'x86_64-unknown-linux-musl'),
+        ('i386', 'i686-unknown-linux-musl'),
+        ('arm', 'arm-unknown-linux-gnueabihf'),
+        ('aarch64', 'aarch64-unknown-linux-gnu')
     ]]
 
 

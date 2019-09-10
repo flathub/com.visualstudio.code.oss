@@ -15372,36 +15372,36 @@
           "only-arches": [
             "x86_64"
           ],
-          "sha512": "935b3d516e996f6d25948ba8a54c1b7f70f7f0e3f517e36481fdf0196c2c5cfc2841f86e891f3df9517746b7fb605db47cdded1b8ff78d9482ddaa621db43a34",
+          "sha512": "deb1f72d96e63859f038dcbc39a0c82e5f03732ecc06485e8884f5fa08db38dcce450735f5f470b30da099a799b618a6a714434bb5bf04b6b2d7a717177c38eb",
           "type": "file",
-          "url": "https://github.com/roblourens/ripgrep/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-linux-x64.zip"
+          "url": "https://github.com/microsoft/ripgrep-prebuilt/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-x86_64-unknown-linux-musl.tar.gz"
         },
         {
           "dest": "vscode-ripgrep-cache-1.5.6",
           "only-arches": [
             "i386"
           ],
-          "sha512": "935b3d516e996f6d25948ba8a54c1b7f70f7f0e3f517e36481fdf0196c2c5cfc2841f86e891f3df9517746b7fb605db47cdded1b8ff78d9482ddaa621db43a34",
+          "sha512": "ddaa382c192bf2de5b764d990b90e9dd92d7e1c9574ce83b3895629375558789950e0e665abc2053e206cb52699e6dad4846bcd018c74bf9205339226e33b455",
           "type": "file",
-          "url": "https://github.com/roblourens/ripgrep/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-linux-ia32.zip"
+          "url": "https://github.com/microsoft/ripgrep-prebuilt/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-i686-unknown-linux-musl.tar.gz"
         },
         {
           "dest": "vscode-ripgrep-cache-1.5.6",
           "only-arches": [
             "arm"
           ],
-          "sha512": "935b3d516e996f6d25948ba8a54c1b7f70f7f0e3f517e36481fdf0196c2c5cfc2841f86e891f3df9517746b7fb605db47cdded1b8ff78d9482ddaa621db43a34",
+          "sha512": "bf9f1f4492817f3e526c7073f18a6fc8e8a0efff7c38cb1e2c303009d6d9998d7f4e510de543ff3ed9c576b17c5fde11915f7284a78e68843be8a3a123bcaed2",
           "type": "file",
-          "url": "https://github.com/roblourens/ripgrep/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-linux-arm.zip"
+          "url": "https://github.com/microsoft/ripgrep-prebuilt/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-arm-unknown-linux-gnueabihf.tar.gz"
         },
         {
           "dest": "vscode-ripgrep-cache-1.5.6",
           "only-arches": [
             "aarch64"
           ],
-          "sha512": "935b3d516e996f6d25948ba8a54c1b7f70f7f0e3f517e36481fdf0196c2c5cfc2841f86e891f3df9517746b7fb605db47cdded1b8ff78d9482ddaa621db43a34",
+          "sha512": "43b5042bf2f298130069aeb880f8ae891a7e5fb8cd1b1bd9c17cc1040acb4d3ededd6a36aa06ffbaf113a99b5482a803e002a6805ffb035a2235894ae7306d91",
           "type": "file",
-          "url": "https://github.com/roblourens/ripgrep/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-linux-arm64.zip"
+          "url": "https://github.com/microsoft/ripgrep-prebuilt/releases/download/v11.0.1-2/ripgrep-v11.0.1-2-aarch64-unknown-linux-gnu.tar.gz"
         }
       ]
     },
@@ -15731,7 +15731,7 @@
           "url": "https://github.com/go-delve/delve.git"
         },
         {
-          "commit": "13c3082639a7ceef36161b3acfb67da82aa45b64",
+          "commit": "6163a8a79084507a29adffe6796c3e1b5e3dffd1",
           "dest": "src/github.com/golangci/golangci-lint",
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git"
@@ -15875,7 +15875,7 @@
           "url": "https://github.com/zmb3/gogetdoc.git"
         },
         {
-          "commit": "959b441ac422379a43da2230f62be024250818b0",
+          "commit": "414d861bb4acf565ff8cb05f9906a2283b7dc75a",
           "dest": "src/golang.org/x/lint",
           "type": "git",
           "url": "https://go.googlesource.com/lint"
@@ -15887,7 +15887,7 @@
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "5b82db07426dbac2c94df2e3a85e83f3026c088c",
+          "commit": "0673112484210f23155c2a43af63b23fc7762655",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
