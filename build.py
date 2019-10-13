@@ -718,7 +718,7 @@ def get_ripgrep_recipe(packages, node_version):
 
 def get_base_recipe():
     base = yaml.load(requests.get(
-        'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/master/org.electronjs.Electron2.BaseApp.yml'
+        'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/branch/18.08/org.electronjs.Electron2.BaseApp.yml'
     ).text)
     return {
         'base': base['id'],
@@ -799,7 +799,8 @@ def build():
     subprocess.run(['yarn', 'install'], check=True, env={
         **os.environ,
         'npm_config_tarball': str(Path('../misc/iojs.tar.gz').resolve()),
-        'CHILD_CONCURRENCY': '1'
+        'CHILD_CONCURRENCY': '1',
+        'PUPPETEER_SKIP_CHROMIUM_DOWNLOAD': '1',
     })
 
     # (Path.home() / '.yarnrc').write_text(yarnrc)
