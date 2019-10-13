@@ -178,6 +178,7 @@
             "        if version not in sha256sums:",
             "            sha256sums[version] = {}",
             "        sha256sums[version][package['dest-filename']] = package['sha256']",
+            "    Path('.electron').mkdir()",
             "    for version in sha256sums:",
             "        Path('.electron/SHASUMS256.txt-' + version).write_text('\\n'.join(",
             "            sha256sums[version][filename] + ' *' + filename for filename in sha256sums[version])",
