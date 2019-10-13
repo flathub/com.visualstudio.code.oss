@@ -94,6 +94,20 @@ def get_yarn_recipe(version):
     }
 
 
+def get_yarn_recipe_geeklearningio(versionSpec):
+    versions = json.loads(requests.get('https://publicblobs.geeklearning.io/yarn/tarballsV2.json').text, object_pairs_hook=OrderedDict)
+    version_pattern = re.compile('v' + versionSpec.replace('.', r'\.').replace('x', r'\d+') + r'(\.\d+)*')
+
+    for version, info in versions.items():
+        if not info['isPrerelease'] and version_pattern.fullmatch(version) is not None:
+            return {
+                'type': 'file',
+                **get_url_sha512('https://github.com/yarnpkg/yarn/releases/download/' + version + '/yarn-' + version[1:] + '.js'),
+                'dest': 'bin',
+                'dest-filename': 'yarn.js'
+            }
+
+
 def get_imagemagick_archive():
     version_pattern = re.compile(r'ImageMagick-(\d+)\.(\d+)\.(\d+)-(\d+)\.(.+)')
 
@@ -632,7 +646,7 @@ def parse_repo(base_recipe):
                         },
                         *builtInExtensions,
                         *sorted(packages.values(), key=operator.itemgetter('url')),
-                        get_yarn_recipe(yarn_version),
+                        get_yarn_recipe_geeklearningio(yarn_version),
                         *get_electron_recipe(packages, loader.send('.yarnrc')['target']),
                         *get_ripgrep_recipe(packages, nodejs_version)
                     ]

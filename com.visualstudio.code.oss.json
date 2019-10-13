@@ -15099,9 +15099,9 @@
         {
           "dest": "bin",
           "dest-filename": "yarn.js",
-          "sha512": "935b3d516e996f6d25948ba8a54c1b7f70f7f0e3f517e36481fdf0196c2c5cfc2841f86e891f3df9517746b7fb605db47cdded1b8ff78d9482ddaa621db43a34",
+          "sha512": "1d36dc32746e05cc4c0bb39214a6f4d9972cab614caaad8dc52e06354090ad8fc248330194753cd5468eebe5460d09f4481e5d12ca5e3bcc5ab9e12af9a63c55",
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.x/yarn-1.x.js"
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.19.1/yarn-1.19.1.js"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
