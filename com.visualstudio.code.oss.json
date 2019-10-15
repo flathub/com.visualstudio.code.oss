@@ -249,7 +249,7 @@
             "    Path('/app/share/applications/' + os.environ['FLATPAK_ID'] + '.desktop').write_text(",
             "        Path('vscode/resources/linux/code.desktop')",
             "        .read_text()",
-            "        .replace('Exec=/usr/share/@@NAME@@/@@NAME@@', 'Exec=' + product['applicationName'])",
+            "        .replace('@@EXEC@@', product['applicationName'])",
             "        .replace('@@NAME_LONG@@', product['nameLong'])",
             "        .replace('@@NAME_SHORT@@', product['nameShort'])",
             "        .replace('@@NAME@@', os.environ['FLATPAK_ID'])",
@@ -15343,10 +15343,10 @@
           "url": "https://files.pythonhosted.org/packages/9a/41/220f49aaea88bc6fa6cba8d05ecf24676326156c23b991e80b3f2fc24c77/pickleshare-0.7.5-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "pip-19.2.3-py2.py3-none-any.whl",
-          "sha256": "340a0ba40fdeb16413914c0fcd8e0b4ebb0bf39a900ec80e11c05d836c05103f",
+          "dest-filename": "pip-19.3-py2.py3-none-any.whl",
+          "sha256": "e100a7eccf085f0720b4478d3bb838e1c179b1e128ec01c0403f84e86e0e2dfb",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/30/db/9e38760b32e3e7f40cce46dd5fb107b8c73840df38f0046d8e6514e675a1/pip-19.2.3-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/4a/08/6ca123073af4ebc4c5488a5bc8a010ac57aa39ce4d3c8a931ad504de4185/pip-19.3-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "pipenv-2018.11.26-py3-none-any.whl",
@@ -15555,7 +15555,7 @@
           "url": "https://github.com/go-delve/delve.git"
         },
         {
-          "commit": "ca6effbeecaa5ae8b67e3f3e12c6f0535f6b3046",
+          "commit": "98f60ebaa365593e40178b134a676adc7cb2aeaa",
           "dest": "src/github.com/golangci/golangci-lint",
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git"
@@ -15693,7 +15693,7 @@
           "url": "https://github.com/tylerb/gotype-live.git"
         },
         {
-          "commit": "42d10f73a75046657f4e969fbcc73da357fec796",
+          "commit": "bca1536cea3a420d4c0a23042cd094cf1cbf0ac8",
           "dest": "src/github.com/uudashr/gopkgs",
           "type": "git",
           "url": "https://github.com/uudashr/gopkgs.git"
@@ -15717,7 +15717,7 @@
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "8de300cfc20a62d78c74c4b482fcfc0090f8d95c",
+          "commit": "18e3458ac98b4126ac324c8056a0f2d826c6688a",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"

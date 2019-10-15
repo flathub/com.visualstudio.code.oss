@@ -771,6 +771,7 @@ def build():
         if version not in sha256sums:
             sha256sums[version] = {}
         sha256sums[version][package['dest-filename']] = package['sha256']
+    Path('.electron').mkdir()
     for version in sha256sums:
         Path('.electron/SHASUMS256.txt-' + version).write_text('\n'.join(
             sha256sums[version][filename] + ' *' + filename for filename in sha256sums[version])
@@ -841,7 +842,7 @@ def build():
     Path('/app/share/applications/' + os.environ['FLATPAK_ID'] + '.desktop').write_text(
         Path('vscode/resources/linux/code.desktop')
         .read_text()
-        .replace('Exec=/usr/share/@@NAME@@/@@NAME@@', 'Exec=' + product['applicationName'])
+        .replace('@@EXEC@@', product['applicationName'])
         .replace('@@NAME_LONG@@', product['nameLong'])
         .replace('@@NAME_SHORT@@', product['nameShort'])
         .replace('@@NAME@@', os.environ['FLATPAK_ID'])
