@@ -90,9 +90,9 @@
       "name": "ImageMagick",
       "sources": [
         {
-          "sha256": "459675a44f4aa1f68ba079b8ba0a83cd1c07b4530a67311082be3c863f601e9a",
+          "sha256": "f6c1962c67e046e8899b6f7ca5b49c0de5795eee80c5f35b274d80e99b83aec8",
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.9-2.tar.xz"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.9-5.tar.xz"
         }
       ]
     },
@@ -129,10 +129,10 @@
       "name": "vscode",
       "sources": [
         {
-          "commit": "8795a9889db74563ddd43eb0a897a2384129a619",
+          "commit": "f359dd69833dd8800b54d458f6d37ab7c78df520",
           "dest": "vscode",
           "disable-shallow-clone": true,
-          "tag": "1.40.1",
+          "tag": "1.40.2",
           "type": "git",
           "url": "https://github.com/Microsoft/vscode.git"
         },
@@ -154,7 +154,7 @@
             "import stat",
             "from collections import OrderedDict",
             "import gzip",
-            "METADATA = OrderedDict([('Releases', OrderedDict([('1.40.1', '2019-11-13T16:23:28+00:00'), ('1.40.0', '2019-11-06T16:17:05+00:00'), ('1.39.2', '2019-10-15T15:03:50+00:00'), ('1.39.1', '2019-10-10T23:02:59+00:00'), ('1.39.0', '2019-10-08T16:10:44+00:00'), ('1.38.1', '2019-09-11T12:53:14+00:00'), ('1.38.0', '2019-09-03T21:16:39+00:00'), ('1.37.1', '2019-08-15T15:50:39+00:00'), ('1.37.0', '2019-08-08T00:55:19+00:00'), ('1.36.1', '2019-07-08T22:38:35+00:00'), ('1.36.0', '2019-07-02T17:42:48+00:00'), ('1.35.1', '2019-06-12T14:04:31+00:00'), ('1.35.0', '2019-06-03T23:46:04+00:00'), ('1.34.0', '2019-05-15T21:39:19+00:00'), ('1.33.1', '2019-04-11T07:36:11+00:00'), ('1.33.0', '2019-04-03T22:50:17+00:00'), ('1.32.3', '2019-03-14T22:31:32+00:00'), ('1.32.2', '2019-03-12T23:32:44+00:00'), ('1.32.1', '2019-03-07T23:48:24+00:00'), ('1.32.0', '2019-03-06T09:44:56+00:00'), ('1.31.1', '2019-02-12T02:02:19+00:00'), ('1.31.0', '2019-02-05T22:16:02+00:00'), ('1.30.2', '2019-01-07T22:34:47+00:00'), ('1.30.1', '2018-12-18T17:50:21+00:00'), ('1.30.0', '2018-12-11T14:17:17+00:00'), ('1.29.1', '2018-11-15T18:52:27+00:00'), ('1.29.0', '2018-11-09T18:20:28+00:00'), ('1.28.2', '2018-10-16T23:21:36+00:00'), ('1.28.1', '2018-10-11T17:53:58+00:00'), ('1.28.0', '2018-10-03T12:24:13+00:00'), ('1.27.2', '2018-09-12T06:51:07+00:00'), ('1.27.1', '2018-09-06T06:33:18+00:00'), ('1.27.0', '2018-09-03T08:54:54+00:00'), ('1.26.1', '2018-08-16T18:11:25+00:00'), ('1.26.0', '2018-08-13T16:06:21+00:00'), ('1.25.1', '2018-07-11T13:48:42+00:00'), ('1.25.0', '2018-07-04T13:51:36+00:00'), ('1.24.1', '2018-06-13T17:23:34+00:00'), ('1.24.0', '2018-06-06T17:17:59+00:00'), ('1.23.1', '2018-05-10T15:43:30+00:00'), ('1.23.0', '2018-05-03T15:11:04+00:00'), ('1.22.2', '2018-04-12T16:21:42+00:00'), ('1.22.1', '2018-04-06T00:06:35+00:00'), ('1.22.0', '2018-04-04T12:46:43+00:00'), ('1.21.1', '2018-03-14T14:29:41+00:00'), ('1.21.0', '2018-03-07T08:10:01+00:00'), ('1.20.1', '2018-02-13T15:06:40+00:00'), ('1.20.0', '2018-02-07T16:53:36+00:00'), ('1.19.3', '2018-01-25T10:13:13+00:00'), ('1.19.2', '2018-01-10T15:39:39+00:00'), ('1.19.1', '2017-12-19T08:39:31+00:00'), ('1.19.0', '2017-12-13T11:21:16+00:00'), ('1.18.1', '2017-11-16T18:06:34+00:00'), ('1.18.0', '2017-11-08T05:52:12+00:00'), ('1.17.2', '2017-10-16T13:32:14+00:00'), ('1.17.1', '2017-10-10T13:58:12+00:00'), ('1.17.0', '2017-10-04T21:46:22+00:00'), ('1.16.1', '2017-09-14T16:04:43+00:00'), ('1.16.0', '2017-09-05T20:35:52+00:00'), ('1.15.1', '2017-08-16T17:04:20+00:00'), ('1.15.0', '2017-08-09T18:17:39+00:00'), ('1.14.2', '2017-07-19T23:09:45+00:00'), ('1.14.1', '2017-07-13T18:53:01+00:00'), ('1.14.0', '2017-07-06T20:04:09+00:00'), ('1.13.1', '2017-06-14T18:04:00+00:00'), ('1.13.0', '2017-06-07T22:36:25+00:00'), ('1.12.2', '2017-05-10T13:06:48+00:00'), ('1.12.1', '2017-05-04T21:11:31+00:00'), ('1.12.0', '2017-05-04T14:36:06+00:00'), ('1.11.2', '2017-04-13T07:50:27+00:00'), ('1.11.1', '2017-04-06T13:42:12+00:00'), ('1.11.0', '2017-04-05T20:37:12+00:00'), ('1.10.2', '2017-03-08T10:34:22+00:00'), ('1.10.1', '2017-03-02T00:20:46+00:00'), ('1.10.0', '2017-03-01T01:19:30+00:00'), ('1.9.1', '2017-02-08T23:18:43+00:00'), ('1.9.0', '2017-02-01T11:26:20+00:00'), ('1.8.1', '2016-12-19T14:36:24+00:00'), ('1.8.0', '2016-12-13T14:19:32+00:00'), ('1.7.2', '2016-11-21T21:54:46+00:00'), ('1.7.1', '2016-11-03T13:39:13+00:00'), ('1.6.1', '2016-10-13T15:20:53+00:00'), ('1.6.0', '2016-10-10T18:20:20+00:00'), ('1.5.3', '2016-09-22T08:38:05+00:00'), ('1.5.2', '2016-09-12T12:59:50+00:00'), ('1.5.1', '2016-09-08T21:21:57+00:00'), ('1.5.0', '2016-09-08T08:47:15+00:00'), ('1.4.0', '2016-08-03T16:08:16+00:00'), ('1.3.1', '2016-07-12T13:27:02+00:00'), ('1.3.0', '2016-07-06T13:38:08+00:00'), ('1.2.1', '2016-06-14T12:51:34+00:00'), ('1.2.0', '2016-06-01T10:09:28+00:00'), ('1.1.1', '2016-05-13T13:12:29+00:00'), ('1.1.0', '2016-05-09T12:33:53+00:00'), ('1.0.0', '2016-04-13T08:36:36+00:00')])), ('Extensions', OrderedDict())])",
+            "METADATA = OrderedDict([('Releases', OrderedDict([('1.40.2', '2019-11-25T14:26:32+00:00'), ('1.40.1', '2019-11-13T16:23:28+00:00'), ('1.40.0', '2019-11-06T16:17:05+00:00'), ('1.39.2', '2019-10-15T15:03:50+00:00'), ('1.39.1', '2019-10-10T23:02:59+00:00'), ('1.39.0', '2019-10-08T16:10:44+00:00'), ('1.38.1', '2019-09-11T12:53:14+00:00'), ('1.38.0', '2019-09-03T21:16:39+00:00'), ('1.37.1', '2019-08-15T15:50:39+00:00'), ('1.37.0', '2019-08-08T00:55:19+00:00'), ('1.36.1', '2019-07-08T22:38:35+00:00'), ('1.36.0', '2019-07-02T17:42:48+00:00'), ('1.35.1', '2019-06-12T14:04:31+00:00'), ('1.35.0', '2019-06-03T23:46:04+00:00'), ('1.34.0', '2019-05-15T21:39:19+00:00'), ('1.33.1', '2019-04-11T07:36:11+00:00'), ('1.33.0', '2019-04-03T22:50:17+00:00'), ('1.32.3', '2019-03-14T22:31:32+00:00'), ('1.32.2', '2019-03-12T23:32:44+00:00'), ('1.32.1', '2019-03-07T23:48:24+00:00'), ('1.32.0', '2019-03-06T09:44:56+00:00'), ('1.31.1', '2019-02-12T02:02:19+00:00'), ('1.31.0', '2019-02-05T22:16:02+00:00'), ('1.30.2', '2019-01-07T22:34:47+00:00'), ('1.30.1', '2018-12-18T17:50:21+00:00'), ('1.30.0', '2018-12-11T14:17:17+00:00'), ('1.29.1', '2018-11-15T18:52:27+00:00'), ('1.29.0', '2018-11-09T18:20:28+00:00'), ('1.28.2', '2018-10-16T23:21:36+00:00'), ('1.28.1', '2018-10-11T17:53:58+00:00'), ('1.28.0', '2018-10-03T12:24:13+00:00'), ('1.27.2', '2018-09-12T06:51:07+00:00'), ('1.27.1', '2018-09-06T06:33:18+00:00'), ('1.27.0', '2018-09-03T08:54:54+00:00'), ('1.26.1', '2018-08-16T18:11:25+00:00'), ('1.26.0', '2018-08-13T16:06:21+00:00'), ('1.25.1', '2018-07-11T13:48:42+00:00'), ('1.25.0', '2018-07-04T13:51:36+00:00'), ('1.24.1', '2018-06-13T17:23:34+00:00'), ('1.24.0', '2018-06-06T17:17:59+00:00'), ('1.23.1', '2018-05-10T15:43:30+00:00'), ('1.23.0', '2018-05-03T15:11:04+00:00'), ('1.22.2', '2018-04-12T16:21:42+00:00'), ('1.22.1', '2018-04-06T00:06:35+00:00'), ('1.22.0', '2018-04-04T12:46:43+00:00'), ('1.21.1', '2018-03-14T14:29:41+00:00'), ('1.21.0', '2018-03-07T08:10:01+00:00'), ('1.20.1', '2018-02-13T15:06:40+00:00'), ('1.20.0', '2018-02-07T16:53:36+00:00'), ('1.19.3', '2018-01-25T10:13:13+00:00'), ('1.19.2', '2018-01-10T15:39:39+00:00'), ('1.19.1', '2017-12-19T08:39:31+00:00'), ('1.19.0', '2017-12-13T11:21:16+00:00'), ('1.18.1', '2017-11-16T18:06:34+00:00'), ('1.18.0', '2017-11-08T05:52:12+00:00'), ('1.17.2', '2017-10-16T13:32:14+00:00'), ('1.17.1', '2017-10-10T13:58:12+00:00'), ('1.17.0', '2017-10-04T21:46:22+00:00'), ('1.16.1', '2017-09-14T16:04:43+00:00'), ('1.16.0', '2017-09-05T20:35:52+00:00'), ('1.15.1', '2017-08-16T17:04:20+00:00'), ('1.15.0', '2017-08-09T18:17:39+00:00'), ('1.14.2', '2017-07-19T23:09:45+00:00'), ('1.14.1', '2017-07-13T18:53:01+00:00'), ('1.14.0', '2017-07-06T20:04:09+00:00'), ('1.13.1', '2017-06-14T18:04:00+00:00'), ('1.13.0', '2017-06-07T22:36:25+00:00'), ('1.12.2', '2017-05-10T13:06:48+00:00'), ('1.12.1', '2017-05-04T21:11:31+00:00'), ('1.12.0', '2017-05-04T14:36:06+00:00'), ('1.11.2', '2017-04-13T07:50:27+00:00'), ('1.11.1', '2017-04-06T13:42:12+00:00'), ('1.11.0', '2017-04-05T20:37:12+00:00'), ('1.10.2', '2017-03-08T10:34:22+00:00'), ('1.10.1', '2017-03-02T00:20:46+00:00'), ('1.10.0', '2017-03-01T01:19:30+00:00'), ('1.9.1', '2017-02-08T23:18:43+00:00'), ('1.9.0', '2017-02-01T11:26:20+00:00'), ('1.8.1', '2016-12-19T14:36:24+00:00'), ('1.8.0', '2016-12-13T14:19:32+00:00'), ('1.7.2', '2016-11-21T21:54:46+00:00'), ('1.7.1', '2016-11-03T13:39:13+00:00'), ('1.6.1', '2016-10-13T15:20:53+00:00'), ('1.6.0', '2016-10-10T18:20:20+00:00'), ('1.5.3', '2016-09-22T08:38:05+00:00'), ('1.5.2', '2016-09-12T12:59:50+00:00'), ('1.5.1', '2016-09-08T21:21:57+00:00'), ('1.5.0', '2016-09-08T08:47:15+00:00'), ('1.4.0', '2016-08-03T16:08:16+00:00'), ('1.3.1', '2016-07-12T13:27:02+00:00'), ('1.3.0', '2016-07-06T13:38:08+00:00'), ('1.2.1', '2016-06-14T12:51:34+00:00'), ('1.2.0', '2016-06-01T10:09:28+00:00'), ('1.1.1', '2016-05-13T13:12:29+00:00'), ('1.1.0', '2016-05-09T12:33:53+00:00'), ('1.0.0', '2016-04-13T08:36:36+00:00')])), ('Extensions', OrderedDict())])",
             "def build():",
             "    product = json.loads(Path('vscode/product.json').read_text())",
             "    product['nameLong'] = 'Visual Studio Code - OSS'",
@@ -15142,96 +15142,96 @@
         {
           "dest": "bin",
           "dest-filename": "yarn.js",
-          "sha512": "1d36dc32746e05cc4c0bb39214a6f4d9972cab614caaad8dc52e06354090ad8fc248330194753cd5468eebe5460d09f4481e5d12ca5e3bcc5ab9e12af9a63c55",
+          "sha512": "e1b0c6aa651f6c21aefe3e4de8d2ad8e737c4ab33821b3e83bb025d9f40a6b08ac2a68454e9522065b141fe50a16052b0218880755387a7eff089b565e24f7ab",
           "type": "file",
-          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.19.1/yarn-1.19.1.js"
+          "url": "https://github.com/yarnpkg/yarn/releases/download/v1.19.2/yarn-1.19.2.js"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v6.1.2-linux-x64.zip",
+          "dest-filename": "electron-v6.1.5-linux-x64.zip",
           "only-arches": [
             "x86_64"
           ],
-          "sha256": "f4c55c8dc18230d15a643c34f703d5eca79383b3cacf7e0f0dc6aa8fafce3e70",
+          "sha256": "6dfacac46aaa609fb49977237996132276783d67dd08dca38de3878e6522a2b9",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/electron-v6.1.2-linux-x64.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/electron-v6.1.5-linux-x64.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v6.1.2-linux-ia32.zip",
+          "dest-filename": "electron-v6.1.5-linux-ia32.zip",
           "only-arches": [
             "i386"
           ],
-          "sha256": "62f0108710a20e176fa821cdccee7486551088783434e065205bef464ed23685",
+          "sha256": "df80629f527d18fc515062c630973c7a4cede1155d2f07cdad625a1f456a56a5",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/electron-v6.1.2-linux-ia32.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/electron-v6.1.5-linux-ia32.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v6.1.2-linux-armv7l.zip",
+          "dest-filename": "electron-v6.1.5-linux-armv7l.zip",
           "only-arches": [
             "arm"
           ],
-          "sha256": "d9266b44a57de79b2e74c5dd72a23fce2389202fe3459d7a6cfe36bace65003c",
+          "sha256": "2d809353d4d5f03c2b6cef403ad2a6db95fbbf32554a5121c0341936d89c0edb",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/electron-v6.1.2-linux-armv7l.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/electron-v6.1.5-linux-armv7l.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "electron-v6.1.2-linux-arm64.zip",
+          "dest-filename": "electron-v6.1.5-linux-arm64.zip",
           "only-arches": [
             "aarch64"
           ],
-          "sha256": "8b768961a1c8dbeeff0414684091ce26a6ba4e7e17eb1a18ea9e730660d6225a",
+          "sha256": "047480b371f0af00bec0b523636d8ca275b240bea905e7c3560c0b02b7b2b38f",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/electron-v6.1.2-linux-arm64.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/electron-v6.1.5-linux-arm64.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v6.1.2-linux-x64.zip",
+          "dest-filename": "ffmpeg-v6.1.5-linux-x64.zip",
           "only-arches": [
             "x86_64"
           ],
-          "sha256": "be5df0caebefdfa8a19c23f825874996e4078e323b907b746c4be4128f80e77e",
+          "sha256": "eadf91b3d3ddd2eb86d51229993357b9ca8a5cd5884d7b53b5372600bdedd144",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/ffmpeg-v6.1.2-linux-x64.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/ffmpeg-v6.1.5-linux-x64.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v6.1.2-linux-ia32.zip",
+          "dest-filename": "ffmpeg-v6.1.5-linux-ia32.zip",
           "only-arches": [
             "i386"
           ],
-          "sha256": "ad776a874ffa44276b60927ec703a50f7e4ef50d7f61fede816a365251d804d6",
+          "sha256": "f9bf8ba294f323f1fb958618ecdbca5099b9beddcd841da29399ec08c63ffd20",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/ffmpeg-v6.1.2-linux-ia32.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/ffmpeg-v6.1.5-linux-ia32.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v6.1.2-linux-armv7l.zip",
+          "dest-filename": "ffmpeg-v6.1.5-linux-armv7l.zip",
           "only-arches": [
             "arm"
           ],
-          "sha256": "22c4fb074a7624de3fff95199e6e1e1a8b07ea6a1b10f5772d0072af7000c078",
+          "sha256": "c3602c476b9a2301e564a914f8f233a1e1d2be30f6f696df129a9f4e7e925c6d",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/ffmpeg-v6.1.2-linux-armv7l.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/ffmpeg-v6.1.5-linux-armv7l.zip"
         },
         {
           "dest": "gulp-electron-cache/atom/electron",
-          "dest-filename": "ffmpeg-v6.1.2-linux-arm64.zip",
+          "dest-filename": "ffmpeg-v6.1.5-linux-arm64.zip",
           "only-arches": [
             "aarch64"
           ],
-          "sha256": "18365a23617c65f11de53d7a2be25e959628c01dd5231e1a02e58b4a1c7482b1",
+          "sha256": "c5593ff7a397c42b3cd28e3642c07f070cb15934dc2d8b8d5b99dbef32fe6d1e",
           "type": "file",
-          "url": "https://github.com/electron/electron/releases/download/v6.1.2/ffmpeg-v6.1.2-linux-arm64.zip"
+          "url": "https://github.com/electron/electron/releases/download/v6.1.5/ffmpeg-v6.1.5-linux-arm64.zip"
         },
         {
           "dest": "misc",
           "dest-filename": "iojs.tar.gz",
-          "sha512": "309b08196234cc894e6e5da86de46d9fd92b07f37cd3af83bcdc35cfe39ac1ee4d345b45b5779b3e30345c86c65017794fae4d3c121943154ef02a182ee8c530",
+          "sha512": "5795c157b6fdfc434ddd77cc4782b4d32c711632313aefddaa2a49c2b6fbf9cd05475bd18b661d7b0643d7f9c54d84867486b59e4835445cfe24f0d2d09d3331",
           "type": "file",
-          "url": "https://atom.io/download/electron/v6.1.2/iojs-v6.1.2.tar.gz"
+          "url": "https://atom.io/download/electron/v6.1.5/iojs-v6.1.5.tar.gz"
         },
         {
           "dest": "vscode-ripgrep-cache-1.5.7",
@@ -15283,10 +15283,10 @@
       ],
       "sources": [
         {
-          "dest-filename": "Pygments-2.4.2-py2.py3-none-any.whl",
-          "sha256": "71e430bc85c88a430f000ac1d9b331d2407f681d6f6aec95e8bcfbc3df5b0127",
+          "dest-filename": "Pygments-2.5.1-py2.py3-none-any.whl",
+          "sha256": "b7949de3d396836085fea596998b135a22610bbcc4f2abfe9e448e44cbc58388",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/5c/73/1dfa428150e3ccb0fa3e68db406e5be48698f2a979ccbcec795f28f44048/Pygments-2.4.2-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/01/ac/379f879a40547843581403a23fa947162ce3aeb7c8e541ec8b4e42b5054e/Pygments-2.5.1-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "astroid-2.3.3-py3-none-any.whl",
@@ -15433,10 +15433,10 @@
           "url": "https://files.pythonhosted.org/packages/69/b7/4802c5736b70fc7b7ace5d4f81355fae72702e1da0675e3a305959fdb9ce/rope-0.14.0-py3-none-any.whl"
         },
         {
-          "dest-filename": "setuptools-41.6.0-py2.py3-none-any.whl",
-          "sha256": "3e8e8505e563631e7cb110d9ad82d135ee866b8146d5efe06e42be07a72db20a",
+          "dest-filename": "setuptools-42.0.1-py2.py3-none-any.whl",
+          "sha256": "409547a87530bd8a20582a2f0996c2a6651c5855b3a614af05020b35c3867dcb",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/d9/de/554b6310ac87c5b921bc45634b07b11394fe63bc4cb5176f5240addf18ab/setuptools-41.6.0-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/9e/d5/444a443d890f09fc1ca1a2c3c9fc7e84cb148177b05ac94fe5084e3d9abb/setuptools-42.0.1-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "six-1.13.0-py2.py3-none-any.whl",
@@ -15457,10 +15457,10 @@
           "url": "https://files.pythonhosted.org/packages/fb/56/dd4e168a0009da85c78c6cfe91f5b2df2c7bbed60f3ba778c4a71289e6fb/typed_ast-1.4.0-cp37-cp37m-manylinux1_x86_64.whl"
         },
         {
-          "dest-filename": "virtualenv-16.7.7-py2.py3-none-any.whl",
-          "sha256": "11cb4608930d5fd3afb545ecf8db83fa50e1f96fc4fca80c94b07d2c83146589",
+          "dest-filename": "virtualenv-16.7.8-py2.py3-none-any.whl",
+          "sha256": "b57776b44f91511866594e477dd10e76a6eb44439cdd7f06dcd30ba4c5bd854f",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/c5/97/00dd42a0fc41e9016b23f07ec7f657f636cb672fad9cf72b80f8f65c6a46/virtualenv-16.7.7-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/62/77/6a86ef945ad39aae34aed4cc1ae4a2f941b9870917a974ed7c5b6f137188/virtualenv-16.7.8-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "virtualenv_clone-0.5.3-py2.py3-none-any.whl",
@@ -15549,7 +15549,7 @@
           "url": "https://github.com/alecthomas/gometalinter.git"
         },
         {
-          "commit": "1c5384d3d3e73c43b318effee048c949cca2fc53",
+          "commit": "62fe1b80bbe2c4c7cb0ab26d868795b47475ab90",
           "dest": "src/github.com/cweill/gotests",
           "type": "git",
           "url": "https://github.com/cweill/gotests.git"
@@ -15561,13 +15561,13 @@
           "url": "https://github.com/davidrjenni/reftools.git"
         },
         {
-          "commit": "3c266810757cd4abafe46fc6c9203aeeef5e15bf",
+          "commit": "151de14d085c6bd1e36a328225f1d09f98b8a08d",
           "dest": "src/github.com/derekparker/delve",
           "type": "git",
           "url": "https://github.com/derekparker/delve.git"
         },
         {
-          "commit": "a9480a3ec3bcedcf32d00a67bb464c058ba03281",
+          "commit": "dfe37feaecf7b73ce53f4fb8fa347265a77c6c4b",
           "dest": "src/honnef.co/go/tools",
           "type": "git",
           "url": "https://github.com/dominikh/go-tools"
@@ -15591,13 +15591,13 @@
           "url": "https://github.com/fatih/structtag.git"
         },
         {
-          "commit": "3c266810757cd4abafe46fc6c9203aeeef5e15bf",
+          "commit": "151de14d085c6bd1e36a328225f1d09f98b8a08d",
           "dest": "src/github.com/go-delve/delve",
           "type": "git",
           "url": "https://github.com/go-delve/delve.git"
         },
         {
-          "commit": "14ebae29060f7c7be67d31a559986aa8afe7cbb0",
+          "commit": "48b15f32953a05bf229399e52bce2693741d885d",
           "dest": "src/github.com/golangci/golangci-lint",
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git"
@@ -15621,7 +15621,7 @@
           "url": "https://github.com/ianthehat/godef.git"
         },
         {
-          "commit": "f0d59e96e372c6568229075d243cbbc4ccde47a9",
+          "commit": "6b9658ad00c7fbd61a7b50c195754413f6c4142c",
           "dest": "src/github.com/josharian/impl",
           "type": "git",
           "url": "https://github.com/josharian/impl.git"
@@ -15675,7 +15675,7 @@
           "url": "https://github.com/mitchellh/go-homedir.git"
         },
         {
-          "commit": "b2a28affd3a5017cf1465a8bcbe17af38ce53a3c",
+          "commit": "28c9868472de5b61d0a79f4c468103b80487f6c1",
           "dest": "src/github.com/olekukonko/tablewriter",
           "type": "git",
           "url": "https://github.com/olekukonko/tablewriter.git"
@@ -15747,19 +15747,19 @@
           "url": "https://github.com/zmb3/gogetdoc.git"
         },
         {
-          "commit": "16217165b5de779cb6a5e4fc81fa9c1166fda457",
+          "commit": "fdd1cda4f05fd1fd86124f0ef9ce31a0b72c8448",
           "dest": "src/golang.org/x/lint",
           "type": "git",
           "url": "https://go.googlesource.com/lint"
         },
         {
-          "commit": "034126e5016b48119ac2b12b5f4d3ae7f2a9eaa0",
+          "commit": "788aebd06792f833c387fcee8647edac94108a98",
           "dest": "src/golang.org/x/mod",
           "type": "git",
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "faa69481e76149c3386932970ba2d389b6155317",
+          "commit": "724660f1afeb500e4880815f8718ea830aafb0f2",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
