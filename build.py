@@ -21,11 +21,12 @@ from collections import OrderedDict
 import gzip
 
 try:
+    from jsmin import jsmin
     import yaml
     import requests
 except ImportError:
     subprocess.run('curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py; ' + sys.executable + ' /tmp/get-pip.py --user', shell=True, check=True)
-    subprocess.run(sys.executable + ' -m pip install -U pyyaml requests', shell=True, check=True)
+    subprocess.run(sys.executable + ' -m pip install -U jsmin pyyaml requests', shell=True, check=True)
     os.execv(sys.executable, [sys.executable] + sys.argv)
 
 
@@ -191,6 +192,13 @@ def get_python_packages():
             ],
             'sources': sources
         }
+
+def get_python2_recipe():
+    with urllib.request.urlopen("https://raw.githubusercontent.com/flathub/shared-modules/master/python2.7/python-2.7.json") as response:
+        recipe = json.loads(jsmin(response.read().decode()))
+        recipe["cleanup"] = ["*"]
+
+        return recipe
 
 
 def get_python_packages_x86_64(python_version):
@@ -407,7 +415,7 @@ def get_python_version(runtime_version):
     ).json() if release['name'].startswith('freedesktop-sdk-' + runtime_version + '.'))
 
     return re.match('v(\d+\.\d+\.\d+)-.*', yaml.load(requests.get(
-        'https://gitlab.com/freedesktop-sdk/freedesktop-sdk/raw/' + sdk_tag + '/elements/base/python3.bst'
+        'https://gitlab.com/freedesktop-sdk/freedesktop-sdk/raw/' + sdk_tag + '/elements/components/python3.bst'
     ).text)['sources'][0]['ref']).groups()[0]
 
 
@@ -513,17 +521,18 @@ def parse_repo(base_recipe):
             'modules': [
                 {
                     'name': 'libsecret',
+                    'buildsystem': 'meson',
                     'config-opts': [
-                        '--disable-manpages',
-                        '--disable-gtk-doc',
-                        '--disable-static',
-                        '--disable-introspection'
+                        '-Dmanpage=false',
+                        '-Dvapi=false',
+                        '-Dgtk_doc=false'
                     ],
                     'cleanup': [
                         '/bin',
                         '/include',
                         '/lib/pkgconfig',
-                        '/share/gtk-doc',
+                        '/share/gir-1.0',
+                        '/share/man',
                         '*.la'
                     ],
                     'sources': [
@@ -536,7 +545,7 @@ def parse_repo(base_recipe):
                         'prefix': '/app/local'
                     },
                     'cleanup': [
-                        '/local'
+                        '*'
                     ],
                     'sources': [
                         get_imagemagick_archive()
@@ -572,13 +581,14 @@ def parse_repo(base_recipe):
                         '--without-zlib'
                     ]
                 },
+                get_python2_recipe(),
                 {
                     'name': 'node',
                     'build-options': {
                         'prefix': '/app/local'
                     },
                     'cleanup': [
-                        '/local'
+                        '*'
                     ],
                     'sources': [
                         {
@@ -732,7 +742,7 @@ def get_ripgrep_recipe(packages, node_version):
 
 def get_base_recipe():
     base = yaml.load(requests.get(
-        'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/branch/18.08/org.electronjs.Electron2.BaseApp.yml'
+        'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/branch/19.08/org.electronjs.Electron2.BaseApp.yml'
     ).text)
     return {
         'base': base['id'],
