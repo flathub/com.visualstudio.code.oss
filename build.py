@@ -26,7 +26,7 @@ try:
     import requests
 except ImportError:
     subprocess.run('curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py; ' + sys.executable + ' /tmp/get-pip.py --user', shell=True, check=True)
-    subprocess.run(sys.executable + ' -m pip install -U jsmin pyyaml requests', shell=True, check=True)
+    subprocess.run(sys.executable + ' -m pip install --user -U jsmin pyyaml requests', shell=True, check=True)
     os.execv(sys.executable, [sys.executable] + sys.argv)
 
 
@@ -193,12 +193,11 @@ def get_python_packages():
             'sources': sources
         }
 
-def get_python2_recipe():
-    with urllib.request.urlopen("https://raw.githubusercontent.com/flathub/shared-modules/master/python2.7/python-2.7.json") as response:
-        recipe = json.loads(jsmin(response.read().decode()))
-        recipe["cleanup"] = ["*"]
 
-        return recipe
+def get_python2_recipe():
+    recipe = json.loads(jsmin(requests.get('https://raw.githubusercontent.com/flathub/shared-modules/master/python2.7/python-2.7.json').text))
+    recipe['cleanup'] = ['*']
+    return recipe
 
 
 def get_python_packages_x86_64(python_version):

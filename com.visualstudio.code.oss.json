@@ -15581,13 +15581,13 @@
           "url": "https://github.com/cweill/gotests.git"
         },
         {
-          "commit": "c872ffe853327e7ea21789b2621f1be179f07598",
+          "commit": "4b4ae7b393d341c3a4e277a4c603b8aa87180657",
           "dest": "src/github.com/davidrjenni/reftools",
           "type": "git",
           "url": "https://github.com/davidrjenni/reftools.git"
         },
         {
-          "commit": "23d080abe31b843d0b2820d477ce6d29e8cb3d15",
+          "commit": "7de53695081e309736619fa37d732891cf285af0",
           "dest": "src/github.com/derekparker/delve",
           "type": "git",
           "url": "https://github.com/derekparker/delve.git"
@@ -15611,19 +15611,19 @@
           "url": "https://github.com/fatih/gomodifytags.git"
         },
         {
-          "commit": "3878f9fb88e63e26ea1e6c97ab985cb55452fee5",
+          "commit": "72c94723f1e6825195e0d8e9857fca28cd23d835",
           "dest": "src/github.com/fatih/structtag",
           "type": "git",
           "url": "https://github.com/fatih/structtag.git"
         },
         {
-          "commit": "23d080abe31b843d0b2820d477ce6d29e8cb3d15",
+          "commit": "7de53695081e309736619fa37d732891cf285af0",
           "dest": "src/github.com/go-delve/delve",
           "type": "git",
           "url": "https://github.com/go-delve/delve.git"
         },
         {
-          "commit": "c8af5b092758992f75605335407b2d262df91e65",
+          "commit": "e94e36d4377137046e959dc3181502b4db9bdf8c",
           "dest": "src/github.com/golangci/golangci-lint",
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git"
@@ -15653,7 +15653,7 @@
           "url": "https://github.com/josharian/impl.git"
         },
         {
-          "commit": "c5347ca0aa3e4cee84147b4da5341df3de70af6c",
+          "commit": "1a316807ff7878e939ee94104ab063b0254422f5",
           "dest": "src/github.com/karrick/godirwalk",
           "type": "git",
           "url": "https://github.com/karrick/godirwalk.git"
@@ -15665,7 +15665,7 @@
           "url": "https://github.com/kisielk/gotool.git"
         },
         {
-          "commit": "f93a0d58d5fd95e53f82782d07bb0c79d23e1290",
+          "commit": "18c3d09a134a52720932bbaa92c798a0ab111004",
           "dest": "src/github.com/mattn/go-runewidth",
           "type": "git",
           "url": "https://github.com/mattn/go-runewidth.git"
@@ -15689,7 +15689,7 @@
           "url": "https://github.com/mgechev/dots.git"
         },
         {
-          "commit": "48f88ad8f2ba52b9da1aa9561a71c106e9182d4a",
+          "commit": "2e5c95018989b7b6983dbbf6691fdde4afaeda3d",
           "dest": "src/github.com/mgechev/revive",
           "type": "git",
           "url": "https://github.com/mgechev/revive.git"
@@ -15701,7 +15701,7 @@
           "url": "https://github.com/mitchellh/go-homedir.git"
         },
         {
-          "commit": "28c9868472de5b61d0a79f4c468103b80487f6c1",
+          "commit": "f8b8fe49672f7ca1a169825af9e45f1fd9e0d053",
           "dest": "src/github.com/olekukonko/tablewriter",
           "type": "git",
           "url": "https://github.com/olekukonko/tablewriter.git"
@@ -15779,19 +15779,19 @@
           "url": "https://go.googlesource.com/lint"
         },
         {
-          "commit": "788aebd06792f833c387fcee8647edac94108a98",
+          "commit": "331c550502dddccec70ff032beba72756bb428f2",
           "dest": "src/golang.org/x/mod",
           "type": "git",
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "6e064ea0cf2dcfaca8da2da9f42da458bab38756",
+          "commit": "98df123772120179846dbe20280e26b427d64dd6",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
         },
         {
-          "commit": "1b5146add8981d58be77b16229c0ff0f8bebd8c1",
+          "commit": "9bdfabe68543c54f90421aeb9a60ef8061b5b544",
           "dest": "src/golang.org/x/xerrors",
           "type": "git",
           "url": "https://go.googlesource.com/xerrors"
