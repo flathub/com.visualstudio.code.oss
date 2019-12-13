@@ -415,7 +415,7 @@ def get_python_version(runtime_version):
 
     return re.match('v(\d+\.\d+\.\d+)-.*', yaml.load(requests.get(
         'https://gitlab.com/freedesktop-sdk/freedesktop-sdk/raw/' + sdk_tag + '/elements/components/python3.bst'
-    ).text)['sources'][0]['ref']).groups()[0]
+    ).text, Loader=yaml.FullLoader)['sources'][0]['ref']).groups()[0]
 
 
 def parse_repo(base_recipe):
@@ -432,7 +432,7 @@ def parse_repo(base_recipe):
 
         product_json = json.loads(Path('product.json').read_text())
         # nodejs_version = Path('.nvmrc').read_text().strip()
-        product_build_linux = yaml.load(Path('build/azure-pipelines/linux/product-build-linux.yml').read_text())
+        product_build_linux = yaml.load(Path('build/azure-pipelines/linux/product-build-linux.yml').read_text(), Loader=yaml.FullLoader)
         nodejs_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step.get('task', None) == 'NodeTool@0')
         yarn_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step.get('task', None) == 'geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2')
 
@@ -586,6 +586,12 @@ def parse_repo(base_recipe):
                     'build-options': {
                         'prefix': '/app/local'
                     },
+                    'config-opts': [
+                        '--openssl-use-def-ca-store',
+                        '--shared-openssl',
+                        '--shared-zlib',
+                        '--with-intl=system-icu'
+                    ],
                     'cleanup': [
                         '*'
                     ],
@@ -594,9 +600,6 @@ def parse_repo(base_recipe):
                             'type': 'archive',
                             **get_url_sha512('https://nodejs.org/dist/v' + nodejs_version + '/node-v' + nodejs_version + '.tar.xz')
                         }
-                    ],
-                    'post-install': [
-                        'python -m compileall /app/local/lib/node_modules/npm/node_modules/node-gyp'
                     ]
                 },
                 {
@@ -742,7 +745,7 @@ def get_ripgrep_recipe(packages, node_version):
 def get_base_recipe():
     base = yaml.load(requests.get(
         'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/branch/19.08/org.electronjs.Electron2.BaseApp.yml'
-    ).text)
+    ).text, Loader=yaml.FullLoader)
     return {
         'base': base['id'],
         'base-version': base['branch'],
