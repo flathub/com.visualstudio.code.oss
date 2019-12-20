@@ -117,7 +117,7 @@ def get_imagemagick_archive():
         return (version[4] == 'tar.xz', *(int(number) for number in version[0:4]))
 
     contents = [content for content in minidom.parseString(
-        requests.get('https://www.imagemagick.org/download/releases/digest.rdf').text
+        requests.get('https://imagemagick.org/download/releases/digest.rdf').text
     ).documentElement.childNodes if content.nodeName == 'digest:Content']
     releases = [(
         content.attributes['rdf:about'].value,
@@ -126,7 +126,7 @@ def get_imagemagick_archive():
     latest = max(releases, key=version_key)
     return {
         'type': 'archive',
-        'url': 'https://www.imagemagick.org/download/releases/' + latest[0],
+        'url': 'https://imagemagick.org/download/releases/' + latest[0],
         'sha256': latest[1]
     }
 
@@ -201,15 +201,16 @@ def get_python2_recipe():
 
 
 def get_python_packages_x86_64(python_version):
-    subprocess.run('curl https://storage.googleapis.com/travis-ci-language-archives/python/binaries/ubuntu/16.04/x86_64/python-' + python_version + '.tar.bz2 | sudo tar -xjf - --directory /', shell=True, check=True)
-
-    packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope', 'flake8', 'yapf']
-    patterns = {
-        '.whl': re.compile(r'(?P<package>.*)-(?P<version>.*?)-.*?-.*?-.*?\.whl'),
-        '.tar.gz': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.tar\.gz'),
-        '.zip': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.zip')
-    }
     with tempfile.TemporaryDirectory() as tmpdir:
+        subprocess.run('curl https://storage.googleapis.com/travis-ci-language-archives/python/binaries/ubuntu/16.04/x86_64/python-' + python_version + '.tar.bz2 | tar -xjf - --directory ' + tmpdir, shell=True, check=True)
+
+        packages = ['autopep8', 'pylint', 'pipenv', 'ipython', 'rope', 'flake8', 'yapf']
+        patterns = {
+            '.whl': re.compile(r'(?P<package>.*)-(?P<version>.*?)-.*?-.*?-.*?\.whl'),
+            '.tar.gz': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.tar\.gz'),
+            '.zip': re.compile(r'(?P<package>.*)-(?P<version>.*?)\.zip')
+        }
+
         sources = []
         subprocess.run('. ~/virtualenv/python' + python_version + '/bin/activate; pip3 download -d' + tmpdir + ' ' + ' '.join(packages), shell=True, check=True)
 
@@ -415,7 +416,7 @@ def get_python_version(runtime_version):
 
     return re.match('v(\d+\.\d+\.\d+)-.*', yaml.load(requests.get(
         'https://gitlab.com/freedesktop-sdk/freedesktop-sdk/raw/' + sdk_tag + '/elements/components/python3.bst'
-    ).text)['sources'][0]['ref']).groups()[0]
+    ).text, Loader=yaml.FullLoader)['sources'][0]['ref']).groups()[0]
 
 
 def parse_repo(base_recipe):
@@ -432,7 +433,7 @@ def parse_repo(base_recipe):
 
         product_json = json.loads(Path('product.json').read_text())
         # nodejs_version = Path('.nvmrc').read_text().strip()
-        product_build_linux = yaml.load(Path('build/azure-pipelines/linux/product-build-linux.yml').read_text())
+        product_build_linux = yaml.load(Path('build/azure-pipelines/linux/product-build-linux.yml').read_text(), Loader=yaml.FullLoader)
         nodejs_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step.get('task', None) == 'NodeTool@0')
         yarn_version = next(step['inputs']['versionSpec'] for step in product_build_linux['steps'] if step.get('task', None) == 'geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2')
 
@@ -586,6 +587,12 @@ def parse_repo(base_recipe):
                     'build-options': {
                         'prefix': '/app/local'
                     },
+                    'config-opts': [
+                        '--openssl-use-def-ca-store',
+                        '--shared-openssl',
+                        '--shared-zlib',
+                        '--with-intl=system-icu'
+                    ],
                     'cleanup': [
                         '*'
                     ],
@@ -594,9 +601,6 @@ def parse_repo(base_recipe):
                             'type': 'archive',
                             **get_url_sha512('https://nodejs.org/dist/v' + nodejs_version + '/node-v' + nodejs_version + '.tar.xz')
                         }
-                    ],
-                    'post-install': [
-                        'python -m compileall /app/local/lib/node_modules/npm/node_modules/node-gyp'
                     ]
                 },
                 {
@@ -742,7 +746,7 @@ def get_ripgrep_recipe(packages, node_version):
 def get_base_recipe():
     base = yaml.load(requests.get(
         'https://raw.githubusercontent.com/flathub/org.electronjs.Electron2.BaseApp/branch/19.08/org.electronjs.Electron2.BaseApp.yml'
-    ).text)
+    ).text, Loader=yaml.FullLoader)
     return {
         'base': base['id'],
         'base-version': base['branch'],
