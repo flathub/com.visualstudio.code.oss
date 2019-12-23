@@ -91,9 +91,9 @@
       "name": "ImageMagick",
       "sources": [
         {
-          "sha256": "2be0eca87ae78c805f4b31933b57fba7bdca32a2e9c95d82a8a29ea339148cd3",
+          "sha256": "b5f3a5d7ac3cd763513624b869e23fecbeb58441b2a53cac21e3b883dff3e99c",
           "type": "archive",
-          "url": "https://imagemagick.org/download/releases/ImageMagick-7.0.9-8.tar.xz"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.9-10.tar.xz"
         }
       ]
     },
@@ -129,13 +129,10 @@
       "cleanup": [
         "*"
       ],
-      "config-opts": [
-        "--openssl-use-def-ca-store",
-        "--shared-openssl",
-        "--shared-zlib",
-        "--with-intl=system-icu"
-      ],
       "name": "node",
+      "post-install": [
+        "python -m compileall /app/local/lib/node_modules/npm/node_modules/node-gyp"
+      ],
       "sources": [
         {
           "sha512": "a7aa8b1f010ea1df122d9d7b88ee0a9d10e0d79ae2f3d18c706ac6ce36e2e2039c21ea6f3dba3a22a79ed3f6069850a8a3c463dbd64e1e8f4a9dbe8901a89cc8",
@@ -14272,10 +14269,10 @@
           "url": "https://files.pythonhosted.org/packages/e5/b0/c121fd1fa3419ea9bfd55c7f9c4fedfec5143208d8c7ad3ce3db6c623c21/isort-4.3.21-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "jedi-0.15.1-py2.py3-none-any.whl",
-          "sha256": "786b6c3d80e2f06fd77162a07fed81b8baa22dde5d62896a790a331d6ac21a27",
+          "dest-filename": "jedi-0.15.2-py2.py3-none-any.whl",
+          "sha256": "1349c1e8c107095a55386628bb3b2a79422f3a2cab8381e34ce19909e0cf5064",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/55/54/da994f359e4e7da4776a200e76dbc85ba5fc319eefc22e33d55296d95a1d/jedi-0.15.1-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/e9/97/55e575a5b49e5c3df9eb3c116c61021d7badf556c816be13bbd7baf55234/jedi-0.15.2-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "lazy_object_proxy-1.4.3-cp37-cp37m-manylinux1_x86_64.whl",
@@ -14478,7 +14475,7 @@
           "url": "https://github.com/cweill/gotests.git"
         },
         {
-          "commit": "98d48e351f2ba70923523b116b1762af4e54cf8d",
+          "commit": "65925cf013156409e591f7a1be4df96f640d02f4",
           "dest": "src/github.com/davidrjenni/reftools",
           "type": "git",
           "url": "https://github.com/davidrjenni/reftools.git"
@@ -14490,7 +14487,7 @@
           "url": "https://github.com/derekparker/delve.git"
         },
         {
-          "commit": "32de78dc1c6c931f2bf017870750b0ca80006601",
+          "commit": "717cd7a0595327ea87bc8016753ce6e0ac546200",
           "dest": "src/honnef.co/go/tools",
           "type": "git",
           "url": "https://github.com/dominikh/go-tools"
@@ -14586,7 +14583,7 @@
           "url": "https://github.com/mgechev/dots.git"
         },
         {
-          "commit": "ab7c6da423206360de4a23d37e3082205fa1aa45",
+          "commit": "9d5ed110c939e003340e2ac144290ae6f0aad9f4",
           "dest": "src/github.com/mgechev/revive",
           "type": "git",
           "url": "https://github.com/mgechev/revive.git"
@@ -14682,7 +14679,7 @@
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "5e752206af050099b86f8738f3b6b5f69a08561b",
+          "commit": "f13409bbebaf4952699e53713a73474ea30e8672",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
