@@ -44,8 +44,8 @@
       "name": "libsecret",
       "sources": [
         {
-          "commit": "f576dfbe50f9aed22802ad0db0356d081f467d7a",
-          "tag": "0.19.1",
+          "commit": "3939b03f39dfef9fa9c54f709d094893b90d82a0",
+          "tag": "0.20.0",
           "type": "git",
           "url": "https://gitlab.gnome.org/GNOME/libsecret.git"
         }
@@ -91,9 +91,9 @@
       "name": "ImageMagick",
       "sources": [
         {
-          "sha256": "b5f3a5d7ac3cd763513624b869e23fecbeb58441b2a53cac21e3b883dff3e99c",
+          "sha256": "22109b84afa2c45eb535ac342b2c9301c2c3cb8c3dc0f7a9af3d89199b289d18",
           "type": "archive",
-          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.9-10.tar.xz"
+          "url": "https://www.imagemagick.org/download/releases/ImageMagick-7.0.9-16.tar.xz"
         }
       ]
     },
@@ -14251,10 +14251,10 @@
           "url": "https://files.pythonhosted.org/packages/f8/1f/7ea40d1e4146ea55dbab41cda1376db092a75794914169aabd7e8d7a7def/flake8-3.7.9-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "ipython-7.10.2-py3-none-any.whl",
-          "sha256": "190a279bd3d4fc585a611e9358a88f1048cc57fd688254a86f9461889ee152a6",
+          "dest-filename": "ipython-7.11.1-py3-none-any.whl",
+          "sha256": "387686dd7fc9caf29d2fddcf3116c4b07a11d9025701d220c589a430b0171d8a",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/c4/c0/dc2e62d068f0f63910a3ab565a7fbbe1a20946b23f0945525826d9bbc98f/ipython-7.10.2-py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/1c/f3/c8be38ee117d02508bb8b9158eb41ca416f442a6e8e3b3159c2f2d14ed79/ipython-7.11.1-py3-none-any.whl"
         },
         {
           "dest-filename": "ipython_genutils-0.2.0-py2.py3-none-any.whl",
@@ -14347,22 +14347,22 @@
           "url": "https://files.pythonhosted.org/packages/e9/59/43fc36c5ee316bb9aeb7cf5329cdbdca89e5749c34d5602753827c0aa2dc/pylint-2.4.4-py3-none-any.whl"
         },
         {
-          "dest-filename": "rope-0.14.0-py3-none-any.whl",
-          "sha256": "f0dcf719b63200d492b85535ebe5ea9b29e0d0b8aebeb87fe03fc1a65924fdaf",
+          "dest-filename": "rope-0.16.0-py3-none-any.whl",
+          "sha256": "52423a7eebb5306a6d63bdc91a7c657db51ac9babfb8341c9a1440831ecf3203",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/69/b7/4802c5736b70fc7b7ace5d4f81355fae72702e1da0675e3a305959fdb9ce/rope-0.14.0-py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/68/1f/a7a68a0ba09a3426d47142f73d033a5e20afdb37a65e8a863bd0183542d3/rope-0.16.0-py3-none-any.whl"
         },
         {
-          "dest-filename": "setuptools-42.0.2-py2.py3-none-any.whl",
-          "sha256": "c8abd0f3574bc23afd2f6fd2c415ba7d9e097c8a99b845473b0d957ba1e2dac6",
+          "dest-filename": "setuptools-45.0.0-py2.py3-none-any.whl",
+          "sha256": "001c474c175697a03e2afffd87d92411c89215be5f2cd3e0ab80a67726c0f4c2",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/54/28/c45d8b54c1339f9644b87663945e54a8503cfef59cf0f65b3ff5dd17cf64/setuptools-42.0.2-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/af/e7/02db816dc88c598281bacebbb7ccf2c9f1a6164942e88f1a0fded8643659/setuptools-45.0.0-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "six-1.13.0-py2.py3-none-any.whl",
-          "sha256": "1f1b7d42e254082a9db6279deae68afb421ceba6158efa6131de7b3003ee93fd",
+          "dest-filename": "six-1.14.0-py2.py3-none-any.whl",
+          "sha256": "8f3cd2e254d8f793e7f3d6d9df77b92252b52637291d0f0da013c76ea2724b6c",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/65/26/32b8464df2a97e6dd1b656ed26b2c194606c16fe163c695a992b36c11cdf/six-1.13.0-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/65/eb/1f97cb97bfc2390a276969c6fae16075da282f5058082d4cb10c6c5c1dba/six-1.14.0-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "traitlets-4.3.3-py2.py3-none-any.whl",
@@ -14371,10 +14371,10 @@
           "url": "https://files.pythonhosted.org/packages/ca/ab/872a23e29cec3cf2594af7e857f18b687ad21039c1f9b922fac5b9b142d5/traitlets-4.3.3-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "typed_ast-1.4.0-cp37-cp37m-manylinux1_x86_64.whl",
-          "sha256": "d7c45933b1bdfaf9f36c579671fec15d25b06c8398f113dab64c18ed1adda01d",
+          "dest-filename": "typed_ast-1.4.1-cp37-cp37m-manylinux1_x86_64.whl",
+          "sha256": "bcd3b13b56ea479b3650b82cabd6b5343a625b0ced5429e4ccad28a8973f301b",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/fb/56/dd4e168a0009da85c78c6cfe91f5b2df2c7bbed60f3ba778c4a71289e6fb/typed_ast-1.4.0-cp37-cp37m-manylinux1_x86_64.whl"
+          "url": "https://files.pythonhosted.org/packages/5d/10/0c1e8aa723a2b0c4032e048d8e511df82c8a1262f0e1df5e4c54eb2613e9/typed_ast-1.4.1-cp37-cp37m-manylinux1_x86_64.whl"
         },
         {
           "dest-filename": "virtualenv-16.7.9-py2.py3-none-any.whl",
@@ -14389,10 +14389,10 @@
           "url": "https://files.pythonhosted.org/packages/ba/f8/50c2b7dbc99e05fce5e5b9d9a31f37c988c99acd4e8dedd720b7b8d4011d/virtualenv_clone-0.5.3-py2.py3-none-any.whl"
         },
         {
-          "dest-filename": "wcwidth-0.1.7-py2.py3-none-any.whl",
-          "sha256": "f4ebe71925af7b40a864553f761ed559b43544f8f71746c2d756c7fe788ade7c",
+          "dest-filename": "wcwidth-0.1.8-py2.py3-none-any.whl",
+          "sha256": "8fd29383f539be45b20bd4df0dc29c20ba48654a41e661925e612311e9f3c603",
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/7e/9f/526a6947247599b084ee5232e4f9190a38f398d7300d866af3ab571a5bfe/wcwidth-0.1.7-py2.py3-none-any.whl"
+          "url": "https://files.pythonhosted.org/packages/58/b4/4850a0ccc6f567cc0ebe7060d20ffd4258b8210efadc259da62dc6ed9c65/wcwidth-0.1.8-py2.py3-none-any.whl"
         },
         {
           "dest-filename": "wrapt-1.11.2.tar.gz",
@@ -14481,7 +14481,7 @@
           "url": "https://github.com/davidrjenni/reftools.git"
         },
         {
-          "commit": "d2be7914660f66a8ea899df88e8d608d209d5c07",
+          "commit": "9af1eac34150f3c18ea1473e9a0e5cc06bda3948",
           "dest": "src/github.com/derekparker/delve",
           "type": "git",
           "url": "https://github.com/derekparker/delve.git"
@@ -14493,7 +14493,7 @@
           "url": "https://github.com/dominikh/go-tools"
         },
         {
-          "commit": "3f9d52f7176a6927daacff70a3e8d1dc2025c53e",
+          "commit": "daf2830f2741ebb735b21709a520c5f37d642d85",
           "dest": "src/github.com/fatih/color",
           "type": "git",
           "url": "https://github.com/fatih/color.git"
@@ -14511,13 +14511,13 @@
           "url": "https://github.com/fatih/structtag.git"
         },
         {
-          "commit": "d2be7914660f66a8ea899df88e8d608d209d5c07",
+          "commit": "9af1eac34150f3c18ea1473e9a0e5cc06bda3948",
           "dest": "src/github.com/go-delve/delve",
           "type": "git",
           "url": "https://github.com/go-delve/delve.git"
         },
         {
-          "commit": "cf1fbc590a440210d17a2fd4577fad5ee1c4bd1d",
+          "commit": "1ac15487b257512b661419b44745b444d22a35d8",
           "dest": "src/github.com/golangci/golangci-lint",
           "type": "git",
           "url": "https://github.com/golangci/golangci-lint.git"
@@ -14547,7 +14547,7 @@
           "url": "https://github.com/josharian/impl.git"
         },
         {
-          "commit": "03cb04d786ede93ac5a994eda79f9ba55c8c996c",
+          "commit": "db731a15f69aa6595484ae8a08dc6d783183eb25",
           "dest": "src/github.com/karrick/godirwalk",
           "type": "git",
           "url": "https://github.com/karrick/godirwalk.git"
@@ -14559,7 +14559,7 @@
           "url": "https://github.com/kisielk/gotool.git"
         },
         {
-          "commit": "18c3d09a134a52720932bbaa92c798a0ab111004",
+          "commit": "a4df4ddbff020e131056d91f580a1cdcd806e3ae",
           "dest": "src/github.com/mattn/go-runewidth",
           "type": "git",
           "url": "https://github.com/mattn/go-runewidth.git"
@@ -14583,7 +14583,7 @@
           "url": "https://github.com/mgechev/dots.git"
         },
         {
-          "commit": "9d5ed110c939e003340e2ac144290ae6f0aad9f4",
+          "commit": "b3860cc978690b2bdbd72fd2786a47b05077069b",
           "dest": "src/github.com/mgechev/revive",
           "type": "git",
           "url": "https://github.com/mgechev/revive.git"
@@ -14601,19 +14601,19 @@
           "url": "https://github.com/olekukonko/tablewriter.git"
         },
         {
-          "commit": "7f95ac13edff643b8ce5398b6ccab125f8a20c1a",
+          "commit": "614d223910a179a466c1767a985424175c39b465",
           "dest": "src/github.com/pkg/errors",
           "type": "git",
           "url": "https://github.com/pkg/errors.git"
         },
         {
-          "commit": "7182a932836a71948db4a81991a494751eccfe77",
+          "commit": "2a048b4510eb36ad1bb2913a1f5c95605d819f32",
           "dest": "src/github.com/ramya-rao-a/go-outline",
           "type": "git",
           "url": "https://github.com/ramya-rao-a/go-outline.git"
         },
         {
-          "commit": "bf08ea5df4ea96c6460011b8a8ef2952494d458d",
+          "commit": "bc89b17ba21ce5b8a495fa55a94e3fe32ecf4ed8",
           "dest": "src/github.com/rogpeppe/go-internal",
           "type": "git",
           "url": "https://github.com/rogpeppe/go-internal.git"
@@ -14625,7 +14625,7 @@
           "url": "https://github.com/rogpeppe/godef.git"
         },
         {
-          "commit": "79abb63cd66e41cb1473e26d11ebdcd68b04c8e5",
+          "commit": "eef8423979666925a58eb77f9db583e54320d5a4",
           "dest": "src/github.com/skratchdot/open-golang",
           "type": "git",
           "url": "https://github.com/skratchdot/open-golang.git"
@@ -14673,13 +14673,13 @@
           "url": "https://go.googlesource.com/lint"
         },
         {
-          "commit": "331c550502dddccec70ff032beba72756bb428f2",
+          "commit": "ed3ec21bb8e252814c380df79a80f366440ddb2d",
           "dest": "src/golang.org/x/mod",
           "type": "git",
           "url": "https://go.googlesource.com/mod"
         },
         {
-          "commit": "f13409bbebaf4952699e53713a73474ea30e8672",
+          "commit": "7ad9cd8f3189de72271433f77754bded3c93f479",
           "dest": "src/golang.org/x/tools",
           "type": "git",
           "url": "https://go.googlesource.com/tools"
