@@ -1,4 +1,4 @@
-id: com.visualstudio.code-oss
+id: com.visualstudio.code.oss
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Sdk
 runtime-version: "19.08"
